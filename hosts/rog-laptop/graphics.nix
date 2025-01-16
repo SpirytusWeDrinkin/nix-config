@@ -37,9 +37,8 @@ in
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
     package = config.boot.kernelPackages.nvidiaPackages.stable;
     prime = {
-      offload = {
+      sync = {
         enable = true;
-        enableOffloadCmd = true;
       };
       # Make sure to use the correct Bus ID values for your system!
       amdgpuBusId = "${amd-bus-id}";

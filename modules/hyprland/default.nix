@@ -145,7 +145,7 @@ in
         # xwayland options
         xwayland.force_zero_scaling = true;
         monitor = [
-            "eDP-1, 3840x2160, 0x0, 2"
+            "eDP-1, highrr, 0x0, 2"
             ", preferred, 1920x0, 1"
           ];
 
