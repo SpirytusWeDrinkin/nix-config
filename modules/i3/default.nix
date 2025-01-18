@@ -29,6 +29,10 @@ let
     base = "24273a";
     mantle = "1e2030";
     crust = "181926";
+
+    bemenu-command = ''
+
+        '';
 };
 in {
   options.abelc.i3 = {
@@ -81,7 +85,7 @@ in {
           "${modifier}+q" = "kill";
           "${modifier}+d" = "exec ${pkgs.bemenu}/bin/bemenu-run";
           "${modifier}+x" = "exec i3lock -i ${cfg.wallpaper}";
-          "${modifier}+s" = "maim -s | xclip -selection clipboard -t image/png";
+          "${modifier}+s" = "exec ${pkgs.maim} -s | ${pkgs.xclip} -selection clipboard -t image/png";
         };
         gaps = {
           outer = 5;
@@ -129,21 +133,22 @@ in {
           }
         ]; */
         window.border = 3;
+        window.titlebar = false;
         floating.border = 1;
         colors = {
           focused = {
-            childBorder = "#${my_colors.lavender}";
             background = "#${my_colors.base}";
-            text = "#${my_colors.text}";
-            indicator = "#${my_colors.rosewater}";
             border = "#${my_colors.lavender}";
+            childBorder = "#${my_colors.lavender}";
+            indicator = "#${my_colors.rosewater}";
+            text = "#${my_colors.text}";
           };
           focusedInactive = {
             childBorder = "#${my_colors.overlay0}";
             background = "#${my_colors.base}";
-            text = "#${my_colors.text}";
             indicator = "#${my_colors.rosewater}";
             border = "#${my_colors.overlay0}";
+            text = "#${my_colors.text}";
           };
           unfocused = {
             childBorder = "#${my_colors.overlay0}";
@@ -166,6 +171,7 @@ in {
             indicator = "#${my_colors.overlay0}";
             border = "#${my_colors.overlay0}";
           };
+          background = "#${my_colors.base}";
         };
         focus = {
           followMouse = false;

@@ -1,4 +1,4 @@
-{ pkgs, lib, config }:
+{ pkgs, lib, config, ... }:
 with lib;
 let
   cfg = config.abelc.polybar;
@@ -7,7 +7,8 @@ in
   options.abelc.polybar = { enable = mkEnableOption "polybar"; };
   config = mkIf cfg.enable {
     services.polybar = {
-      enabe = true;
+      enable = true;
+      script = "polybar";
       settings = {
         "bar/main" = {
           background = "#e0374247";
