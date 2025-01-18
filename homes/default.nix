@@ -15,7 +15,7 @@ in
     extraSpecialArgs = {
       username = "abel.chartier";
       rootPath = rootPath;
-      stateVersion = "23.05";
+      stateVersion = "25.05";
       inherit pkgs-local;
     };
 
