@@ -268,5 +268,9 @@ in
         };
       };
     };
+    home.file.".config/polybar/polybar-scripts" = {
+      recursive = true;
+      source = ./polybar-scripts;
+    };
   };
 }
