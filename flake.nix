@@ -4,10 +4,6 @@
       url = "github:nixos/nixpkgs/nixos-unstable";
     };
 
-    /* catppuccin = {
-      url = "github:catppuccin/nix";
-    }; */
-
     futils = {
       url = "github:numtide/flake-utils";
     };
@@ -59,12 +55,10 @@
             ;
         };
 
-      defaultArgs = mkDefaultArgs system;
-
       generateModules = modules: lib.attrsets.genAttrs modules (name: import (./modules + "/${name}"));
 
-    in
-    rec {
+      defaultArgs = mkDefaultArgs system;
+    in rec {
       packages = eachDefaultSystemMap (system:
         let
           defaultArgs = mkDefaultArgs system;
@@ -87,8 +81,8 @@
         "firefox"
         "git"
         "gtk"
-        "i3"
-        "i3status-rust"
+#        "i3"
+#        "i3status-rust"
         "hyprland"
         "mako"
         "nvim"

@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ inputs, pkgs, lib, config, ... }:
 with lib;
 let
   cfg = config.abelc.i3;
@@ -128,48 +128,48 @@ in {
             };
           }
         ];
-        window.titlebar = false;
+        # window.childBorderbar = false;
         window.border = 3;
         floating.border = 1;
         colors = {
           focused = {
-            title = "#${my_colors.lavender}";
+            childBorder = "#${my_colors.lavender}";
             background = "#${my_colors.base}";
             text = "#${my_colors.text}";
             indicator = "#${my_colors.rosewater}";
             border = "#${my_colors.lavender}";
           };
           focusedInactive = {
-            title = "#${my_colors.overlay0}";
+            childBorder = "#${my_colors.overlay0}";
             background = "#${my_colors.base}";
             text = "#${my_colors.text}";
             indicator = "#${my_colors.rosewater}";
             border = "#${my_colors.overlay0}";
           };
           unfocused = {
-            title = "#${my_colors.overlay0}";
+            childBorder = "#${my_colors.overlay0}";
             background = "#${my_colors.base}";
             text = "#${my_colors.text}";
             indicator = "#${my_colors.rosewater}";
             border = "#${my_colors.overlay0}";
           };
           urgent = {
-            title = "#${my_colors.peach}";
+            childBorder = "#${my_colors.peach}";
             background = "#${my_colors.base}";
             text = "$#{my_colors.peach}";
             indicator = "#${my_colors.overlay0}";
             border = "#${my_colors.peach}";
           };
           placeholder = {
-            title = "#${my_colors.overlay0}";
+            childBorder = "#${my_colors.overlay0}";
             background = "#${my_colors.base}";
             text = "#${my_colors.text}";
             indicator = "#${my_colors.overlay0}";
             border = "#${my_colors.overlay0}";
           };
-          background = {
-            title = "#${my_colors.base}";
-          };
+          /* background = {
+            childBorder = "#${my_colors.base}";
+          }; */
         };
         focus = {
           followMouse = false;
