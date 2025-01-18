@@ -87,6 +87,8 @@
         "firefox"
         "git"
         "gtk"
+        "i3"
+        "i3status-rust"
         "hyprland"
         "mako"
         "nvim"

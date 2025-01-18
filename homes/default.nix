@@ -1,10 +1,19 @@
 { inputs
 , pkgs
 , modules
+, pkgs-local
 , ...
 }:
 let
   inherit (inputs) home-manager;
+  specialArgs = {
+    inherit
+      inputs
+      pkgs-local
+      ;
+    stateVersion = "25.05";
+    rootPath = ../.;
+  };
 in
 {
   home-manager.useGlobalPkgs = true;
@@ -12,7 +21,8 @@ in
     inherit pkgs;
     extraSpecialArgs = {
       username = "abel.chartier";
-    };
+    }
+    ++ specialArgs;
 
     modules = [
       ./pie.nix
