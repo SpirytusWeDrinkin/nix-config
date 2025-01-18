@@ -3,10 +3,10 @@ with lib;
 let
   cfg = config.abelc.nvim;
 
-  fine-cmdline-nvim = pkgs.vimUtils.buildVimPlugin {
+  /* fine-cmdline-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "fine-cmdline";
     src = inputs.fine-cmdline;
-  };
+  }; */
 in
 {
   options.abelc.nvim = { enable = mkEnableOption "nvim"; };
@@ -34,7 +34,7 @@ in
           # dressing-nvim
           indent-blankline-nvim
           nui-nvim
-          fine-cmdline-nvim
+          # fine-cmdline-nvim
           nvim-treesitter.withAllGrammars
           lualine-nvim
           nvim-autopairs
