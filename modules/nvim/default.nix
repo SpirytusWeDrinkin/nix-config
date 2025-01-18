@@ -64,7 +64,8 @@ in
           mason-lspconfig-nvim
           catppuccin-nvim
           vim-fugitive
-        ];
+	];
+          # ${builtins.readFile ./lua/plugins/fine-cmdline.lua}        
         extraConfig = '''';
         extraLuaConfig = ''
           ${builtins.readFile ./lua/set.lua}
@@ -75,7 +76,7 @@ in
           ${builtins.readFile ./lua/plugins/cmp.lua}
           ${builtins.readFile ./lua/plugins/comment.lua}
           ${builtins.readFile ./lua/plugins/gruvbox-nvim.lua}
-          ${builtins.readFile ./lua/plugins/fine-cmdline.lua}
+
           ${builtins.readFile ./lua/plugins/lualine.lua}
           ${builtins.readFile ./lua/plugins/lsp.lua}
           ${builtins.readFile ./lua/plugins/notify.lua}

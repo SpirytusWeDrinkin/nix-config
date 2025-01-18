@@ -1,6 +1,6 @@
-[terminal.shell]
-program = "/usr/bin/env"
-args = ["zsh"]
+# [terminal.shell]
+# program = "/usr/bin/env"
+# args = ["zsh"]
 
 [window]
 decorations = "None"

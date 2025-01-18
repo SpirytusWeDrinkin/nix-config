@@ -20,8 +20,8 @@
       wallpaper = "${rootPath}/assets/Wallpapers/touhousa.png";
     };
     mako.enable = true;
-    # nvim.enable = true;
-    i3status-rust.enable = true;
+    nvim.enable = true;
+    polybar.enable = true;
     zsh.enable = true;
   };
 
@@ -34,7 +34,8 @@
 
   home = {
     packages = with pkgs; [
-      cmatrix
+      lsd
+      nerd-fonts.iosevka-term
     ];
   };
 

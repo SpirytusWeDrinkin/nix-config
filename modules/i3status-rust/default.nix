@@ -11,13 +11,6 @@ in
       bars.default = {
         blocks = [
           {
-            block = "general";
-            output_format = "i3bar";
-            colors = false;
-            markup = "pango";
-            interval = 5;
-          }
-          {
             block = "load";
             format = "<span background='#b08500'>    </span><span background='#bfbaac'>  %5min Load  </span>";
           }

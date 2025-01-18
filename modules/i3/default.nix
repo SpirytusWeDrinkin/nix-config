@@ -87,7 +87,7 @@ in {
           outer = 5;
           inner = 6;
         };
-        bars = [
+        /* bars = [
           {
             position = "top";
             trayOutput = "primary";
@@ -127,8 +127,7 @@ in {
               };
             };
           }
-        ];
-        # window.childBorderbar = false;
+        ]; */
         window.border = 3;
         floating.border = 1;
         colors = {
@@ -167,9 +166,6 @@ in {
             indicator = "#${my_colors.overlay0}";
             border = "#${my_colors.overlay0}";
           };
-          /* background = {
-            childBorder = "#${my_colors.base}";
-          }; */
         };
         focus = {
           followMouse = false;
