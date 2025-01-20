@@ -312,6 +312,6 @@ in
       recursive = true;
       source = ./polybar-scripts;
     };
-    home.packages = [ pkgs.playerctl ];
+    home.packages = [ pkgs.playerctl pkgs.cava ];
   };
 }
