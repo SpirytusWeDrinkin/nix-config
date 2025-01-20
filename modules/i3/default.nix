@@ -216,10 +216,11 @@ in {
       enable = true;
     };
     home.packages = with pkgs; [ pango ];
-    xsession.pointerCursor = {
+    home.pointerCursor = {
       name = "Bibata-Modern-Ice";
       package = pkgs.bibata-cursors;
       size = 24;
+      x11.enable = true;
     };
   };
 }
