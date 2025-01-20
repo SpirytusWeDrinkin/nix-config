@@ -107,6 +107,11 @@ in {
             always = true;
             notification = false;
           }
+          {
+            command = "dunst";
+            always = true;
+            notification = false;
+          }
         ];
         keybindings = lib.mkOptionDefault {
           "${modifier}+Return" = "exec i3-sensible-terminal";
@@ -211,5 +216,10 @@ in {
       enable = true;
     };
     home.packages = with pkgs; [ pango ];
+    xsession.pointerCursor = {
+      name = "Bibata-Modern-Ice";
+      package = pkgs.bibata-cursors;
+      size = 24;
+    };
   };
 }

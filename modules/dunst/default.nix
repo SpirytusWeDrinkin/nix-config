@@ -42,11 +42,11 @@ in {
       settings = {
         global = {
           monitor = 0;
-          frame_color = "#89B4FA";
+          frame_color = "#${my_colors.mauve}";
           follow = "mouse";
           width = 300;
           origin = "top-right";
-          offset = "30x30";
+          offset = "30x50";
           progress_bar = true;
           progress_bar_height = 14;
           progress_bar_frame_width = 1;
@@ -55,7 +55,7 @@ in {
           indicate_hidden = true;
           shrink = false;
           separator_height = 6;
-          separator_color = "#272f57";
+          separator_color = "frame";
           padding = 16;
           horizontal_padding = 16;
           frame_width = 2;
@@ -90,57 +90,23 @@ in {
           mouse_right_click = "close_all";
         };
 
-        experimental = {
-          per_monitor_dpi = false;
-        };
-
         urgency_low = {
-          background = "#1E1E2E";
-          foreground = "#CDD6F4";
-          highlight = "#70a5eb";
-          frame_color = "#242931";
+          background = "#${my_colors.base}";
+          foreground = "#${my_colors.text}";
           timeout = 8;
         };
 
         urgency_normal = {
-          background = "#1E1E2E";
-          foreground = "#CDD6F4";
-          highlight = "#70a5eb";
+          background = "#${my_colors.base}";
+          foreground = "#${my_colors.text}";
           timeout = 8;
         };
 
         urgency_critical = {
-          background = "#1E1E2E";
-          foreground = "#CDD6F4";
-          frame_color = "#FAB387";
-          highlight = "#e05f65";
+          background = "#${my_colors.base}";
+          foreground = "#${my_colors.text}";
+          frame_color = "#${my_colors.peach}";
           timeout = 0;
-          icon = "battery-ac-adapter";
-        };
-
-        backlight = {
-          appname = "Backlight";
-          highlight = "#f1cf8a";
-          set_stack_tag = "backlight";
-        };
-
-        music = {
-          appname = "Music";
-        };
-
-        volume = {
-          summary = "Volume*";
-          highlight = "#70a5eb";
-          set_stack_tag = "volume";
-        };
-
-        battery = {
-          appname = "Power Warning";
-        };
-
-        volume-muted = {
-          summary = "Volume muted";
-          highlight = "#e05f65";
         };
       };
     };

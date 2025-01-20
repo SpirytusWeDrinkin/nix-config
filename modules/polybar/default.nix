@@ -303,5 +303,6 @@ in
       recursive = true;
       source = ./polybar-scripts;
     };
+    home.packages = [ pkgs.playerctl ];
   };
 }
