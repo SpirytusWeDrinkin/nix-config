@@ -65,7 +65,7 @@ in
           module-margin = 0;
           modules = {
             center = "left xworkspaces right";
-            left = "left date space sep space time space sep space upeth space space downeth right space-alt";
+            left = "left date space sep space time space sep space upeth space space downeth right space-alt space-alt space-alt left music right";
             right = "left temperature space sep space cpu space sep space memory space sep space ethernet space sep space dunst space sep space alsa space sep space battery right";
           };
           padding-left = 0;
@@ -140,7 +140,7 @@ in
             "echo \"%{A1:dunstctl set-paused true && polybar-msg hook dunst 2:} %{A}\" &"
             "echo \"%{A1:dunstctl set-paused false && polybar-msg hook dunst 1:} %{A}\" &"
           ];
-          initial = 1;
+          initial = 0;
           type = "custom/ipc";
         };
 
@@ -190,10 +190,10 @@ in
 
         "module/music" = {
           type = "custom/script";
-          exec = "bash ~/.config/polybar/polybar-scripts/get_playerctl_status.sh";
+          exec = "~/.config/polybar/polybar-scripts/get_playerctl_status.sh";
           format-background = "#${my_colors.base}";
           format-foreground = "#${my_colors.lavender}";
-          format-prefix = " ";
+          format-prefix = "  ";
           interval = 1;
           label = "%output:0:22:...%";
           tail = true;

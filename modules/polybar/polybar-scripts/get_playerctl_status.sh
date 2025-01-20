@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # The name of polybar bar which houses the main spotify module and the control modules.
 PARENT_BAR="main"
@@ -9,12 +9,12 @@ PARENT_BAR_PID=$(pgrep -a "polybar" | grep "$PARENT_BAR" | cut -d" " -f1)
 # Examples: spotify, vlc, chrome, mpv and others.
 # Use `playerctld` to always detect the latest player.
 # See more here: https://github.com/altdesktop/playerctl/#selecting-players-to-control
-PLAYER="spotify"
+PLAYER="playerctld"
 
 # Format of the information displayed
 # Eg. {{ artist }} - {{ album }} - {{ title }}
 # See more attributes here: https://github.com/altdesktop/playerctl/#printing-properties-and-metadata
-FORMAT="{{ title }}"
+FORMAT="{{ artist}} - {{ title }}"
 
 # Sends $2 as message to all polybar PIDs that are part of $1
 update_hooks() {
@@ -30,7 +30,7 @@ EXIT_CODE=$?
 if [ $EXIT_CODE -eq 0 ]; then
     STATUS=$PLAYERCTL_STATUS
 else
-    STATUS="Spotify is off"
+    STATUS="No music"
 fi
 
 if [ "$1" == "--status" ]; then
@@ -41,7 +41,7 @@ else
     elif [ "$STATUS" = "Paused"  ]; then
         update_hooks "$PARENT_BAR_PID" 2
         playerctl --player=$PLAYER metadata --format "$FORMAT"
-    elif [ "$STATUS" = "Spotify is off"  ]; then
+    elif [ "$STATUS" = "No music"  ]; then
         echo "$STATUS"
     else
         update_hooks "$PARENT_BAR_PID" 1

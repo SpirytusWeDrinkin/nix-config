@@ -45,7 +45,7 @@ in {
           frame_color = "#89B4FA";
           follow = "mouse";
           width = 300;
-          origin = "bottom-right";
+          origin = "top-right";
           offset = "30x30";
           progress_bar = true;
           progress_bar_height = 14;
@@ -77,12 +77,12 @@ in {
           max_icon_size = 60;
           sticky_history = true;
           history_length = 100;
-          dmenu = "/usr/bin/dmenu -p dunst:";
+          dmenu = "/usr/bin/bemenu-run -p dunst:";
           browser = "/usr/bin/firefox -new-tab";
           always_run_script = false;
           title = "Dunst";
           class = "Dunst";
-          corner_radius = 16;
+          corner_radius = 7;
           ignore_dbusclose = false;
           force_xinerama = false;
           mouse_left_click = "close_current";
@@ -103,7 +103,6 @@ in {
         };
 
         urgency_normal = {
-          script = "~/.scripts/dunst/sound-normal.sh";
           background = "#1E1E2E";
           foreground = "#CDD6F4";
           highlight = "#70a5eb";
@@ -111,7 +110,6 @@ in {
         };
 
         urgency_critical = {
-          script = "~/.scripts/dunst/sound-critical.sh";
           background = "#1E1E2E";
           foreground = "#CDD6F4";
           frame_color = "#FAB387";
@@ -146,5 +144,6 @@ in {
         };
       };
     };
+    home.packages = [ pkgs.libnotify ];
   };
 }
