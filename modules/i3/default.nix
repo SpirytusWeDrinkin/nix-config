@@ -29,11 +29,30 @@ let
     base = "24273a";
     mantle = "1e2030";
     crust = "181926";
+  };
 
-    bemenu-command = ''
-
-        '';
-};
+  bemenu-command = ''
+    bemenu-run \
+    --ab '#24273a' \
+    --af '#cad3f5' \
+    --fb '#24273a' \
+    --ff '#cad3f5' \
+    --hb '#24273a' \
+    --hf '#eed49f' \
+    --nb '#24273a' \
+    --nf '#cad3f5' \
+    --tb '#24273a' \
+    --tf '#ed8796' \
+    --binding vim \
+    --cw 15 \
+    --fn 'IosevkaTerm Nerd Font 14' \
+    --hp 10 \
+    --ignorecase \
+    --line-height 42 \
+    --prompt '  ' \
+    --vim-esc-exits \
+    --wrap
+  '';
 in {
   options.abelc.i3 = {
     enable = mkEnableOption "i3";
@@ -47,6 +66,11 @@ in {
       type = types.nullOr types.path;
       description = "Wallpaper for i3lock";
       default = null;
+    };
+    barCmd = mkOption {
+      type = types.str;
+      description = "Command for launching the bar";
+      default = "";
     };
   };
   config = mkIf cfg.enable {
@@ -75,6 +99,10 @@ in {
             notification = false;
           }
           {
+            command = cfg.barCmd;
+            always = true;
+          }
+          {
             command = "picom -b";
             always = true;
             notification = false;
@@ -83,7 +111,7 @@ in {
         keybindings = lib.mkOptionDefault {
           "${modifier}+Return" = "exec i3-sensible-terminal";
           "${modifier}+q" = "kill";
-          "${modifier}+d" = "exec ${pkgs.bemenu}/bin/bemenu-run";
+          "${modifier}+d" = "exec ${bemenu-command}";
           "${modifier}+x" = "exec i3lock -i ${cfg.wallpaper}";
           "${modifier}+s" = "exec ${pkgs.maim} -s | ${pkgs.xclip} -selection clipboard -t image/png";
         };
@@ -91,8 +119,8 @@ in {
           outer = 5;
           inner = 6;
         };
-        /* bars = [
-          {
+        bars = [
+          /* {
             position = "top";
             trayOutput = "primary";
             statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-default.toml";
@@ -130,8 +158,8 @@ in {
                 text = "#${my_colors.crust}";
               };
             };
-          }
-        ]; */
+          } */
+        ];
         window.border = 3;
         window.titlebar = false;
         floating.border = 1;

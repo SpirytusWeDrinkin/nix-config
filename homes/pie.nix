@@ -14,10 +14,12 @@
   abelc = {
     alacritty.enable = true;
     bemenu.enable = true;
+    dunst.enable = true;
     gtk.enable = true;
     i3 = {
       enable = true;
       wallpaper = "${rootPath}/assets/Wallpapers/touhousa.png";
+      barCmd = "polybar-msg cmd quit; polybar main 2>&1 | tee -a /tmp/polybar.log & disown";
     };
     mako.enable = true;
     nvim.enable = true;
