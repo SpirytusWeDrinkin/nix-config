@@ -66,7 +66,7 @@ in
           modules = {
             center = "left xworkspaces right";
             left = "left date space sep space time space sep space upeth space space downeth right space-alt space-alt space-alt left music right";
-            right = "left temperature space sep space cpu space sep space memory space sep space ethernet space sep space dunst space sep space alsa space sep space battery right";
+            right = "left cava right space-alt space-alt left temperature space sep space cpu space sep space memory space sep space ethernet space sep space dunst space sep space alsa space sep space battery right";
           };
           padding-left = 0;
           padding-right = 0;
@@ -197,6 +197,15 @@ in
           interval = 1;
           label = "%output:0:22:...%";
           tail = true;
+        };
+
+        "module/cava" = {
+          type = "custom/scipt";
+          format-background = "#${my_colors.base}";
+          label-foreground = "#${my_colors.lavender}";
+          exec = "~/.config/polybar/polybar-scripts/cava.sh";
+          tail = true;
+          format = "<label>";
         };
 
         "module/temperature" = {
