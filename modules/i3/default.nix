@@ -84,6 +84,11 @@ in {
             notification = false;
           }
           {
+            command = "autotiling";
+            notification = false;
+            always = true;
+          }
+          {
             command = "feh --bg-fill ${cfg.wallpaper}";
             always = true;
             notification = false;
@@ -118,7 +123,7 @@ in {
           "${modifier}+q" = "kill";
           "${modifier}+d" = "exec ${bemenu-command}";
           "${modifier}+x" = "exec i3lock -i ${cfg.wallpaper}";
-          "${modifier}+s" = "exec ${pkgs.maim} -s | ${pkgs.xclip} -selection clipboard -t image/png";
+          "${modifier}+s" = "exec maim -s | xclip -selection clipboard -t image/png";
         };
         gaps = {
           outer = 5;
@@ -215,7 +220,7 @@ in {
       package = pkgs.picom-pijulius;
       enable = true;
     };
-    home.packages = with pkgs; [ pango ];
+    home.packages = with pkgs; [ pango autotiling maim xclip ];
     home.pointerCursor = {
       name = "Bibata-Modern-Ice";
       package = pkgs.bibata-cursors;

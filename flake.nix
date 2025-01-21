@@ -78,6 +78,7 @@
       homeManagerModules = generateModules [
         "alacritty"
         "bemenu"
+        "cava"
         "dunst"
         "firefox"
         "git"

@@ -14,6 +14,7 @@
   abelc = {
     alacritty.enable = true;
     bemenu.enable = true;
+    cava.enable = true;
     dunst.enable = true;
     gtk.enable = true;
     i3 = {
@@ -38,6 +39,7 @@
     packages = with pkgs; [
       lsd
       nerd-fonts.iosevka-term
+      rounded-mgenplus
     ];
   };
 

@@ -31,9 +31,8 @@ let
     crust = "181926";
   };
 
-  gradiant = with my_colors; [
+  opacity = "a0";
 
-  ];
 in 
   {
   options.abelc.polybar = { enable = mkEnableOption "polybar"; };
@@ -46,8 +45,8 @@ in
       '';
       settings = {
         "bar/main" = {
-          background = "#e0${my_colors.crust}";
-          border-color = "#e0${my_colors.crust}";
+          background = "#${opacity}${my_colors.crust}";
+          border-color = "#${opacity}${my_colors.crust}";
           border-size = "5pt";
           cursor-click = "pointer";
           cursor-scroll = "ns-resize";
@@ -65,28 +64,30 @@ in
           module-margin = 0;
           modules = {
             center = "left xworkspaces right";
-            left = "left date space sep space time space sep space upeth space space downeth right space-alt space-alt space-alt left music right";
-            right = "left cava right space-alt space-alt left temperature space sep space cpu space sep space memory space sep space ethernet space sep space dunst space sep space alsa space sep space battery right";
+            left = "left ethernet space sep space upeth space downeth right space-alt left temperature sep cpu sep memory right";
+            right = "left music sep alsa right space-alt left date space time right space-alt left dunst right";
           };
           padding-left = 0;
           padding-right = 0;
           radius = 0;
           width = "100%";
-          wm-restack = "i3";
         };
 
         "module/alsa" = {
           format-volume = "<ramp-volume><label-volume>";
           format-volume-background = "#${my_colors.base}";
+          format-volume-forground = "#${my_colors.sky}";
           interval = 5;
-          label-muted = "󰝟 Muted";
-          label-muted-background = "#${my_colors.base}";
-          label-muted-foreground = "#${my_colors.text}";
-          label-volume = "%percentage%%";
+          label-muted = "󰝟 ";
+          format-muted = "<label-muted>Muted";
+          label-muted-foreground = "#${my_colors.red}";
+          format-muted-foreground = "#${my_colors.red}";
+          format-muted-background = "#${my_colors.base}";
+          label-volume = "%{F#${my_colors.teal}}%percentage%%%{F-}";
           master-mixer = "Master";
           master-soundcard = "default";
           ramp-volume = [ "󰕿 " "󰖀 " "󰕾 " ];
-          ramp-volume-foreground = "#${my_colors.red}";
+          ramp-volume-foreground = "#${my_colors.sky}";
           type = "internal/alsa";
         };
 
@@ -118,7 +119,8 @@ in
         "module/cpu" = {
           format-background = "#${my_colors.base}";
           format-prefix = "󰍛 ";
-          format-prefix-foreground = "#${my_colors.pink}";
+          format-prefix-foreground = "#${my_colors.peach}";
+          format-foreground = "#${my_colors.peach}";
           interval = 2;
           label = "%percentage:2%%";
           type = "internal/cpu";
@@ -129,24 +131,24 @@ in
           interval = 100;
           label = "%date%";
           label-background = "#${my_colors.base}";
-          label-foreground = "#${my_colors.lavender}";
+          label-foreground = "#${my_colors.teal}";
           type = "internal/date";
         };
 
         "module/dunst" = {
           format-background = "#${my_colors.base}";
           format-foreground = "#${my_colors.yellow}";
-          hooks = [
+          hook = [
             "echo \"%{A1:dunstctl set-paused true && polybar-msg hook dunst 2:} %{A}\" &"
             "echo \"%{A1:dunstctl set-paused false && polybar-msg hook dunst 1:} %{A}\" &"
           ];
-          initial = 0;
+          initial = 1;
           type = "custom/ipc";
         };
 
         "module/left" = {
           format = "%{T3}%{T-}";
-          format-background = "#e0${my_colors.crust}";
+          format-background = "#${opacity}${my_colors.crust}";
           format-font = 2;
           format-foreground = "#${my_colors.base}";
           type = "custom/text";
@@ -155,7 +157,8 @@ in
         "module/memory" = {
           format-background = "#${my_colors.base}";
           format-prefix = "󰑭 ";
-          format-prefix-foreground = "#${my_colors.maroon}";
+          format-prefix-foreground = "#${my_colors.yellow}";
+          format-foreground = "#${my_colors.yellow}";
           interval = 2;
           label = "%percentage_used:2%%";
           type = "internal/memory";
@@ -163,7 +166,7 @@ in
         "module/right" = {
           type = "custom/text";
           format = "%{T3}%{T-}";
-          format-background = "#e0${my_colors.crust}";
+          format-background = "#${opacity}${my_colors.crust}";
           format-font = 2;
           format-foreground = "#${my_colors.base}";
         };
@@ -173,7 +176,7 @@ in
           format = "/";
           format-background = "#${my_colors.base}";
           format-font = 4;
-          format-foreground = "#e0${my_colors.crust}";
+          format-foreground = "#${opacity}${my_colors.crust}";
           format-padding = 0;
         };
 
@@ -186,13 +189,14 @@ in
         "module/space-alt" = {
           type = "custom/text";
           format = " ";
+          format-background = "#${opacity}${my_colors.crust}";
         };
 
         "module/music" = {
           type = "custom/script";
           exec = "~/.config/polybar/polybar-scripts/get_playerctl_status.sh";
           format-background = "#${my_colors.base}";
-          format-foreground = "#${my_colors.lavender}";
+          format-foreground = "#${my_colors.sapphire}";
           format-prefix = "  ";
           interval = 1;
           label = "%output:0:22:...%";
@@ -217,10 +221,11 @@ in
           format-warn-background = "#${my_colors.base}";
           interval = 0.5;
           label = "%temperature-c%";
+          label-foreground = "#${my_colors.maroon}";
           label-warn = "%temperature-c%";
           label-warn-foreground = "#${my_colors.red}";
           ramp = [ " " " " " " " " " " ];
-          ramp-foreground = "#${my_colors.red}";
+          ramp-foreground = "#${my_colors.maroon}";
           thermal-zone = 0;
           warn-temperature = 75;
         };
@@ -230,7 +235,7 @@ in
           interval = 100;
           label = "%time%";
           label-background = "#${my_colors.base}";
-          label-foreground = "#${my_colors.rosewater}";
+          label-foreground = "#${my_colors.green}";
           time = "%H:%M";
         };
 
@@ -248,7 +253,7 @@ in
           interval = 1;
           format-connected = "<label-connected>";
           format-connected-background = "#${my_colors.base}";
-          format-connected-foreground = "#${my_colors.teal}";
+          format-connected-foreground = "#${my_colors.green}";
           format-disconnected-background = "#${my_colors.base}";
           format-disconnected-foreground = "#${my_colors.red}";
           label-connected = "󰈀 ";
@@ -284,10 +289,9 @@ in
           format-connected-prefix-foreground = "#${my_colors.green}";
           label-connected = "%upspeed:8%";
           format-connected-background = "#${my_colors.base}";
-          format-connected-foreground = "#${my_colors.teal}";
+          format-connected-foreground = "#${my_colors.green}";
           format-disconnected-background = "#${my_colors.base}";
           format-disconnected-prefix = "";
-          format-disconnected-prefix-foreground = "#${my_colors.red}";
           label-disconnected = "";
         };
 
@@ -303,7 +307,6 @@ in
           format-connected-foreground = "#${my_colors.red}";
           format-disconnected-background = "#${my_colors.base}";
           format-disconnected-prefix = "";
-          format-disconnected-prefix-foreground = "#${my_colors.red}";
           label-disconnected = "";
         };
       };
@@ -312,6 +315,6 @@ in
       recursive = true;
       source = ./polybar-scripts;
     };
-    home.packages = [ pkgs.playerctl pkgs.cava ];
+    home.packages = [ pkgs.playerctl ];
   };
 }
