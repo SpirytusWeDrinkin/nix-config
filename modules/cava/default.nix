@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ pkgs, config, lib, ... }:
 with lib;
 let
   cfg = config.abelc.cava;
@@ -7,7 +7,7 @@ in
   options.abelc.cava = { enable = mkEnableOption "cava"; };
   config = mkIf cfg.enable {
     programs.cava = {
-      enable = true;
+      enable = false;
       settings = {
         general.framerate = 60;
         input.method = "alsa";
@@ -28,5 +28,6 @@ in
         };
       };
     };
+    home.packages = [ pkgs.cava ];
   };
 }
