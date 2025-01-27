@@ -37,8 +37,6 @@
       extraGroups = [
         "networkmanager"
         "wheel"
-        "docker"
-        "kvm"
       ];
       uid = 1000;
       shell = pkgs.zsh;

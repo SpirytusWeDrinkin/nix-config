@@ -26,11 +26,11 @@
     pulseaudio
     # globalprotect-openconnect
 
-    #Nix package bullshit
+    # Nix package bullshit
     nix-prefetch-git
     fd
 
-    #Terminal utils
+    # Terminal utils
     btop
     lsd
     neofetch
@@ -38,7 +38,7 @@
     ripgrep
     vim
 
-    #User apps
+    # User apps
     pavucontrol
     slack
     webcord
@@ -46,15 +46,11 @@
     komikku
     gimp
 
-    #Kube
-    k3d
-    kind
+    # Infra
     kubectl
-    kubernetes-helm
     terraform
-    kubelogin
 
-    #haskell
+    # Haskell
     ghc
 
     # ?
