@@ -39,6 +39,7 @@
       lsd
       nerd-fonts.iosevka-term
       rounded-mgenplus
+      jq
     ];
   };
 

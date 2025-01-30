@@ -5,7 +5,12 @@ let
 
   /* fine-cmdline-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "fine-cmdline";
-    src = inputs.fine-cmdline;
+    src = pkgs.fetchFromGitHub {
+      owner = "VonHeikemen";
+      repo = "fine-cmdline.nvim";
+      rev = "v${version}";
+      hash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+    };
   }; */
 in
 {

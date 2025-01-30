@@ -64,8 +64,8 @@ in
           module-margin = 0;
           modules = {
             center = "left xworkspaces right";
-            left = "left ethernet space sep space upeth space downeth right space-alt left temperature sep cpu sep memory right";
-            right = "left music sep alsa right space-alt left date space time right space-alt left dunst right";
+            left = "left ethernet space sep space upeth space downeth right space-alt left temperature sep cpu sep memory right space-alt left weather right";
+            right = "left music sep alsa right space-alt left date space time right space-alt left dunst tray right";
           };
           padding-left = 0;
           padding-right = 0;
@@ -194,13 +194,24 @@ in
 
         "module/music" = {
           type = "custom/script";
-          exec = "~/.config/polybar/polybar-scripts/get_playerctl_status.sh";
+          exec = "~/.config/polybar/polybar-scripts/scroll_playerctl_status.sh";
           format-background = "#${my_colors.base}";
           format-foreground = "#${my_colors.sapphire}";
           format-prefix = "  ";
           interval = 1;
-          label = "%output:0:22:...%";
+          label = "%output%";
           tail = true;
+        };
+
+        "module/tray" = {
+          type = "internal/tray";
+          tray-background = "#${my_colors.base}";
+          tray-foreground = "#${my_colors.yellow}";
+          tray-size = "69%";
+          tray-spacing = "3";
+
+          format-foreground = "#${my_colors.yellow}";
+          format-background = "#${my_colors.base}";
         };
 
         "module/cava" = {
@@ -241,8 +252,9 @@ in
 
         "module/weather" = {
           type = "custom/script";
-          exec = "bash ~/.config/polybar/polybar-scripts/weather-plugin.sh || nope";
+          exec = "bash ~/.config/polybar/polybar-scripts/weather-plugin.sh";
           format-background = "#${my_colors.base}";
+          format-foreground = "#${my_colors.green}";
           interval = 60;
           tail = false;
         };
@@ -263,18 +275,18 @@ in
         "module/xworkspaces" = {
           type = "internal/xworkspaces";
           strip-wsnumber = true;
-          label-active = "%name%";
+          label-active = "メ";
           label-active-background = "#${my_colors.base}";
           label-active-foreground = "#${my_colors.mauve}";
           label-active-padding = 1;
-          label-empty = "%name%";
+          label-empty = "メ";
           label-empty-background = "#${my_colors.base}";
           label-empty-padding = 1;
-          label-occupied = "%name%";
+          label-occupied = "メ";
           label-occupied-background = "#${my_colors.base}";
           label-occupied-foreground = "#${my_colors.surface1}";
           label-occupied-padding = 1;
-          label-urgent = "%name%";
+          label-urgent = "メ";
           label-urgent-background = "#${my_colors.base}";
           label-urgent-foreground = "#${my_colors.yellow}";
           label-urgent-padding = 1;

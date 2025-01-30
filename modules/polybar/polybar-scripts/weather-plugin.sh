@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # SETTINGS vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 
@@ -48,6 +48,9 @@ WEATHER_FONT_CODE=2
 # Font for the thermometer icon
 TEMP_FONT_CODE=1
 
+SEP_FONT_CODE=4
+SEP_COLOR="181926"
+
 # Wind settings _______________________________________________________________
 
 # Display info about the wind or not. yes/no
@@ -93,7 +96,7 @@ DISPLAY_LABEL="no"
 
 if [ "$COLOR_TEXT" != "" ]; then
     COLOR_TEXT_BEGIN="%{F$COLOR_TEXT}"
-    # COLOR_TEXT_END="%{F-}"
+    COLOR_TEXT_END="%{F-}"
 fi
 if [ -z "$CITY_NAME" ]; then
     IP=`curl -s ifconfig.me`  # == ip
@@ -281,7 +284,7 @@ function setIcons {
         WIND="$WIND |"
     fi
     if [ "$UNITS" = "metric" ]; then
-        TEMP_ICON="󰔄 "
+        TEMP_ICON="°" # "󰔄 "
     elif [ "$UNITS" = "imperial" ]; then
         TEMP_ICON="󰔅 "
     else
@@ -300,7 +303,7 @@ function setIcons {
 }
 
 function outputCompact {
-    OUTPUT="$WIND %{T$WEATHER_FONT_CODE}%{F$ICON_COLOR}$ICON%{F-}%{T-} $ERR_MSG$COLOR_TEXT_BEGIN$DESCRIPTION$COLOR_TEXT_END| $TEMP"
+    OUTPUT="$WIND %{T$WEATHER_FONT_CODE}%{F$ICON_COLOR}$ICON%{F-}%{T-} $ERR_MSG$COLOR_TEXT_BEGIN$DESCRIPTION$COLOR_TEXT_END%{T$SEP_FONT_CODE}%{F$SEP_COLOR}/%{F-}%{T-} $TEMP"
     # echo "Output: $OUTPUT" >> "$HOME/.weather.log"
     echo "$OUTPUT"
 }
