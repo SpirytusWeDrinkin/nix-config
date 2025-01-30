@@ -64,7 +64,7 @@ in
           module-margin = 0;
           modules = {
             center = "left xworkspaces right";
-            left = "left ethernet space sep space upeth space downeth right space-alt left temperature sep cpu sep memory sep system-fan-speed right space-alt left weather right left pornhub right";
+            left = "left ethernet space sep space upeth space downeth right space-alt left temperature sep cpu sep memory right space-alt left weather right";
             right = "left music sep alsa right space-alt left date space time right space-alt left dunst tray right";
           };
           padding-left = 0;
@@ -203,27 +203,6 @@ in
           tail = true;
         };
 
-        "module/easteregg-pornhub" = {
-          type = custom/script;
-            exec = echo " hub ";
-            interval = 3600;
-            click-left = "firefox --private-window https://pornhub.com/random &";
-
-            format = <label>;
-            format-prefix = "  Porn ";
-            format-prefix-foreground = "#${my_colors.text}";
-            format-prefix-background = "#${my_colors.base}";
-
-            format-overline = "#000000";
-            format-underline = "#000000";
-            format-foreground = "#000000";
-            format-background = "#ffa500";
-
-            format-suffix = " ";
-            format-suffix-background = "#000000";
-            format-suffix-foreground = "#00000";
-        };
-
         "module/tray" = {
           type = "internal/tray";
           tray-background = "#${my_colors.base}";
@@ -260,16 +239,6 @@ in
           ramp-foreground = "#${my_colors.maroon}";
           thermal-zone = 0;
           warn-temperature = 75;
-        };
-
-        "module/system-fan-speed" = {
-          type = "custom/script";
-          exec = "~/polybar-scripts/system-fan-speed.sh";
-          interval = 10;
-
-          format-foreground = "#${my_colors.green}";
-          format-background = "#${my_colors.base}";
-          format-prefix = "󰈐 ";
         };
 
         "module/time" = {
@@ -358,6 +327,6 @@ in
       recursive = true;
       source = ./polybar-scripts;
     };
-    home.packages = [ pkgs.playerctl pkgs.zscroll pkgs.lm_sensors ];
+    home.packages = [ pkgs.playerctl pkgs.zscroll ];
   };
 }

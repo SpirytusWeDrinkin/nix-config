@@ -39,7 +39,7 @@ COLOR_HOT="#ed8796"
 COLOR_NORMAL_TEMP="#cad3f5"
 
 # Leave "" if you want the default polybar color
-COLOR_TEXT="#8bd5ca"
+COLOR_TEXT=""
 # Polybar settings ____________________________________________________________
 
 # Font for the weather icons
@@ -303,7 +303,7 @@ function setIcons {
 }
 
 function outputCompact {
-    OUTPUT="$WIND %{T$WEATHER_FONT_CODE}%{F$ICON_COLOR}$ICON%{F-}%{T-} $ERR_MSG$COLOR_TEXT_BEGIN$DESCRIPTION$COLOR_TEXT_END%{T$SEP_FONT_CODE}%{F$SEP_COLOR}/%{F-}%{T-} $TEMP"
+    OUTPUT="%{T$WEATHER_FONT_CODE}%{F$ICON_COLOR}$ICON%{F-}%{T-} %{T$SEP_FONT_CODE}%{F$SEP_COLOR}/%{F-}%{T-} $TEMP"
     # echo "Output: $OUTPUT" >> "$HOME/.weather.log"
     echo "$OUTPUT"
 }
