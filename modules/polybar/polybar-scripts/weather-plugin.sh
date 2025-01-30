@@ -39,7 +39,7 @@ COLOR_HOT="#ed8796"
 COLOR_NORMAL_TEMP="#cad3f5"
 
 # Leave "" if you want the default polybar color
-COLOR_TEXT=""
+COLOR_TEXT="#8bd5ca"
 # Polybar settings ____________________________________________________________
 
 # Font for the weather icons
@@ -49,7 +49,7 @@ WEATHER_FONT_CODE=2
 TEMP_FONT_CODE=1
 
 SEP_FONT_CODE=4
-SEP_COLOR="181926"
+SEP_COLOR="#181926"
 
 # Wind settings _______________________________________________________________
 
@@ -90,7 +90,7 @@ COLD_TEMP=8
 # Other settings ______________________________________________________________
 
 # Display the weather description. yes/no
-DISPLAY_LABEL="no"
+DISPLAY_LABEL="yes"
 
 # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
