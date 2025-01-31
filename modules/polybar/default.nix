@@ -33,6 +33,13 @@ let
 
   opacity = "a0";
 
+  cpu_up = "${pkgs-local.control_modules}/bin/cpu_controller up";
+  cpu_down = "${pkgs-local.control_modules}/bin/cpu_controller down";
+  cpu_del = "${pkgs.pkill} cpu_controller; rm /tmp/cpu_controller.*; ${pkgs-local.control_modules}/bin/cpu_controller";
+  mem_up = "${pkgs-local.control_modules}/bin/memory_controller up";
+  mem_down = "${pkgs-local.control_modules}/bin/memory_controller down";
+  mem_del = "${pkgs.pkill} memory_controller; rm /tmp/memory_controller.*; ${pkgs-local.control_modules}/bin/memory_controller";
+
 in 
   {
   options.abelc.polybar = { enable = mkEnableOption "polybar"; };
@@ -122,7 +129,7 @@ in
           format-prefix-foreground = "#${my_colors.peach}";
           format-foreground = "#${my_colors.peach}";
           interval = 2;
-          label = "%{A4:${pkgs-local.control_modules}/bin/cpu_controller up:}%{A5:${pkgs-local.control_modules}/bin/cpu_controller down:}%percentage:2%%%{A}%{A}";
+          label = "%{A1:${cpu_del}:}%{A4:${cpu_up}:}%{A5:${cpu_down}:}%percentage:2%%%{A}%{A}%{A}";
           type = "internal/cpu";
         };
 
@@ -160,7 +167,7 @@ in
           format-prefix-foreground = "#${my_colors.yellow}";
           format-foreground = "#${my_colors.yellow}";
           interval = 2;
-          label = "%{A4:${pkgs-local.control_modules}/bin/memory_controller up:}%{A5:${pkgs-local.control_modules}/bin/memory_controller down:}%percentage_used:2%%%{A}%{A}";
+          label = "%{A1:${mem_del}:}%{A4:${mem_up}:}%{A5:${mem_down}:}%percentage_used:2%%%{A}%{A}%{A}";
           type = "internal/memory";
         };
         "module/right" = {
