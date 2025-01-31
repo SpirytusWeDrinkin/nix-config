@@ -64,7 +64,7 @@ in
           module-margin = 0;
           modules = {
             center = "left xworkspaces right";
-            left = "left ethernet space sep space upeth space downeth right space-alt left temperature sep cpu sep memory right space-alt left weather right";
+            left = "left ethernet space sep space upeth space downeth right space-alt left temperature sep cpu sep memory right space-alt left wtf right space-alt left weather right";
             right = "left music sep alsa right space-alt left date space time right space-alt left dunst tray right";
           };
           padding-left = 0;
@@ -248,6 +248,14 @@ in
           label-background = "#${my_colors.base}";
           label-foreground = "#${my_colors.green}";
           time = "%H:%M";
+        };
+
+        "module/wtf" = {
+          type = "custom/text";
+          click-left = "firefox --private-window https://pornhub.com/random &";
+          format-background = "#${my_colors.base}";
+          format-foreground = "#${my_colors.peach}";
+          format = " ";
         };
 
         "module/weather" = {

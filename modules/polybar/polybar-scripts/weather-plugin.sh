@@ -43,7 +43,7 @@ COLOR_TEXT=""
 # Polybar settings ____________________________________________________________
 
 # Font for the weather icons
-WEATHER_FONT_CODE=2
+WEATHER_FONT_CODE=1
 
 # Font for the thermometer icon
 TEMP_FONT_CODE=1
