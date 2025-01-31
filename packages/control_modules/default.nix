@@ -6,8 +6,6 @@ with pkgs;
 stdenv.mkDerivation {
   name = "memory_controller";
 
-  phases = [ "buildPhase" "installPhase" ];
-
   src = ./.;
 
   nativeBuildInputs = [

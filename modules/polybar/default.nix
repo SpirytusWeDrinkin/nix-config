@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, lib, config, pkgs-local, ... }:
 with lib;
 let
   cfg = config.abelc.polybar;
@@ -64,7 +64,7 @@ in
           module-margin = 0;
           modules = {
             center = "left xworkspaces right";
-            left = "left ethernet space sep space upeth space downeth right space-alt left temperature sep cpu sep memory right space-alt left wtf right space-alt left weather right";
+            left = "left ethernet space sep space upeth space downeth right space-alt left temperature sep cpu sep memory right space-alt left weather right";
             right = "left music sep alsa right space-alt left date space time right space-alt left dunst tray right";
           };
           padding-left = 0;
@@ -122,7 +122,7 @@ in
           format-prefix-foreground = "#${my_colors.peach}";
           format-foreground = "#${my_colors.peach}";
           interval = 2;
-          label = "%percentage:2%%";
+          label = "%{A4:${pkgs-local.control_modules}/bin/cpu_controller up:}%{A5:${pkgs-local.control_modules}/bin/cpu_controller down:}%percentage:2%%%{A}%{A}";
           type = "internal/cpu";
         };
 
@@ -160,7 +160,7 @@ in
           format-prefix-foreground = "#${my_colors.yellow}";
           format-foreground = "#${my_colors.yellow}";
           interval = 2;
-          label = "%percentage_used:2%%";
+          label = "%{A4:${pkgs-local.control_modules}/bin/memory_controller up:}%{A5:${pkgs-local.control_modules}/bin/memory_controller down:}%percentage_used:2%%%{A}%{A}";
           type = "internal/memory";
         };
         "module/right" = {
