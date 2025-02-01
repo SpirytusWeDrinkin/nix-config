@@ -35,10 +35,10 @@ let
 
   cpu_up = "${pkgs-local.control_modules}/bin/cpu_controller up";
   cpu_down = "${pkgs-local.control_modules}/bin/cpu_controller down";
-  cpu_del = "${pkgs.pkill} cpu_controller; rm /tmp/cpu_controller.*; ${pkgs-local.control_modules}/bin/cpu_controller";
+  cpu_del = "${pkgs.killall}/bin/killall cpu_controller; rm /tmp/cpu_controller.*; ${pkgs-local.control_modules}/bin/cpu_controller";
   mem_up = "${pkgs-local.control_modules}/bin/memory_controller up";
   mem_down = "${pkgs-local.control_modules}/bin/memory_controller down";
-  mem_del = "${pkgs.pkill} memory_controller; rm /tmp/memory_controller.*; ${pkgs-local.control_modules}/bin/memory_controller";
+  mem_del = "${pkgs.killall}/bin/killall memory_controller; rm /tmp/memory_controller.*; ${pkgs-local.control_modules}/bin/memory_controller";
 
 in 
   {
