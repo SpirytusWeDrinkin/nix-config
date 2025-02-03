@@ -1,7 +1,7 @@
 { pkgs, config, lib, ... }:
 with lib;
 let
-  cfg = dev.epita.java_workshop;
+  cfg = config.dev.epita.java_workshop;
 in 
   {
   options.dev.epita.java_workshop = {
@@ -19,7 +19,7 @@ in
     programs.neovim.extraLuaConfig = mkIf cfg.jdtls ''
       require('mason-lspconfig').setup({
         ensure_installed = {
-          'jtdls',
+          'jdtls',
         }
       })
     '';

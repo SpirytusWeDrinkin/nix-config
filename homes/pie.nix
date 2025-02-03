@@ -36,7 +36,7 @@
 
   dev.epita.java_workshop = {
     enable = true;
-    jtdls = true;
+    jdtls = true;
   };
 
   home = {

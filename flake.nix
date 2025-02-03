@@ -78,6 +78,7 @@
       homeManagerModules = generateModules [
         "alacritty"
         "bemenu"
+        "dev/epita/java_workshop"
         "cava"
         "dunst"
         "firefox"
