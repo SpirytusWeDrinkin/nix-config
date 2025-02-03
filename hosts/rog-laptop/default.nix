@@ -13,14 +13,11 @@
     ./graphics.nix
   ];
 
-  abelc.grub.enable = true;
-  abelc.sddm.enable = true;
-  abelc.steam.enable = true;
-  # abelc.stylix.enable = true;
-
-  abelc.nh = {
-    enable = true;
-    flakePath = "${rootPath}#rog-laptop";
+  system = {
+    grub.enable = true;
+    sddm.enable = true;
+    steam.enable = true;
+    # abelc.stylix.enable = true;
   };
 
   networking.hostName = "where-epimac";

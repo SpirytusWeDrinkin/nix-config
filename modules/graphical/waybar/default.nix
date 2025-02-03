@@ -32,7 +32,7 @@ let
   };
 in
 {
-  options.abelc.waybar = { enable = mkEnableOption "waybar"; };
+  options.graphical.waybar = { enable = mkEnableOption "waybar"; };
   config = mkIf cfg.enable {
     programs.waybar.enable = true;
     programs.waybar.settings = {

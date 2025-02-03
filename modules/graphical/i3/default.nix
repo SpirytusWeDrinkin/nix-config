@@ -1,7 +1,7 @@
 { inputs, pkgs, lib, config, ... }:
 with lib;
 let
-  cfg = config.graphical.windowManager.i3;
+  cfg = config.graphical.i3;
   my_colors = {
     rosewater = "f4dbd6";
     flamingo = "f0c6c6";
@@ -54,7 +54,7 @@ let
     --wrap
   '';
 in {
-  options.graphical.windowManager.i3 = {
+  options.graphical.i3 = {
     enable = mkEnableOption "i3";
 
     wallpaper = mkOption {

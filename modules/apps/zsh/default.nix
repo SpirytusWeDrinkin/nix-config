@@ -2,10 +2,10 @@
 
 with lib;
 let
-  cfg = config.misc.zsh;
+  cfg = config.apps.zsh;
 in
 {
-  options.misc.zsh = { enable = mkEnableOption "zsh"; };
+  options.apps.zsh = { enable = mkEnableOption "zsh"; };
   config = mkIf cfg.enable {
     /* imports = [
       ./starship.nix
