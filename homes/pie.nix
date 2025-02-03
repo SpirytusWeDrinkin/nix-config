@@ -18,7 +18,7 @@
     gtk.enable = true;
     i3 = {
       enable = true;
-      wallpaper = "${rootPath}/assets/Wallpapers/anwserfromXgirl.png";
+      wallpaper = "${rootPath}/assets/Wallpapers/dieAlonely.png";
       barCmd = "polybar-msg cmd quit; polybar main 2>&1 | tee -a /tmp/polybar.log & disown";
     };
     mako.enable = true;
@@ -32,6 +32,11 @@
     editor = "nvim";
     username = "abel.chartier";
     email = "abel.chartier@epita.fr";
+  };
+
+  dev.epita.java_workshop = {
+    enable = true;
+    jtdls = true;
   };
 
   home = {
