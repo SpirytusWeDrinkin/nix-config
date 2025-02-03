@@ -68,29 +68,29 @@
         } // (import ./packages defaultArgs));
 
       nixosModules = (generateModules [
-        "grub"
-        "nh"
-        "sddm"
-        "steam"
-        "stylix"
+        "apps/steam"
+        "system/grub"
+        "system/nh"
+        "system/sddm"
+        "system/stylix"
       ]);
 
       homeManagerModules = generateModules [
-        "alacritty"
-        "bemenu"
+        "apps/alacritty"
+        "apps/zsh"
+        "apps/firefox"
+        "apps/nvim"
         "dev/epita/java_workshop"
-        "cava"
-        "dunst"
-        "firefox"
-        "git"
-        "gtk"
-        "i3"
-        "hyprland"
-        "mako"
-        "nvim"
-        "polybar"
-        "waybar"
-        "zsh"
+        "graphical/i3"
+        "graphical/hyprland"
+        "graphical/polybar"
+        "graphical/waybar"
+        "misc/bemenu"
+        "misc/cava"
+        "misc/dunst"
+        "misc/git"
+        "misc/gtk"
+        "misc/mako"
       ];
 
       nixosConfigurations =
