@@ -16,7 +16,10 @@ in
       maven
       nodejs_22
     ];
-    home.file.".config/nvim/scripts/run_java" = ./run_java_vim;
+    home.file.".config/nvim/scripts/java" = {
+      source = ./java;
+      recursive = true;
+    };
     programs.neovim.extraLuaConfig = mkIf cfg.jdtls ''
       require('mason').setup({
           ui = {
