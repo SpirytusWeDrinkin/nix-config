@@ -21,6 +21,7 @@
     i3 = {
       enable = true;
       wallpaper = "${rootPath}/assets/Wallpapers/dieAlonely.png";
+      lockscreen_2 = "${rootPath}/assets/Wallpapers/romain.png";
       barCmd = "polybar-msg cmd quit; polybar main 2>&1 | tee -a /tmp/polybar.log & disown";
     };
     polybar.enable = true;
@@ -28,6 +29,7 @@
 
   misc = {
     bemenu.enable = true;
+    cava.enable = true;
     gtk.enable = true;
     dunst.enable = true;
     mako.enable = true;
@@ -39,7 +41,7 @@
     };
   };
 
-  dev.epita.java_workshop = {
+  dev.java_workshop = {
     enable = true;
     jdtls = true;
   };

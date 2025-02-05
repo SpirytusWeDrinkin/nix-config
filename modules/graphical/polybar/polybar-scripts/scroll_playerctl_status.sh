@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # see man zscroll for documentation of the following parameters
-zscroll -l 37 \
+zscroll -l 32 \
         --delay 0.2 \
         --scroll-padding "  " \
         --match-command "`dirname $0`/get_playerctl_status.sh --status" \

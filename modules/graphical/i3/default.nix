@@ -65,6 +65,11 @@ in {
     lockscreen = mkOption {
       type = types.nullOr types.path;
       description = "Wallpaper for i3lock";
+      default = cfg.wallpaper;
+    };
+    lockscreen_2 = mkOption {
+      type = types.nullOr types.path;
+      description = "Troll wallpaper";
       default = null;
     };
     barCmd = mkOption {
@@ -123,6 +128,7 @@ in {
           "${modifier}+q" = "kill";
           "${modifier}+d" = "exec ${bemenu-command}";
           "${modifier}+x" = "exec i3lock -i ${cfg.wallpaper}";
+          "${modifier}+shift+x" = "exec i3lock -i ${cfg.lockscreen_2}";
           "${modifier}+s" = "exec maim -s | xclip -selection clipboard -t image/png";
         };
         gaps = {

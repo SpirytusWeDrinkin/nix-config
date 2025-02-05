@@ -26,9 +26,9 @@ local servers = {
         },
     },
     lua_ls= {
-	cmd = {
-	    "lua-language-server",
-	},
+	      cmd = {
+	        "lua-language-server",
+	      },
         filetypes = {
             "lua",
         },

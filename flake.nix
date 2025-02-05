@@ -80,7 +80,7 @@
         "apps/zsh"
         "apps/firefox"
         "apps/nvim"
-        "dev/epita/java_workshop"
+        "dev/java_workshop"
         "graphical/i3"
         "graphical/hyprland"
         "graphical/polybar"

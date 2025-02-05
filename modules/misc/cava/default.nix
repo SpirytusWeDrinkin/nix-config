@@ -10,11 +10,9 @@ in
       enable = true;
       settings = {
         general.framerate = 60;
-        input.method = "alsa";
-        smoothing.noise_reduction = 88;
+        input.method = "pipewire";
+        smoothing.noise_reduction = 30;
         color = {
-          background = "'#24273a'";
-
           gradient = 1;
 
           gradient_color_1 = "'#8bd5ca'";
@@ -28,6 +26,5 @@ in
         };
       };
     };
-    home.packages = [ pkgs.cava ];
   };
 }
