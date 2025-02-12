@@ -17,6 +17,7 @@ in
       rootPath = rootPath;
       stateVersion = "25.05";
       inherit pkgs-local;
+      inherit inputs;
     };
 
     modules = [

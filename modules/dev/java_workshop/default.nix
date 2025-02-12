@@ -21,16 +21,7 @@ in
       recursive = true;
     };
     programs.neovim.extraLuaConfig = mkIf cfg.jdtls ''
-      require('mason').setup({
-          ui = {
-              border = 'rounded',
-          }
-      })
-      require('mason-lspconfig').setup({
-        ensure_installed = {
-          'jdtls',
-        }
-      })
+      -- vim.keymap.set("n", "<leader>rr", "<cmd>new | r ! ~/.config/nvim/scripts/java/run_java #")
     '';
   };
 }

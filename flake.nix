@@ -21,13 +21,26 @@
       url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     };
 
+    nvim = {
+      url = "github:Orysse/nixvim";
+    };
+
     fine-cmdline = {
       url = "github:vonheikemen/fine-cmdline.nvim";
       flake = false;
     };
   };
 
-  outputs = { self, nixpkgs, futils, home-manager, stylix, ... }@inputs:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      futils,
+      home-manager,
+      stylix,
+      nvim,
+      ...
+    }@inputs:
     let
       inherit (nixpkgs) lib;
       inherit (futils.lib) eachDefaultSystemMap;
@@ -35,7 +48,8 @@
       system = "x86_64-linux";
       username = "abelc";
 
-      mkDefaultArgs = system:
+      mkDefaultArgs =
+        system:
         let
           pkgs = import nixpkgs {
             config.allowUnfree = true;
@@ -58,22 +72,25 @@
       generateModules = modules: lib.attrsets.genAttrs modules (name: import (./modules + "/${name}"));
 
       defaultArgs = mkDefaultArgs system;
-    in rec {
-      packages = eachDefaultSystemMap (system:
+    in
+    rec {
+      packages = eachDefaultSystemMap (
+        system:
         let
           defaultArgs = mkDefaultArgs system;
         in
-        {
-          home-manager = home-manager.defaultPackage.${system};
-        } // (import ./packages defaultArgs));
+        { home-manager = home-manager.defaultPackage.${system}; } // (import ./packages defaultArgs)
+      );
 
-      nixosModules = (generateModules [
-        "apps/steam"
-        "system/grub"
-        "system/nh"
-        "system/sddm"
-        "system/stylix"
-      ]);
+      nixosModules = (
+        generateModules [
+          "apps/steam"
+          "system/grub"
+          "system/nh"
+          "system/sddm"
+          "system/stylix"
+        ]
+      );
 
       homeManagerModules = generateModules [
         "apps/alacritty"
@@ -100,16 +117,10 @@
             nixos = lib.attrsets.attrValues nixosModules;
           };
         in
-        (
-          import ./hosts (defaultArgs // {
-            inherit modules;
-          })
-        );
+        (import ./hosts (defaultArgs // { inherit modules; }));
 
       homeConfigurations = (
-        import ./homes (defaultArgs // {
-          modules = lib.attrsets.attrValues homeManagerModules;
-        })
+        import ./homes (defaultArgs // { modules = lib.attrsets.attrValues homeManagerModules; })
       );
 
       formatter = eachDefaultSystemMap (system: nixpkgs.legacyPackages.${system}.nixpkgs-fmt);

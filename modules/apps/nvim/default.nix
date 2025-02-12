@@ -3,15 +3,15 @@ with lib;
 let
   cfg = config.apps.nvim;
 
-  /* fine-cmdline-nvim = pkgs.vimUtils.buildVimPlugin {
+  fine-cmdline-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "fine-cmdline";
     src = pkgs.fetchFromGitHub {
       owner = "VonHeikemen";
       repo = "fine-cmdline.nvim";
-      rev = "v${version}";
-      hash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+      rev = "aec9efebf6f4606a5204d49ffa3ce2eeb7e08a3e";
+      hash = "sha256-SMmOzDhkRBBPCuXXZFUxog6YWRQ2tdlJuJGjYlyNTgk=";
     };
-  }; */
+  };
 in
 {
   options.apps.nvim = { enable = mkEnableOption "nvim"; };
@@ -39,7 +39,7 @@ in
           # dressing-nvim
           indent-blankline-nvim
           nui-nvim
-          # fine-cmdline-nvim
+          fine-cmdline-nvim
           nvim-treesitter.withAllGrammars
           lualine-nvim
           nvim-autopairs
@@ -69,8 +69,8 @@ in
           mason-lspconfig-nvim
           catppuccin-nvim
           vim-fugitive
+          bufferize-vim
 	];
-          # ${builtins.readFile ./lua/plugins/fine-cmdline.lua}        
         extraConfig = '''';
         extraLuaConfig = ''
           ${builtins.readFile ./lua/set.lua}
@@ -81,7 +81,7 @@ in
           ${builtins.readFile ./lua/plugins/cmp.lua}
           ${builtins.readFile ./lua/plugins/comment.lua}
           ${builtins.readFile ./lua/plugins/gruvbox-nvim.lua}
-
+          ${builtins.readFile ./lua/plugins/fine-cmdline.lua}        
           ${builtins.readFile ./lua/plugins/lualine.lua}
           ${builtins.readFile ./lua/plugins/lsp.lua}
           ${builtins.readFile ./lua/plugins/notify.lua}
@@ -89,6 +89,16 @@ in
           ${builtins.readFile ./lua/plugins/telescope.lua}
           ${builtins.readFile ./lua/plugins/treesitter.lua}
           require("ibl").setup()
+          require('mason').setup({
+              ui = {
+                  border = 'rounded',
+              }
+          })
+          require('mason-lspconfig').setup({
+            ensure_installed = {
+              'jdtls',
+            }
+          })
         '';
       };
     };

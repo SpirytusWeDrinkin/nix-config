@@ -28,6 +28,5 @@ vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
 
--- vim.api.nvim_set_keymap('n', ':', '<cmd>FineCmdline<CR>', { noremap = true, silent = true })
 vim.cmd[[colorscheme catppuccin]]
 vim.cmd[[packadd termdebug]]

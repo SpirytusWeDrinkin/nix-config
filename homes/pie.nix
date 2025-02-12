@@ -1,8 +1,10 @@
-{ pkgs
-, username
-, rootPath
-, stateVersion
-, ...
+{
+  pkgs,
+  username,
+  rootPath,
+  stateVersion,
+  inputs,
+  ...
 }:
 {
   home.username = username;
@@ -13,7 +15,7 @@
 
   apps = {
     alacritty.enable = true;
-    nvim.enable = true;
+    # nvim.enable = true;
     zsh.enable = true;
   };
 
@@ -48,6 +50,7 @@
 
   home = {
     packages = with pkgs; [
+      inputs.nvim.packages.x86_64-linux.default
       lsd
       nerd-fonts.iosevka-term
       rounded-mgenplus
