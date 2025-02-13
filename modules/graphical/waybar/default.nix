@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 with lib;
 let
   cfg = config.graphical.waybar;
@@ -334,5 +334,6 @@ in
       background: #${colors.base};
       }
     '';
+    home.programs = [ ];
   };
 }

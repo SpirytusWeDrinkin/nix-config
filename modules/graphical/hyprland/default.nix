@@ -1,7 +1,8 @@
 { inputs, pkgs, lib, config, ... }:
 with lib;
 let
-  cfg = config.graphical.hyprland;
+  cfg = config.abelc.hyprland;
+  bemenu-command = "${pkgs.bemenu}/bin/bemenu-run --ab '##24273a' --af '##cad3f5' --fb '##24273a' --ff '##cad3f5' --hb '##24273a' --hf '##eed49f' --nb '##24273a' --nf '##cad3f5' --tb '##24273a' --tf '##ed8796' --binding vim --cw 15 --fn 'IosevkaTerm Nerd Font 14' --hp 10 --ignorecase --line-height 42 --prompt '  ' --vim-esc-exits --wrap";
 in
 {
   options.graphical.hyprland = {
@@ -18,9 +19,9 @@ in
     wayland.windowManager.hyprland = {
       enable = true;
       package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+      systemd.enable = false;
       xwayland.enable = true;
       settings = {
-
         exec-once = [
             "waybar"
             "hyprctl setcursor Bibata-Modern-Ice 24"
@@ -75,7 +76,7 @@ in
           "$mod, E, exec, alacritty --class floating -e ranger"
           "$mod, V, togglefloating"
           "$mod, F, fullscreen"
-          "$mod, D, exec, ${pkgs.bemenu}/bin/bemenu-run"
+          "$mod, D, exec, ${bemenu-command}"
           "$mod, X, exec, ${pkgs.swaylock-fancy}/bin/swaylock-fancy"
           "ALT, Tab, exec, rofi -show window"
           # "$mod, P, exec, sh ~/.config/rofi/leave.sh"

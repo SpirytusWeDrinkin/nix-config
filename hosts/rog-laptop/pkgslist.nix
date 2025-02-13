@@ -45,6 +45,7 @@
     wayshot
     komikku
     gimp
+    blueberry
 
     # Infra
     kubectl
@@ -63,6 +64,7 @@
     steam.gamescopeSession.enable = true;
     dconf.enable = true;
     hyprland = {
+      withUWSM = true;
       enable = true;
       package = inputs.hyprland.packages.${pkgs.system}.hyprland;
       xwayland.enable = true;

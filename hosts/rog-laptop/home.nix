@@ -3,20 +3,21 @@
 , lib
 , rootPath
 , username
+, inputs
 , ...
 }:
 {
   apps = {
     alacritty.enable = true;
     firefox.enable = true;
-    nvim.enable = true;
+    # nvim.enable = true;
     zsh.enable = true;
   };
 
   graphical = {
     hyprland = {
       enable = true;
-      wallpaper = "${rootPath}/assets/Wallpapers/touhousa.png";
+      wallpaper = "${rootPath}/assets/Wallpapers/gravityFalls.png";
     };
     waybar.enable = true;
   };
@@ -37,6 +38,7 @@
     inherit stateVersion;
     packages = with pkgs; [
       vivaldi
+      inputs.nvim.packages.x86_64-linux.default
     ];
   };
 

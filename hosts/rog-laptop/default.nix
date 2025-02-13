@@ -4,6 +4,7 @@
 , lib
 , rootPath
 , stateVersion
+, inputs
 , ...
 }:
 {
@@ -16,9 +17,10 @@
   system = {
     grub.enable = true;
     sddm.enable = true;
-    steam.enable = true;
     # abelc.stylix.enable = true;
   };
+
+  apps.steam.enable = true;
 
   networking.hostName = "where-epimac";
   networking.networkmanager.enable = true;
@@ -107,7 +109,7 @@
     };
   };
 
-  services.pipewire.wireplumber.extraConfig.bluetoothEnhancements = {
+  services.pipewire.wireplumber.extraConfig."10-bluez" = {
     "monitor.bluez.properties" = {
       "bluez5.enable-sbc-xq" = true;
       "bluez5.enable-msbc" = true;
