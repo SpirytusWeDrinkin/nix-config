@@ -1,6 +1,10 @@
-{ pkgs, lib, config, ... }:
-with lib;
-let
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+with lib; let
   cfg = config.misc.dunst;
   my_colors = {
     rosewater = "f4dbd6";
@@ -30,9 +34,8 @@ let
     mantle = "1e2030";
     crust = "181926";
   };
-in
-{
-  options.misc.dunst = { enable = mkEnableOption "dunst"; };
+in {
+  options.misc.dunst = {enable = mkEnableOption "dunst";};
   config = mkIf cfg.enable {
     services.dunst = {
       enable = true;
@@ -111,6 +114,6 @@ in
         };
       };
     };
-    home.packages = [ pkgs.libnotify ];
+    home.packages = [pkgs.libnotify];
   };
 }

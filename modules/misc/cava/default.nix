@@ -1,10 +1,13 @@
-{ pkgs, config, lib, ... }:
-with lib;
-let
-  cfg = config.misc.cava;
-in
 {
-  options.misc.cava = { enable = mkEnableOption "cava"; };
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+with lib; let
+  cfg = config.misc.cava;
+in {
+  options.misc.cava = {enable = mkEnableOption "cava";};
   config = mkIf cfg.enable {
     programs.cava = {
       enable = true;

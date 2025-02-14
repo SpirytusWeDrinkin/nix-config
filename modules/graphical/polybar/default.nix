@@ -1,11 +1,11 @@
-{ pkgs
-, lib
-, config
-, pkgs-local
-, ...
+{
+  pkgs,
+  lib,
+  config,
+  pkgs-local,
+  ...
 }:
-with lib;
-let
+with lib; let
   cfg = config.graphical.polybar;
   my_colors = {
     rosewater = "f4dbd6";
@@ -44,9 +44,7 @@ let
   mem_up = "${pkgs-local.control_modules}/bin/memory_controller up";
   mem_down = "${pkgs-local.control_modules}/bin/memory_controller down";
   mem_del = "${pkgs.killall}/bin/killall memory_controller; rm /tmp/memory_controller.*; ${pkgs-local.control_modules}/bin/memory_controller";
-
-in
-{
+in {
   options.graphical.polybar = {
     enable = mkEnableOption "polybar";
   };

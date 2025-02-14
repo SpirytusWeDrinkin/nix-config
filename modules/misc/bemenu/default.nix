@@ -1,10 +1,12 @@
-{ lib, config, ... }:
-with lib;
-let
-  cfg = config.misc.bemenu;
-in
 {
-  options.misc.bemenu = { enable = mkEnableOption "bemenu"; };
+  lib,
+  config,
+  ...
+}:
+with lib; let
+  cfg = config.misc.bemenu;
+in {
+  options.misc.bemenu = {enable = mkEnableOption "bemenu";};
   config = mkIf cfg.enable {
     programs.bemenu = {
       enable = true;
@@ -29,7 +31,6 @@ in
         hf = "#eed49f";
         af = "#cad3f5";
         ab = "#24273a";
-
       };
     };
   };

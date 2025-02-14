@@ -1,12 +1,13 @@
-{ lib
-, qtbase
-, qtsvg
-, qtgraphicaleffects
-, qtquickcontrols2
-, wrapQtAppsHook
-, stdenvNoCC
-, fetchFromGitHub
-, wallpaper ? null
+{
+  lib,
+  qtbase,
+  qtsvg,
+  qtgraphicaleffects,
+  qtquickcontrols2,
+  wrapQtAppsHook,
+  stdenvNoCC,
+  fetchFromGitHub,
+  wallpaper ? null,
 }:
 stdenvNoCC.mkDerivation
 rec {
@@ -31,10 +32,9 @@ rec {
     qtquickcontrols2
   ];
 
-  installPhase =
-    let
-      basePath = "$out/share/sddm/themes/sddm-theme-corners/";
-    in
+  installPhase = let
+    basePath = "$out/share/sddm/themes/sddm-theme-corners/";
+  in
     ''
       mkdir -p ${basePath}
       cp -R ./corners/* ${basePath}

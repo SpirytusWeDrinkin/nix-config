@@ -1,12 +1,12 @@
-{ pkgs
-, stateVersion
-, lib
-, rootPath
-, username
-, inputs
-, ...
-}:
 {
+  pkgs,
+  stateVersion,
+  lib,
+  rootPath,
+  username,
+  inputs,
+  ...
+}: {
   apps = {
     alacritty.enable = true;
     firefox.enable = true;

@@ -1,10 +1,13 @@
-{ config, lib, pkgs, ... }:
-with lib;
-let
-  cfg = config.misc.mako;
-in
 {
-  options.misc.mako = { enable = mkEnableOption "mako"; };
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+with lib; let
+  cfg = config.misc.mako;
+in {
+  options.misc.mako = {enable = mkEnableOption "mako";};
   config = mkIf cfg.enable {
     services.mako = {
       enable = true;

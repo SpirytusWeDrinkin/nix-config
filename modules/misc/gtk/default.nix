@@ -1,19 +1,22 @@
-{ lib, config, pkgs, ... }:
-with lib;
-let
-  cfg = config.misc.gtk;
-in
 {
-  options.misc.gtk = { enable = mkEnableOption "gtk"; };
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+with lib; let
+  cfg = config.misc.gtk;
+in {
+  options.misc.gtk = {enable = mkEnableOption "gtk";};
   config = mkIf cfg.enable {
     gtk = {
       enable = true;
       theme = {
         name = "catppuccin-macchiato-mauve-compact";
         package = pkgs.catppuccin-gtk.override {
-          accents = [ "mauve" ];
+          accents = ["mauve"];
           size = "compact";
-          tweaks = [ ];
+          tweaks = [];
           variant = "macchiato";
         };
       };
@@ -28,7 +31,7 @@ in
       };
     };
 
-    home.packages = [ pkgs.dconf ];
+    home.packages = [pkgs.dconf];
 
     xdg.configFile = {
       "gtk-4.0/assets".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/assets";

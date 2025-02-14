@@ -1,15 +1,19 @@
-{ pkgs, lib, config, ... }:
-
-with lib;
-let
-  cfg = config.apps.zsh;
-in
 {
-  options.apps.zsh = { enable = mkEnableOption "zsh"; };
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+with lib; let
+  cfg = config.apps.zsh;
+in {
+  options.apps.zsh = {enable = mkEnableOption "zsh";};
   config = mkIf cfg.enable {
-    /* imports = [
+    /*
+       imports = [
       ./starship.nix
-    ]; */
+    ];
+    */
 
     programs.zsh = {
       enable = true;

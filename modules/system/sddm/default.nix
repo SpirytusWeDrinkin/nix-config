@@ -1,10 +1,13 @@
-{ lib, config, pkgs-local, ... }:
-with lib;
-let
-  cfg = config.system.sddm;
-in
 {
-  options.system.sddm = { enable = mkEnableOption "sddm"; };
+  lib,
+  config,
+  pkgs-local,
+  ...
+}:
+with lib; let
+  cfg = config.system.sddm;
+in {
+  options.system.sddm = {enable = mkEnableOption "sddm";};
   config = mkIf cfg.enable {
     services.xserver = {
       enable = false;
@@ -18,6 +21,6 @@ in
     };
 
     services.libinput.enable = true;
-    environment.systemPackages = with pkgs-local; [ sddm-theme ];
+    environment.systemPackages = with pkgs-local; [sddm-theme];
   };
 }

@@ -1,22 +1,23 @@
-{ lib
-, stdenv
-, pkgs
+{
+  lib,
+  stdenv,
+  pkgs,
 }:
 with pkgs;
-stdenv.mkDerivation {
-  name = "memory_controller";
+  stdenv.mkDerivation {
+    name = "memory_controller";
 
-  src = ./.;
+    src = ./.;
 
-  nativeBuildInputs = [
-    autoreconfHook
-  ];
+    nativeBuildInputs = [
+      autoreconfHook
+    ];
 
-  buildInputs = [
-    autoconf-archive
-  ];
+    buildInputs = [
+      autoconf-archive
+    ];
 
-  meta = with lib; {
-    platforms = platforms.linux;
-  };
-}
+    meta = with lib; {
+      platforms = platforms.linux;
+    };
+  }

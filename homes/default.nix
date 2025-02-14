@@ -1,8 +1,9 @@
-{ inputs
-, pkgs
-, modules
-, pkgs-local
-, ...
+{
+  inputs,
+  pkgs,
+  modules,
+  pkgs-local,
+  ...
 }:
 let
   inherit (inputs) home-manager;

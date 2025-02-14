@@ -1,6 +1,11 @@
-{ pkgs, inputs, config, lib, ... }:
-with lib;
-let
+{
+  pkgs,
+  inputs,
+  config,
+  lib,
+  ...
+}:
+with lib; let
   cfg = config.apps.nvim;
 
   fine-cmdline-nvim = pkgs.vimUtils.buildVimPlugin {
@@ -12,9 +17,8 @@ let
       hash = "sha256-SMmOzDhkRBBPCuXXZFUxog6YWRQ2tdlJuJGjYlyNTgk=";
     };
   };
-in
-{
-  options.apps.nvim = { enable = mkEnableOption "nvim"; };
+in {
+  options.apps.nvim = {enable = mkEnableOption "nvim";};
   config = mkIf cfg.enable {
     programs = {
       neovim = {
@@ -81,7 +85,7 @@ in
           ${builtins.readFile ./lua/plugins/cmp.lua}
           ${builtins.readFile ./lua/plugins/comment.lua}
           ${builtins.readFile ./lua/plugins/gruvbox-nvim.lua}
-          ${builtins.readFile ./lua/plugins/fine-cmdline.lua}        
+          ${builtins.readFile ./lua/plugins/fine-cmdline.lua}
           ${builtins.readFile ./lua/plugins/lualine.lua}
           ${builtins.readFile ./lua/plugins/lsp.lua}
           ${builtins.readFile ./lua/plugins/notify.lua}

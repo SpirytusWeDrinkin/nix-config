@@ -1,10 +1,13 @@
-{ pkgs, lib, config, ... }:
-with lib;
-let
-  cfg = config.system.grub;
-in
 {
-  options.system.grub = { enable = mkEnableOption "grub"; };
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+with lib; let
+  cfg = config.system.grub;
+in {
+  options.system.grub = {enable = mkEnableOption "grub";};
   config = mkIf cfg.enable {
     boot.loader.grub = {
       enable = true;

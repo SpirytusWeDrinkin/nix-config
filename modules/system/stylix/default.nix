@@ -1,10 +1,13 @@
-{ pkgs, lib, config, ... }:
-with lib;
-let
-  cfg = config.system.stylix;
-in
 {
-  options.system.stylix = { enable = mkEnableOption "stylix"; };
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+with lib; let
+  cfg = config.system.stylix;
+in {
+  options.system.stylix = {enable = mkEnableOption "stylix";};
   config = mkIf cfg.enable {
     stylix.enable = true;
 
@@ -48,12 +51,14 @@ in
       };
     };
 
-    home-manager.sharedModules = [{
-      stylix.targets.alacritty.enable = true;
-      # stylix.targets.waybar.enable = true;
-      # stylix.targets.hyprland.enable = true;
-      stylix.targets.bemenu.enable = true;
-      stylix.targets.firefox.enable = true;
-    }];
+    home-manager.sharedModules = [
+      {
+        stylix.targets.alacritty.enable = true;
+        # stylix.targets.waybar.enable = true;
+        # stylix.targets.hyprland.enable = true;
+        stylix.targets.bemenu.enable = true;
+        stylix.targets.firefox.enable = true;
+      }
+    ];
   };
 }

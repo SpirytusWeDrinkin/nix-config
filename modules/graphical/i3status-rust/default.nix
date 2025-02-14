@@ -1,10 +1,13 @@
-{ inputs, config, lib, ... }:
-with lib;
-let
-  cfg = config.graphical.i3status-rust;
-in
 {
-  options.graphical.i3status-rust = { enable = mkEnableOption "i3status-rust"; };
+  inputs,
+  config,
+  lib,
+  ...
+}:
+with lib; let
+  cfg = config.graphical.i3status-rust;
+in {
+  options.graphical.i3status-rust = {enable = mkEnableOption "i3status-rust";};
   config = mkIf cfg.enable {
     programs.i3status-rust = {
       enable = true;
@@ -36,4 +39,3 @@ in
     };
   };
 }
-

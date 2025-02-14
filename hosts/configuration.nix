@@ -1,8 +1,4 @@
-{ pkgs
-, ...
-}:
-
-{
+{pkgs, ...}: {
   nixpkgs.config = {
     allowUnfree = true;
     allowUnsupportedSystem = true;
@@ -12,7 +8,7 @@
 
   networking.networkmanager.enable = true;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   environment.systemPackages = with pkgs; [
     git
@@ -31,7 +27,6 @@
     # Documentation
     man-pages
     man-pages-posix
-
   ];
 
   documentation.dev.enable = true;
@@ -42,12 +37,11 @@
     enable = true;
   };
 
-  environment.shells = with pkgs; [ zsh ];
+  environment.shells = with pkgs; [zsh];
 
   environment.variables = {
     TERMINAL = "alacritty";
     EDITOR = "vim";
     VISUAL = "vim";
   };
-
 }

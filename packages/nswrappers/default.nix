@@ -1,19 +1,19 @@
-{ lib
-, stdenvNoCC
-, makeWrapper
-, coreutils
-, ethtool
-, libpcap
+{
+  lib,
+  stdenvNoCC,
+  makeWrapper,
+  coreutils,
+  ethtool,
+  libpcap,
 }:
-
 stdenvNoCC.mkDerivation {
   name = "nswrappers";
 
-  phases = [ "installPhase" "fixupPhase" ];
+  phases = ["installPhase" "fixupPhase"];
 
   src = ./.;
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [makeWrapper];
 
   installPhase = ''
     install -Dm755 --target-directory=$out/bin/ $src/*
@@ -22,10 +22,10 @@ stdenvNoCC.mkDerivation {
     for script in $out/bin/*; do
       wrapProgram $script \
         ${lib.concatMapStringsSep " \\\n" (pkg: "--prefix PATH : ${lib.getBin pkg}/bin") [
-          coreutils
-          ethtool
-          libpcap
-        ]}
+      coreutils
+      ethtool
+      libpcap
+    ]}
     done
   '';
 

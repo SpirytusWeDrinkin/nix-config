@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 with lib;
 let
   cfg = config.graphical.waybar;
@@ -32,7 +37,9 @@ let
   };
 in
 {
-  options.graphical.waybar = { enable = mkEnableOption "waybar"; };
+  options.graphical.waybar = {
+    enable = mkEnableOption "waybar";
+  };
   config = mkIf cfg.enable {
     programs.waybar.enable = true;
     programs.waybar.settings = {
@@ -334,6 +341,5 @@ in
       background: #${colors.base};
       }
     '';
-    home.programs = [ ];
   };
 }

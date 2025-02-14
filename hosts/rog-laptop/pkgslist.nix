@@ -1,5 +1,8 @@
-{ inputs, pkgs, ... }:
 {
+  inputs,
+  pkgs,
+  ...
+}: {
   # List System Programs
   environment.systemPackages = with pkgs; [
     #Get things online

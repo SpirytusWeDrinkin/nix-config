@@ -1,9 +1,10 @@
-{ lib
-, config
-, ...
+{
+  lib,
+  config,
+  ...
 }:
-with lib;
-let cfg = config.misc.git;
+with lib; let
+  cfg = config.misc.git;
 in {
   options.misc.git = {
     enable = mkEnableOption "git default config";

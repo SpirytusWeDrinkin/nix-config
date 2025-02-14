@@ -1,9 +1,11 @@
-{ config, lib, ... }:
-with lib;
-let
-  cfg = config.system.nh;
-in
 {
+  config,
+  lib,
+  ...
+}:
+with lib; let
+  cfg = config.system.nh;
+in {
   options.system.nh = {
     enable = mkEnableOption "nh";
     flakePath = mkOption {

@@ -1,6 +1,9 @@
-{ username, pkgs, rootPath, ... }:
-
 {
+  username,
+  pkgs,
+  rootPath,
+  ...
+}: {
   home = {
     username = "${username}";
     homeDirectory = "/home/${username}";
