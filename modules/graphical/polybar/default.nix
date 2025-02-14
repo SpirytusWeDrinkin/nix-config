@@ -1,4 +1,10 @@
-{ pkgs, lib, config, pkgs-local, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  pkgs-local,
+  ...
+}:
 with lib;
 let
   cfg = config.graphical.polybar;
@@ -31,7 +37,7 @@ let
     crust = "181926";
   };
 
-  opacity = "a0";
+  opacity = "dc";
 
   cpu_up = "${pkgs-local.control_modules}/bin/cpu_controller up";
   cpu_down = "${pkgs-local.control_modules}/bin/cpu_controller down";
@@ -40,9 +46,11 @@ let
   mem_down = "${pkgs-local.control_modules}/bin/memory_controller down";
   mem_del = "${pkgs.killall}/bin/killall memory_controller; rm /tmp/memory_controller.*; ${pkgs-local.control_modules}/bin/memory_controller";
 
-in 
-  {
-  options.graphical.polybar = { enable = mkEnableOption "polybar"; };
+in
+{
+  options.graphical.polybar = {
+    enable = mkEnableOption "polybar";
+  };
   config = mkIf cfg.enable {
     services.polybar = {
       enable = true;
@@ -93,14 +101,24 @@ in
           label-volume = "%{F#${my_colors.teal}}%percentage%%%{F-}";
           master-mixer = "Master";
           master-soundcard = "default";
-          ramp-volume = [ "󰕿 " "󰖀 " "󰕾 " ];
+          ramp-volume = [
+            "󰕿 "
+            "󰖀 "
+            "󰕾 "
+          ];
           ramp-volume-foreground = "#${my_colors.sky}";
           type = "internal/alsa";
         };
 
         "module/battery" = {
           adapter = "ADP1";
-          animations-charging = [ " " " " " " " " " " ];
+          animations-charging = [
+            " "
+            " "
+            " "
+            " "
+            " "
+          ];
           animation-charging-foreground = "#${my_colors.green}";
           animation-charging-framerate = 750;
           bar-capacity-width = 10;
@@ -117,7 +135,13 @@ in
           label-discharging = "%percentage%%";
           label-full = "%{F#7fbbb3} %{F-}100%";
           poll-interval = 5;
-          ramp-capacity = [ "" "" "" "" "" ];
+          ramp-capacity = [
+            ""
+            ""
+            ""
+            ""
+            ""
+          ];
           ramp-capacityForeground = "#${my_colors.peach}";
           time-format = "%H:%M";
           type = "internal/battery";
@@ -242,7 +266,13 @@ in
           label-foreground = "#${my_colors.maroon}";
           label-warn = "%temperature-c%";
           label-warn-foreground = "#${my_colors.red}";
-          ramp = [ " " " " " " " " " " ];
+          ramp = [
+            " "
+            " "
+            " "
+            " "
+            " "
+          ];
           ramp-foreground = "#${my_colors.maroon}";
           thermal-zone = 0;
           warn-temperature = 75;
@@ -342,6 +372,10 @@ in
       recursive = true;
       source = ./polybar-scripts;
     };
-    home.packages = [ pkgs.playerctl pkgs.zscroll pkgs.cava ];
+    home.packages = [
+      pkgs.playerctl
+      pkgs.zscroll
+      pkgs.cava
+    ];
   };
 }
