@@ -1,14 +1,17 @@
-{ pkgs
-, username
-, rootPath
-, stateVersion
-, inputs
-, ...
+{
+  pkgs,
+  username,
+  rootPath,
+  stateVersion,
+  inputs,
+  ...
 }:
 {
-  imports = [
-    ./common/misc/tmux
-  ];
+  /*
+    imports = [
+      ./common/misc/tmux
+    ];
+  */
 
   home.username = username;
   home.homeDirectory = "/home/${username}";
