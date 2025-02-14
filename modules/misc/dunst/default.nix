@@ -30,7 +30,8 @@ let
     mantle = "1e2030";
     crust = "181926";
   };
-in {
+in
+{
   options.misc.dunst = { enable = mkEnableOption "dunst"; };
   config = mkIf cfg.enable {
     services.dunst = {

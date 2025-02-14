@@ -32,14 +32,13 @@
   };
 
   outputs =
-    {
-      self,
-      nixpkgs,
-      futils,
-      home-manager,
-      stylix,
-      nvim,
-      ...
+    { self
+    , nixpkgs
+    , futils
+    , home-manager
+    , stylix
+    , nvim
+    , ...
     }@inputs:
     let
       inherit (nixpkgs) lib;

@@ -31,17 +31,17 @@ rec {
     qtquickcontrols2
   ];
 
-  installPhase = 
-  let
-    basePath = "$out/share/sddm/themes/sddm-theme-corners/";
-  in 
-  ''
-    mkdir -p ${basePath}
-    cp -R ./corners/* ${basePath}
-  ''
-  + lib.optionalString (wallpaper != null) ''
+  installPhase =
+    let
+      basePath = "$out/share/sddm/themes/sddm-theme-corners/";
+    in
+    ''
+      mkdir -p ${basePath}
+      cp -R ./corners/* ${basePath}
+    ''
+    + lib.optionalString (wallpaper != null) ''
       cd ${basePath}
       rm backgrounds/wallpaper.png
       cp -r ${wallpaper} backgrounds/wallpaper.png
-  '';
+    '';
 }

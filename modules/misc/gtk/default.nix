@@ -3,7 +3,7 @@ with lib;
 let
   cfg = config.misc.gtk;
 in
-  {
+{
   options.misc.gtk = { enable = mkEnableOption "gtk"; };
   config = mkIf cfg.enable {
     gtk = {
@@ -13,7 +13,7 @@ in
         package = pkgs.catppuccin-gtk.override {
           accents = [ "mauve" ];
           size = "compact";
-          tweaks = [  ];
+          tweaks = [ ];
           variant = "macchiato";
         };
       };

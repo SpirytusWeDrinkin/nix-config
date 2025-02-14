@@ -1,9 +1,8 @@
-{
-  pkgs,
-  lib,
-  config,
-  pkgs-local,
-  ...
+{ pkgs
+, lib
+, config
+, pkgs-local
+, ...
 }:
 let
   my_colors = {

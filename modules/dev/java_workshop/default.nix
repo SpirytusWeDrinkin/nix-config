@@ -2,8 +2,8 @@
 with lib;
 let
   cfg = config.dev.java_workshop;
-in 
-  {
+in
+{
   options.dev.java_workshop = {
     enable = mkEnableOption "java_workshop dependencies";
     jdtls = mkEnableOption "jdtls";

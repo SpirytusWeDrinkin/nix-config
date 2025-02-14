@@ -2,8 +2,8 @@
 with lib;
 let
   cfg = config.misc.cava;
-in 
-  {
+in
+{
   options.misc.cava = { enable = mkEnableOption "cava"; };
   config = mkIf cfg.enable {
     programs.cava = {

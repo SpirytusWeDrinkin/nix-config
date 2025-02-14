@@ -53,7 +53,8 @@ let
     --vim-esc-exits \
     --wrap
   '';
-in {
+in
+{
   options.graphical.i3 = {
     enable = mkEnableOption "i3";
 

@@ -1,9 +1,8 @@
-{
-  inputs,
-  pkgs,
-  lib,
-  config,
-  ...
+{ inputs
+, pkgs
+, lib
+, config
+, ...
 }:
 {
   wayland.windowManager.hyprland = {
@@ -82,54 +81,58 @@
 
         ]
         ++ (builtins.concatLists (
-          builtins.genList (
-            i:
-            let
-              ws = i + 1;
-            in
-            [
-              "$mod, code:1${toString i}, workspace, ${toString ws}"
-              "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
-            ]
-          ) 10
+          builtins.genList
+            (
+              i:
+              let
+                ws = i + 1;
+              in
+              [
+                "$mod, code:1${toString i}, workspace, ${toString ws}"
+                "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
+              ]
+            ) 10
         ))
         ++ (builtins.concatLists (
-          builtins.genList (
-            i:
-            let
-              ws = i + 6;
-            in
-            [
-              "$ALT, code:1${toString i}, workspace, ${toString ws}"
-              "$ALT SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
-            ]
-          ) 5
+          builtins.genList
+            (
+              i:
+              let
+                ws = i + 6;
+              in
+              [
+                "$ALT, code:1${toString i}, workspace, ${toString ws}"
+                "$ALT SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
+              ]
+            ) 5
         ));
 
       workspace =
         [
         ]
         ++ (builtins.concatLists (
-          builtins.genList (
-            i:
-            let
-              ws = i + 1;
-            in
-            [
-              "${toString ws}, monitor:eDP-1"
-            ]
-          ) 5
+          builtins.genList
+            (
+              i:
+              let
+                ws = i + 1;
+              in
+              [
+                "${toString ws}, monitor:eDP-1"
+              ]
+            ) 5
         ))
         ++ (builtins.concatLists (
-          builtins.genList (
-            i:
-            let
-              ws = i + 6;
-            in
-            [
-              "${toString ws}, monitor:HDMI-A-1"
-            ]
-          ) 5
+          builtins.genList
+            (
+              i:
+              let
+                ws = i + 6;
+              in
+              [
+                "${toString ws}, monitor:HDMI-A-1"
+              ]
+            ) 5
         ));
 
       bindm = [

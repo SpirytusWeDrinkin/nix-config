@@ -1,10 +1,9 @@
-{
-  pkgs,
-  username,
-  rootPath,
-  stateVersion,
-  inputs,
-  ...
+{ pkgs
+, username
+, rootPath
+, stateVersion
+, inputs
+, ...
 }:
 {
   imports = [

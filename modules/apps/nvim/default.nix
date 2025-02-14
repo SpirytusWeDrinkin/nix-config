@@ -70,7 +70,7 @@ in
           catppuccin-nvim
           vim-fugitive
           bufferize-vim
-	];
+        ];
         extraConfig = '''';
         extraLuaConfig = ''
           ${builtins.readFile ./lua/set.lua}
