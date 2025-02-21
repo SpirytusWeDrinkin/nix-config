@@ -9,6 +9,7 @@
 {
   imports = [
     ./common/misc/tmux
+    ./common/misc/fzf
   ];
 
   home.username = username;
@@ -16,6 +17,8 @@
 
   manual.manpages.enable = false;
   fonts.fontconfig.enable = true;
+
+  catppuccin.flavor = "macchiato";
 
   apps = {
     alacritty.enable = true;
@@ -38,7 +41,6 @@
     cava.enable = true;
     gtk.enable = true;
     dunst.enable = true;
-    mako.enable = true;
     git = {
       enable = true;
       editor = "nvim";

@@ -6,7 +6,7 @@
   ...
 }:
 let
-  inherit (inputs) home-manager;
+  inherit (inputs) home-manager catppuccin;
   rootPath = ../.;
 in
 {
@@ -22,6 +22,7 @@ in
     };
 
     modules = [
+      catppuccin.homeManagerModules.catppuccin
       ./pie.nix
     ] ++ modules;
   };

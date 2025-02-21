@@ -13,6 +13,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    catppuccin = {
+      url = "github:catppuccin/nix";
+    };
+
     stylix = {
       url = "github:danth/stylix";
     };
@@ -38,6 +42,7 @@
       futils,
       home-manager,
       stylix,
+      catppuccin,
       nvim,
       ...
     }@inputs:
