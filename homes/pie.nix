@@ -11,6 +11,7 @@
     ./common/misc/tmux
     ./common/misc/fzf
     ./common/apps/alacritty
+    ./common/apps/zsh
   ];
 
   home.username = username;
@@ -24,7 +25,7 @@
   apps = {
     # alacritty.enable = true;
     # nvim.enable = true;
-    zsh.enable = true;
+    # zsh.enable = true;
   };
 
   graphical = {
