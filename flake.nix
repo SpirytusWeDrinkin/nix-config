@@ -84,7 +84,7 @@
         let
           defaultArgs = mkDefaultArgs system;
         in
-        { home-manager = home-manager.defaultPackage.${system}; } // (import ./packages defaultArgs)
+        { home-manager = home-manager.packages.${system}.default; } // (import ./packages defaultArgs)
       );
 
       nixosModules = (

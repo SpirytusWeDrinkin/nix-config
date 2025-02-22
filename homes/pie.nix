@@ -10,6 +10,7 @@
   imports = [
     ./common/misc/tmux
     ./common/misc/fzf
+    ./common/apps/alacritty
   ];
 
   home.username = username;
@@ -21,7 +22,7 @@
   catppuccin.flavor = "macchiato";
 
   apps = {
-    alacritty.enable = true;
+    # alacritty.enable = true;
     # nvim.enable = true;
     zsh.enable = true;
   };
