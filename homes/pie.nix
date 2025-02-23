@@ -50,7 +50,7 @@
 
   home = {
     packages = with pkgs; [
-      inputs.nvim.packages.x86_64-linux.default
+      inputs.nixvim.packages.x86_64-linux.default
       lsd
       nerd-fonts.iosevka-term
       rounded-mgenplus

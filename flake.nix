@@ -13,7 +13,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nvim = {
+    nixvim = {
       url = "github:Orysse/nixvim";
     };
   };
