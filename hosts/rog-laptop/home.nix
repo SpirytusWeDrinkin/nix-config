@@ -1,18 +1,29 @@
 {
   pkgs,
   stateVersion,
-  lib,
   rootPath,
-  username,
   inputs,
+  outputs,
   ...
-}: {
-  apps = {
-    alacritty.enable = true;
-    firefox.enable = true;
-    # nvim.enable = true;
-    zsh.enable = true;
-  };
+}:
+let
+  homeConfigPath = rootPath + "/homes";
+in
+{
+  imports = [
+    "${homeConfigPath}/common/apps/alacritty"
+    "${homeConfigPath}/common/apps/zsh"
+
+    "${homeConfigPath}/common/misc/bemenu"
+    "${homeConfigPath}/common/misc/cava"
+    "${homeConfigPath}/common/misc/dunst"
+    "${homeConfigPath}/common/misc/fzf"
+    "${homeConfigPath}/common/misc/gtk"
+    "${homeConfigPath}/common/misc/tmux"
+
+    "${homeConfigPath}/common/graphical/hyprland"
+    "${homeConfigPath}/common/graphical/waybar"
+  ] ++ (builtins.attrValues outputs.homeManagerModules);
 
   graphical = {
     hyprland = {
@@ -23,9 +34,6 @@
   };
 
   misc = {
-    bemenu.enable = true;
-    gtk.enable = true;
-    mako.enable = true;
     git = {
       enable = true;
       editor = "nvim";

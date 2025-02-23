@@ -41,9 +41,9 @@ in
             ./home.nix
             ./rog-laptop/home.nix
             catppuccin.homeManagerModules.catppuccin
-          ] ++ modules.homeManager;
+          ];
         };
       }
-    ] ++ modules.nixos;
+    ];
   };
 }

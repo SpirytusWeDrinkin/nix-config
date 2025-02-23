@@ -4,15 +4,24 @@
   rootPath,
   stateVersion,
   inputs,
+  outputs,
   ...
 }:
 {
   imports = [
-    ./common/misc/tmux
+    ./common/misc/bemenu
+    ./common/misc/cava
+    ./common/misc/dunst
     ./common/misc/fzf
+    ./common/misc/gtk
+    ./common/misc/tmux
+
     ./common/apps/alacritty
     ./common/apps/zsh
-  ];
+
+    ./common/graphical/i3
+    ./common/graphical/polybar
+  ] ++ (builtins.attrValues outputs.homeManagerModules);
 
   home.username = username;
   home.homeDirectory = "/home/${username}";
@@ -21,12 +30,6 @@
   fonts.fontconfig.enable = true;
 
   catppuccin.flavor = "macchiato";
-
-  apps = {
-    # alacritty.enable = true;
-    # nvim.enable = true;
-    # zsh.enable = true;
-  };
 
   graphical = {
     i3 = {
@@ -39,21 +42,12 @@
   };
 
   misc = {
-    bemenu.enable = true;
-    cava.enable = true;
-    gtk.enable = true;
-    dunst.enable = true;
     git = {
       enable = true;
       editor = "nvim";
       username = "abel.chartier";
       email = "abel.chartier@epita.fr";
     };
-  };
-
-  dev.java_workshop = {
-    enable = true;
-    jdtls = true;
   };
 
   home = {

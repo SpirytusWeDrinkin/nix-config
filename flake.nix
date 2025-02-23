@@ -28,11 +28,6 @@
     nvim = {
       url = "github:Orysse/nixvim";
     };
-
-    fine-cmdline = {
-      url = "github:vonheikemen/fine-cmdline.nvim";
-      flake = false;
-    };
   };
 
   outputs =
@@ -64,7 +59,7 @@
           pkgs-local = self.packages.${system};
         in
         {
-          inherit (self) inputs;
+          inherit (self) inputs outputs;
           inherit
             pkgs
             pkgs-local
@@ -73,8 +68,6 @@
             lib
             ;
         };
-
-      generateModules = modules: lib.attrsets.genAttrs modules (name: import (./modules + "/${name}"));
 
       defaultArgs = mkDefaultArgs system;
     in
@@ -87,46 +80,20 @@
         { home-manager = home-manager.packages.${system}.default; } // (import ./packages defaultArgs)
       );
 
-      nixosModules = (
-        generateModules [
-          "apps/steam"
-          "system/grub"
-          "system/nh"
-          "system/sddm"
-          "system/stylix"
-        ]
-      );
+      nixosModules = import ./modules/nixos;
 
-      homeManagerModules = generateModules [
-        "apps/alacritty"
-        "apps/zsh"
-        "apps/firefox"
-        "apps/nvim"
-        "dev/java_workshop"
-        "graphical/i3"
-        "graphical/hyprland"
-        "graphical/polybar"
-        "graphical/waybar"
-        "misc/bemenu"
-        "misc/cava"
-        "misc/dunst"
-        "misc/git"
-        "misc/gtk"
-        "misc/mako"
-      ];
+      homeManagerModules = import ./modules/home-manager;
 
       nixosConfigurations =
         let
           modules = {
-            homeManager = lib.attrsets.attrValues homeManagerModules;
+            # homeManager = lib.attrsets.ates homeManagerModules;
             nixos = lib.attrsets.attrValues nixosModules;
           };
         in
         (import ./hosts (defaultArgs // { inherit modules; }));
 
-      homeConfigurations = (
-        import ./homes (defaultArgs // { modules = lib.attrsets.attrValues homeManagerModules; })
-      );
+      homeConfigurations = (import ./homes (defaultArgs));
 
       formatter = eachDefaultSystemMap (system: nixpkgs.legacyPackages.${system}.nixpkgs-fmt);
     };

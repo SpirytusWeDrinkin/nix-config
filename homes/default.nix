@@ -1,7 +1,7 @@
 {
   inputs,
+  outputs,
   pkgs,
-  modules,
   pkgs-local,
   ...
 }:
@@ -18,12 +18,13 @@ in
       rootPath = rootPath;
       stateVersion = "25.05";
       inherit pkgs-local;
-      inherit inputs;
+      inherit inputs outputs;
     };
 
     modules = [
       catppuccin.homeManagerModules.catppuccin
+      # outputs.homeManagerModules.git
       ./pie.nix
-    ] ++ modules;
+    ];
   };
 }
