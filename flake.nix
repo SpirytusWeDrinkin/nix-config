@@ -1,28 +1,16 @@
 {
   inputs = {
-    nixpkgs = {
-      url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-stable = {
+      url = "github:nixos/nixpkgs/nixos-24.11";
     };
 
-    futils = {
-      url = "github:numtide/flake-utils";
+    nixpkgs = {
+      url = "github:nixos/nixpkgs/nixpkgs-unstable";
     };
 
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    catppuccin = {
-      url = "github:catppuccin/nix";
-    };
-
-    stylix = {
-      url = "github:danth/stylix";
-    };
-
-    hyprland = {
-      url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     };
 
     nvim = {
@@ -34,67 +22,27 @@
     {
       self,
       nixpkgs,
-      futils,
       home-manager,
-      stylix,
-      catppuccin,
-      nvim,
       ...
     }@inputs:
     let
-      inherit (nixpkgs) lib;
-      inherit (futils.lib) eachDefaultSystemMap;
-
-      system = "x86_64-linux";
-      username = "abelc";
-
-      mkDefaultArgs =
-        system:
-        let
-          pkgs = import nixpkgs {
-            config.allowUnfree = true;
-            config.allowUnsupportedSystem = true;
-            inherit system;
-          };
-          pkgs-local = self.packages.${system};
-        in
-        {
-          inherit (self) inputs outputs;
-          inherit
-            pkgs
-            pkgs-local
-            system
-            username
-            lib
-            ;
-        };
-
-      defaultArgs = mkDefaultArgs system;
+      forAllSystems = nixpkgs.lib.genAttrs [
+        "x86_64-linux"
+      ];
     in
-    rec {
-      packages = eachDefaultSystemMap (
-        system:
-        let
-          defaultArgs = mkDefaultArgs system;
-        in
-        { home-manager = home-manager.packages.${system}.default; } // (import ./packages defaultArgs)
-      );
+    {
+      packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
+
+      overlays = import ./overlays { inherit inputs; };
 
       nixosModules = import ./modules/nixos;
 
       homeManagerModules = import ./modules/home-manager;
 
-      nixosConfigurations =
-        let
-          modules = {
-            # homeManager = lib.attrsets.ates homeManagerModules;
-            nixos = lib.attrsets.attrValues nixosModules;
-          };
-        in
-        (import ./hosts (defaultArgs // { inherit modules; }));
+      # nixosConfigurations = (import ./hosts (defaultArgs));
 
-      homeConfigurations = (import ./homes (defaultArgs));
+      homeConfigurations = (import ./homes { inherit (self) inputs outputs; });
 
-      formatter = eachDefaultSystemMap (system: nixpkgs.legacyPackages.${system}.nixpkgs-fmt);
+      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
     };
 }

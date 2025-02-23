@@ -2,10 +2,10 @@
   pkgs,
   lib,
   config,
-  pkgs-local,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.graphical.polybar;
   my_colors = {
     rosewater = "f4dbd6";
@@ -38,13 +38,14 @@ with lib; let
 
   opacity = "dc";
 
-  cpu_up = "${pkgs-local.control_modules}/bin/cpu_controller up";
-  cpu_down = "${pkgs-local.control_modules}/bin/cpu_controller down";
-  cpu_del = "${pkgs.killall}/bin/killall cpu_controller; rm /tmp/cpu_controller.*; ${pkgs-local.control_modules}/bin/cpu_controller";
-  mem_up = "${pkgs-local.control_modules}/bin/memory_controller up";
-  mem_down = "${pkgs-local.control_modules}/bin/memory_controller down";
-  mem_del = "${pkgs.killall}/bin/killall memory_controller; rm /tmp/memory_controller.*; ${pkgs-local.control_modules}/bin/memory_controller";
-in {
+  cpu_up = "${pkgs.control_modules}/bin/cpu_controller up";
+  cpu_down = "${pkgs.control_modules}/bin/cpu_controller down";
+  cpu_del = "${pkgs.killall}/bin/killall cpu_controller; rm /tmp/cpu_controller.*; ${pkgs.control_modules}/bin/cpu_controller";
+  mem_up = "${pkgs.control_modules}/bin/memory_controller up";
+  mem_down = "${pkgs.control_modules}/bin/memory_controller down";
+  mem_del = "${pkgs.killall}/bin/killall memory_controller; rm /tmp/memory_controller.*; ${pkgs.control_modules}/bin/memory_controller";
+in
+{
   options.graphical.polybar = {
     enable = mkEnableOption "polybar";
   };
@@ -282,14 +283,6 @@ in {
           label-background = "#${my_colors.base}";
           label-foreground = "#${my_colors.green}";
           time = "%H:%M";
-        };
-
-        "module/wtf" = {
-          type = "custom/text";
-          click-left = "firefox --private-window https://pornhub.com/random &";
-          format-background = "#${my_colors.base}";
-          format-foreground = "#${my_colors.peach}";
-          format = " ";
         };
 
         "module/weather" = {

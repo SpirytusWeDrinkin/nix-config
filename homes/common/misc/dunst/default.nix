@@ -78,7 +78,6 @@ in
         sticky_history = true;
         history_length = 100;
         dmenu = "/usr/bin/bemenu-run -p dunst:";
-        browser = "/usr/bin/firefox -new-tab";
         always_run_script = false;
         title = "Dunst";
         class = "Dunst";

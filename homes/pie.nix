@@ -29,8 +29,6 @@
   manual.manpages.enable = false;
   fonts.fontconfig.enable = true;
 
-  catppuccin.flavor = "macchiato";
-
   graphical = {
     i3 = {
       enable = true;
@@ -62,6 +60,7 @@
 
   services.ssh-agent.enable = true;
   programs.home-manager.enable = true;
+  systemd.user.startServices = "sd-switch";
 
   home.stateVersion = stateVersion;
 }
