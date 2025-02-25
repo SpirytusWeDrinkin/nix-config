@@ -137,6 +137,10 @@ in
           "${modifier}+x" = "exec i3lock -i ${cfg.wallpaper}";
           "${modifier}+shift+x" = "exec i3lock -i ${cfg.lockscreen_2}";
           "${modifier}+s" = "exec maim -s | xclip -selection clipboard -t image/png";
+          "${modifier}+h" = "focus left";
+          "${modifier}+j" = "focus down";
+          "${modifier}+k" = "focus up";
+          "${modifier}+l" = "focus right";
         };
         gaps = {
           outer = 5;
