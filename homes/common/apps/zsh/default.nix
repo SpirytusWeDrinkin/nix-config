@@ -7,6 +7,11 @@
   programs.zsh = {
     enable = true;
     plugins = [
+      {
+        name = "vi-mode";
+        src = pkgs.zsh-vi-mode;
+        file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
+      }
       /*
         {
           name = "zsh-autosuggestions";
@@ -35,7 +40,9 @@
 
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" ];
+      plugins = [
+        "git"
+      ];
     };
 
     sessionVariables = {
@@ -61,10 +68,8 @@
       ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
       if [ $(($RANDOM%10)) -lt 1 ]; then
-        ${pkgs.fortune}/bin/fortune | ${pkgs.cowsay}/bin/cowsay -f head-in | ${pkgs.lolcat}/bin/lolcat
+        ${pkgs.fortune}/bin/fortune | ${pkgs.cowsay}/bin/cowsay -r | ${pkgs.lolcat}/bin/lolcat
       fi
-      bindkey '^P' history-beginning-search-backward
-      bindkey '^N' history-beginning-search-forward
     '';
   };
 }

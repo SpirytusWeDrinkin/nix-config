@@ -278,7 +278,7 @@ in
 
         "module/time" = {
           type = "internal/date";
-          interval = 100;
+          interval = 1;
           label = "%time%";
           label-background = "#${my_colors.base}";
           label-foreground = "#${my_colors.green}";
