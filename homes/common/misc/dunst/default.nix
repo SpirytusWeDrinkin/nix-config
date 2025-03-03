@@ -1,8 +1,4 @@
-{
-  pkgs,
-  ...
-}:
-let
+{pkgs, ...}: let
   my_colors = {
     rosewater = "f4dbd6";
     flamingo = "f0c6c6";
@@ -31,8 +27,7 @@ let
     mantle = "1e2030";
     crust = "181926";
   };
-in
-{
+in {
   services.dunst = {
     enable = true;
     iconTheme = {
@@ -109,5 +104,5 @@ in
       };
     };
   };
-  home.packages = [ pkgs.libnotify ];
+  home.packages = [pkgs.libnotify];
 }

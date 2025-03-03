@@ -2,8 +2,7 @@
   outputs,
   pkgs,
   ...
-}:
-{
+}: {
   nix = {
     settings = {
       experimental-features = [

@@ -1,29 +1,37 @@
 {
   pkgs,
-  stateVersion,
   rootPath,
   inputs,
   outputs,
+  username,
   ...
 }:
 let
-  homeConfigPath = rootPath + "/homes";
+  stateVersion = "25.05";
 in
 {
   imports = [
-    "${homeConfigPath}/common/apps/alacritty"
-    "${homeConfigPath}/common/apps/zsh"
+    ./nixpkgs.nix
 
-    "${homeConfigPath}/common/misc/bemenu"
-    "${homeConfigPath}/common/misc/cava"
-    "${homeConfigPath}/common/misc/dunst"
-    "${homeConfigPath}/common/misc/fzf"
-    "${homeConfigPath}/common/misc/gtk"
-    "${homeConfigPath}/common/misc/tmux"
+    ../common/apps/alacritty
+    ../common/apps/zsh
 
-    "${homeConfigPath}/common/graphical/hyprland"
-    "${homeConfigPath}/common/graphical/waybar"
+    ../common/misc/bemenu
+    ../common/misc/cava
+    ../common/misc/dunst
+    ../common/misc/fzf
+    ../common/misc/gtk
+    ../common/misc/tmux
+
+    ../common/graphical/hyprland
+    ../common/graphical/waybar
   ] ++ (builtins.attrValues outputs.homeManagerModules);
+
+  home.username = username;
+  home.homeDirectory = "/home/${username}";
+
+  manual.manpages.enable = false;
+  fonts.fontconfig.enable = true;
 
   graphical = {
     hyprland = {
@@ -46,7 +54,7 @@ in
     inherit stateVersion;
     packages = with pkgs; [
       vivaldi
-      inputs.nvim.packages.x86_64-linux.default
+      inputs.nixvim.packages.x86_64-linux.default
     ];
   };
 

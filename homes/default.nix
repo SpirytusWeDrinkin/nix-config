@@ -19,8 +19,21 @@ in
     };
 
     modules = [
-      ./pie.nix
-      ./nixpkgs.nix
+      ./pie
+    ];
+  };
+
+  "abelc@rog-laptop" = home-manager.lib.homeManagerConfiguration {
+    pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
+    extraSpecialArgs = {
+      username = "abelc";
+      rootPath = rootPath;
+      stateVersion = "25.05";
+      inherit inputs outputs;
+    };
+
+    modules = [
+      ./abelc-laptop
     ];
   };
 }

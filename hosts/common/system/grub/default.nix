@@ -1,8 +1,4 @@
-{
-  pkgs,
-  ...
-}:
-{
+{pkgs, ...}: {
   boot.loader.grub = {
     enable = true;
     enableCryptodisk = true;

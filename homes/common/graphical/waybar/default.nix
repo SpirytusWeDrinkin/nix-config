@@ -4,8 +4,7 @@
   pkgs,
   ...
 }:
-with lib;
-let
+with lib; let
   cfg = config.graphical.waybar;
   colors = {
     rosewater = "f4dbd6";
@@ -35,8 +34,7 @@ let
     mantle = "1e2030";
     crust = "181926";
   };
-in
-{
+in {
   options.graphical.waybar = {
     enable = mkEnableOption "waybar";
   };
@@ -51,7 +49,7 @@ in
           "clock"
           "network"
         ];
-        modules-center = [ "hyprland/workspaces" ];
+        modules-center = ["hyprland/workspaces"];
         modules-right = [
           "pulseaudio"
           "backlight"

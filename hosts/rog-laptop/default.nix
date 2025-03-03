@@ -2,12 +2,15 @@
   pkgs,
   username,
   config,
-  lib,
-  rootPath,
   stateVersion,
-  inputs,
   ...
 }:
+let
+in
+/*
+  stateVersion = "25.05";
+  username = "abelc";
+*/
 {
   imports = [
     ./hardware.nix
@@ -17,10 +20,10 @@
     ../common/system/grub
     ../common/system/sddm
 
-    ../games/steam
+    ../common/games/steam
   ];
 
-  networking.hostName = "where-epimac";
+  networking.hostName = "rog-laptop";
   networking.networkmanager.enable = true;
 
   fonts.packages = with pkgs; [

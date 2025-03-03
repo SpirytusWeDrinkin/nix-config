@@ -9,18 +9,20 @@
 }:
 {
   imports = [
-    ./common/misc/bemenu
-    ./common/misc/cava
-    ./common/misc/dunst
-    ./common/misc/fzf
-    ./common/misc/gtk
-    ./common/misc/tmux
+    ./nixpkgs.nix
 
-    ./common/apps/alacritty
-    ./common/apps/zsh
+    ../common/misc/bemenu
+    ../common/misc/cava
+    ../common/misc/dunst
+    ../common/misc/fzf
+    ../common/misc/gtk
+    ../common/misc/tmux
 
-    ./common/graphical/i3
-    ./common/graphical/polybar
+    ../common/apps/alacritty
+    ../common/apps/zsh
+
+    ../common/graphical/i3
+    ../common/graphical/polybar
   ] ++ (builtins.attrValues outputs.homeManagerModules);
 
   home.username = username;

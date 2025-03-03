@@ -1,9 +1,8 @@
-{ ... }:
-{
+{...}: {
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
-    defaultOptions = [ "--style minimal" ];
+    defaultOptions = ["--style minimal"];
     colors = {
       # bg = "#363a4f";
       "bg+" = "#363a4f";

@@ -1,7 +1,14 @@
-{pkgs, ...}: {
-  nixpkgs.config = {
-    allowUnfree = true;
-    allowUnsupportedSystem = true;
+{
+  pkgs,
+  outputs,
+  ...
+}: {
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+      allowUnsupportedSystem = true;
+    };
+    overlays = builtins.attrValues outputs.overlays;
   };
 
   time.timeZone = "Europe/Paris";

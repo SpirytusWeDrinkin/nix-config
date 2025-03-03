@@ -3,11 +3,9 @@
   config,
   ...
 }:
-with lib;
-let
+with lib; let
   cfg = config.misc.git;
-in
-{
+in {
   options.misc.git = {
     enable = mkEnableOption "git default config";
 

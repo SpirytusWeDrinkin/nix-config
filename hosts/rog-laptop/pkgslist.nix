@@ -2,7 +2,8 @@
   inputs,
   pkgs,
   ...
-}: {
+}:
+{
   # List System Programs
   environment.systemPackages = with pkgs; [
     #Get things online
@@ -49,6 +50,7 @@
     komikku
     gimp
     blueberry
+    firefox
 
     # Infra
     kubectl
@@ -69,7 +71,7 @@
     hyprland = {
       withUWSM = true;
       enable = true;
-      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+      # package = inputs.hyprland.packages.x86_64-linux.hyprland;
       xwayland.enable = true;
     };
   };

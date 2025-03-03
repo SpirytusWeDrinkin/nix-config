@@ -1,8 +1,4 @@
-{
-  pkgs-local,
-  ...
-}:
-{
+{pkgs, ...}: {
   services.xserver = {
     enable = false;
   };
@@ -15,5 +11,5 @@
   };
 
   services.libinput.enable = true;
-  environment.systemPackages = with pkgs-local; [ sddm-theme ];
+  environment.systemPackages = with pkgs; [sddm-theme];
 }

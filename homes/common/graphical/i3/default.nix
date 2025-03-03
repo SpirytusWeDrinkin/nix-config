@@ -5,8 +5,7 @@
   config,
   ...
 }:
-with lib;
-let
+with lib; let
   cfg = config.graphical.i3;
   my_colors = {
     rosewater = "f4dbd6";
@@ -59,8 +58,7 @@ let
     --vim-esc-exits \
     --wrap
   '';
-in
-{
+in {
   options.graphical.i3 = {
     enable = mkEnableOption "i3";
 
@@ -148,45 +146,45 @@ in
         };
         bars = [
           /*
-               {
-              position = "top";
-              trayOutput = "primary";
-              statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-default.toml";
+             {
+            position = "top";
+            trayOutput = "primary";
+            statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-default.toml";
 
-              fonts = {
-                names = [ "pango:IosevkaTerm Nerd Font" ];
-                style = "Bold";
-                size = 11.0;
+            fonts = {
+              names = [ "pango:IosevkaTerm Nerd Font" ];
+              style = "Bold";
+              size = 11.0;
+            };
+
+            colors = {
+              background = "#${my_colors.base}";
+              statusline = "#${my_colors.text}";
+              focusedStatusline = "#${my_colors.text}";
+              focusedSeparator = "#${my_colors.base}";
+
+              focusedWorkspace = {
+                border = "#${my_colors.base}";
+                background = "#${my_colors.mauve}";
+                text = "#${my_colors.crust}";
               };
-
-              colors = {
+              activeWorkspace = {
+                border = "#${my_colors.base}";
+                background = "#${my_colors.surface2}";
+                text = "#${my_colors.text}";
+              };
+              inactiveWorkspace = {
+                border = "#${my_colors.base}";
                 background = "#${my_colors.base}";
-                statusline = "#${my_colors.text}";
-                focusedStatusline = "#${my_colors.text}";
-                focusedSeparator = "#${my_colors.base}";
-
-                focusedWorkspace = {
-                  border = "#${my_colors.base}";
-                  background = "#${my_colors.mauve}";
-                  text = "#${my_colors.crust}";
-                };
-                activeWorkspace = {
-                  border = "#${my_colors.base}";
-                  background = "#${my_colors.surface2}";
-                  text = "#${my_colors.text}";
-                };
-                inactiveWorkspace = {
-                  border = "#${my_colors.base}";
-                  background = "#${my_colors.base}";
-                  text = "#${my_colors.text}";
-                };
-                urgentWorkspace = {
-                  border = "#${my_colors.base}";
-                  background = "#${my_colors.red}";
-                  text = "#${my_colors.crust}";
-                };
+                text = "#${my_colors.text}";
               };
-            }
+              urgentWorkspace = {
+                border = "#${my_colors.base}";
+                background = "#${my_colors.red}";
+                text = "#${my_colors.crust}";
+              };
+            };
+          }
           */
         ];
         window.border = 3;
