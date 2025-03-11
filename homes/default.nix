@@ -9,7 +9,7 @@ let
 in
 {
   home-manager.useGlobalPkgs = true;
-  "pie" = home-manager.lib.homeManagerConfiguration {
+  "abel.chartier@pie" = home-manager.lib.homeManagerConfiguration {
     pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
     extraSpecialArgs = {
       username = "abel.chartier";
@@ -20,6 +20,20 @@ in
 
     modules = [
       ./pie
+    ];
+  };
+
+  "abel.chartier@hyprpie" = home-manager.lib.homeManagerConfiguration {
+    pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
+    extraSpecialArgs = {
+      username = "abel.chartier";
+      rootPath = rootPath;
+      stateVersion = "25.05";
+      inherit inputs outputs;
+    };
+
+    modules = [
+      ./hyprpie
     ];
   };
 
