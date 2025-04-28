@@ -32,13 +32,11 @@
   fonts.fontconfig.enable = true;
 
   graphical = {
-    i3 = {
+    hyprland = {
       enable = true;
       wallpaper = "${rootPath}/assets/Wallpapers/gravityFalls.png";
-      lockscreen_2 = "${rootPath}/assets/Wallpapers/romain.png";
-      barCmd = "polybar-msg cmd quit; polybar main 2>&1 | tee -a /tmp/polybar.log & disown";
     };
-    polybar.enable = true;
+    waybar.enable = true;
   };
 
   misc = {
@@ -57,6 +55,7 @@
       nerd-fonts.iosevka-term
       rounded-mgenplus
       jq
+      hyprland
     ];
   };
 

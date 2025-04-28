@@ -37,12 +37,17 @@
       ];
     in
     {
-      packages = forAllSystems (system:
-      {
-        home-manager = home-manager.packages.${system}.default;
-      } // (import ./pkgs nixpkgs.legacyPackages.${system}));
+      packages = forAllSystems (
+        system:
+        {
+          nixvim = inputs.nixvim.packages.${system}.default;
+          nixvimWithAi = inputs.nixvim.packages.${system}.withAi;
+          home-manager = home-manager.packages.${system}.default;
+        }
+        // (import ./pkgs nixpkgs.legacyPackages.${system})
+      );
 
-      overlays = import ./overlays { inherit inputs; };
+      overlays = import ./overlays { inherit (self) inputs outputs; };
 
       nixosModules = import ./modules/nixos;
 

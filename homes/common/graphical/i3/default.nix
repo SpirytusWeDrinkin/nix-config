@@ -5,7 +5,8 @@
   config,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.graphical.i3;
   my_colors = {
     rosewater = "f4dbd6";
@@ -58,10 +59,10 @@ with lib; let
     --vim-esc-exits \
     --wrap
   '';
-in {
+in
+{
   options.graphical.i3 = {
     enable = mkEnableOption "i3";
-
     wallpaper = mkOption {
       type = types.nullOr types.path;
       description = "Wallpaper for i3";
@@ -146,45 +147,45 @@ in {
         };
         bars = [
           /*
-             {
-            position = "top";
-            trayOutput = "primary";
-            statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-default.toml";
+               {
+              position = "top";
+              trayOutput = "primary";
+              statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-default.toml";
 
-            fonts = {
-              names = [ "pango:IosevkaTerm Nerd Font" ];
-              style = "Bold";
-              size = 11.0;
-            };
-
-            colors = {
-              background = "#${my_colors.base}";
-              statusline = "#${my_colors.text}";
-              focusedStatusline = "#${my_colors.text}";
-              focusedSeparator = "#${my_colors.base}";
-
-              focusedWorkspace = {
-                border = "#${my_colors.base}";
-                background = "#${my_colors.mauve}";
-                text = "#${my_colors.crust}";
+              fonts = {
+                names = [ "pango:IosevkaTerm Nerd Font" ];
+                style = "Bold";
+                size = 11.0;
               };
-              activeWorkspace = {
-                border = "#${my_colors.base}";
-                background = "#${my_colors.surface2}";
-                text = "#${my_colors.text}";
-              };
-              inactiveWorkspace = {
-                border = "#${my_colors.base}";
+
+              colors = {
                 background = "#${my_colors.base}";
-                text = "#${my_colors.text}";
+                statusline = "#${my_colors.text}";
+                focusedStatusline = "#${my_colors.text}";
+                focusedSeparator = "#${my_colors.base}";
+
+                focusedWorkspace = {
+                  border = "#${my_colors.base}";
+                  background = "#${my_colors.mauve}";
+                  text = "#${my_colors.crust}";
+                };
+                activeWorkspace = {
+                  border = "#${my_colors.base}";
+                  background = "#${my_colors.surface2}";
+                  text = "#${my_colors.text}";
+                };
+                inactiveWorkspace = {
+                  border = "#${my_colors.base}";
+                  background = "#${my_colors.base}";
+                  text = "#${my_colors.text}";
+                };
+                urgentWorkspace = {
+                  border = "#${my_colors.base}";
+                  background = "#${my_colors.red}";
+                  text = "#${my_colors.crust}";
+                };
               };
-              urgentWorkspace = {
-                border = "#${my_colors.base}";
-                background = "#${my_colors.red}";
-                text = "#${my_colors.crust}";
-              };
-            };
-          }
+            }
           */
         ];
         window.border = 3;
@@ -234,8 +235,46 @@ in {
       };
     };
     services.picom = {
-      package = pkgs.picom-pijulius;
       enable = true;
+      package = pkgs.picom;
+
+      backend = "glx";
+      vSync = true;
+
+      fade = true;
+      fadeDelta = 3;
+
+      shadow = true;
+
+      settings = {
+        daemon = true;
+        use-damage = false;
+        corner-radius = 5;
+        round-borders = 5;
+
+        animations = true;
+        animation-window-mass = 0.5;
+        animation-for-open-window = "zoom";
+        animation-stiffness = 350;
+        animation-clamping = false;
+        fade-out-step = 1;
+
+        detect-rounded-corners = true;
+        detect-client-opacity = false;
+        detect-transient = true;
+        detect-client-leader = false;
+        mark-wmwim-focused = true;
+        mark-ovredir-focues = true;
+        unredir-if-possible = true;
+
+        blur = {
+          method = "dual_kawase";
+          strength = 1;
+          kern = "3x3box";
+          background = false;
+          background-frame = false;
+        };
+      };
     };
     home.packages = with pkgs; [
       pango
