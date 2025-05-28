@@ -41,7 +41,6 @@
         system:
         {
           nixvim = inputs.nixvim.packages.${system}.default;
-          nixvimWithAi = inputs.nixvim.packages.${system}.withAi;
           home-manager = home-manager.packages.${system}.default;
         }
         // (import ./pkgs nixpkgs.legacyPackages.${system})

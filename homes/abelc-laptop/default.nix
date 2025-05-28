@@ -13,7 +13,7 @@ in
   imports = [
     ./nixpkgs.nix
 
-    ../common/apps/alacritty
+    ../common/apps/ghostty
     ../common/apps/zsh
 
     ../common/misc/bemenu
@@ -37,6 +37,7 @@ in
     hyprland = {
       enable = true;
       wallpaper = "${rootPath}/assets/Wallpapers/gravityFalls.png";
+      terminal = "ghostty";
     };
     waybar.enable = true;
   };
@@ -55,6 +56,8 @@ in
     packages = with pkgs; [
       vivaldi
       inputs.nixvim.packages.x86_64-linux.default
+      nodejs_20
+      yarn
     ];
   };
 

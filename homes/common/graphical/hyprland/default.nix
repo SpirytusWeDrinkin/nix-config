@@ -19,6 +19,12 @@ in
       description = "Wallpaper for hyprland";
       default = null;
     };
+
+    terminal = mkOption {
+      type = types.nullOr types.str;
+      description = "Terminal to use";
+      default = "alacritty";
+    };
   };
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland = {
@@ -74,12 +80,11 @@ in
         bind =
           [
             # Launch terminal
-            "$mod, Return, exec, alacritty"
+            "$mod, Return, exec, ${pkgs.${cfg.terminal}}/bin/${cfg.terminal}"
 
             # Window management
             "$mod, Q, killactive"
             "$mod, M, exit"
-            "$mod, E, exec, alacritty --class floating -e ranger"
             "$mod, V, togglefloating"
             "$mod, F, fullscreen"
             "$mod, D, exec, ${bemenu-command}"
