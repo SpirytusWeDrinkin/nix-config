@@ -16,6 +16,7 @@
         username = username;
       };
       modules = [
+        inputs.maomaowm.nixosModules.maomaowm
         ./rog-laptop
         ./configuration.nix
       ];

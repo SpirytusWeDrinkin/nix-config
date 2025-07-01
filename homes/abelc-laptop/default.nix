@@ -55,6 +55,10 @@ in
     };
   };
 
+  windowManager = {
+    wallpaper = "${rootPath}/assets/Wallpaper/cisco.png";
+  };
+
   home = {
     inherit stateVersion;
     packages = with pkgs; [

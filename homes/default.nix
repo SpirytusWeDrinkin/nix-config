@@ -47,7 +47,6 @@ in
     };
 
     modules = [
-      inputs.maomaowm.hmModules.maomaowm
       ./abelc-laptop
     ];
   };
