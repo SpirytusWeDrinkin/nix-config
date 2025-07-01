@@ -83,6 +83,13 @@ in
       description = "Command for launching the bar";
       default = "";
     };
+    /*
+      terminal = mkOption {
+        type = type.nullOr types.package;
+        description = "Terminal launched by i3";
+        default = "";
+      };
+    */
   };
   config = mkIf cfg.enable {
     xsession.windowManager.i3 = {
@@ -110,7 +117,7 @@ in
             notification = false;
           }
           {
-            command = "setxkbmap us intl";
+            command = "setxkbmap us intl -option ctlr:nocaps";
             always = true;
             notification = false;
           }

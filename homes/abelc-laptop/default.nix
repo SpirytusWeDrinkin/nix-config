@@ -24,7 +24,11 @@ in
     ../common/misc/tmux
 
     ../common/graphical/hyprland
+    ../common/graphical/maomaowm
     ../common/graphical/waybar
+
+    ../common/graphical/i3
+    ../common/graphical/polybar
   ] ++ (builtins.attrValues outputs.homeManagerModules);
 
   home.username = username;
@@ -36,7 +40,7 @@ in
   graphical = {
     hyprland = {
       enable = true;
-      wallpaper = "${rootPath}/assets/Wallpapers/gravityFalls.png";
+      wallpaper = "${rootPath}/assets/Wallpapers/cisco.png";
       terminal = "ghostty";
     };
     waybar.enable = true;

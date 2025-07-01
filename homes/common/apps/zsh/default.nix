@@ -12,6 +12,20 @@
         src = pkgs.zsh-vi-mode;
         file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
       }
+      {
+        name = "you-should-use";
+        src = pkgs.zsh-you-should-use;
+        file = "share/zsh/plugins/zsh-you-should-use/you-should-use.plugin.zsh";
+      }
+      {
+        name = "you-should-use";
+        src = pkgs.fetchFromGitHub {
+          owner = "MichaelAquilina";
+          repo = "zsh-you-should-use";
+          rev = "030ac861f5f1536747407ac7baf208fd3990602a";
+          sha256 = "0gx7gs5ds35vw15ygp98m6v8ryzgd1b57fwwn60zf4svpka43xc8";
+        };
+      }
       /*
         {
           name = "zsh-autosuggestions";
@@ -53,6 +67,7 @@
 
     shellAliases = rec {
       v = "nvim";
+      vim = "nvim";
       ls = "lsd";
       lst = "${ls} --tree";
       tree = "${ls} --tree";
@@ -66,10 +81,6 @@
 
     initContent = ''
       ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-
-      if [ $(($RANDOM%10)) -lt 1 ]; then
-        ${pkgs.fortune}/bin/fortune | ${pkgs.cowsay}/bin/cowsay -r | ${pkgs.lolcat}/bin/lolcat
-      fi
     '';
   };
 }

@@ -17,6 +17,10 @@
       url = "github:Orysse/nixvim";
     };
 
+    maomaowm = {
+      url = "github:DreamMaoMao/maomaowm";
+    };
+
     /*
       hyprland = {
         url = "github:hyprwm/Hyprland";
