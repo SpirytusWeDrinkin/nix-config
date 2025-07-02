@@ -4,6 +4,8 @@
   inputs,
   ...
 }:
+let
+in
 {
   imports = [
     inputs.maomaowm.hmModules.maomaowm
@@ -22,6 +24,8 @@
       bind=SUPER,d,spawn,${pkgs.bemenu}/bin/bemenu-run
       bind=SUPER,Return,spawn,${pkgs.ghostty}/bin/ghostty
       bind=SUPER,x,spawn,${pkgs.swaylock}/bin/swaylock -i ${config.windowManager.lockscreen} --indicator-radius 100
+      bind=SUPER,s,spawn,${pkgs.my-scripts.screenshot}
+      bind=SUPER,p,spawn,${pkgs.my-scripts.wlr-monitor-switch}
 
       ${builtins.readFile ./config/bind.conf}
       ${builtins.readFile ./config/config.conf}

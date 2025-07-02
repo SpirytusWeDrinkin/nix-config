@@ -13,6 +13,8 @@ in
   imports = [
     ./nixpkgs.nix
 
+    ../common/scripts/default.nix
+
     ../common/apps/ghostty
     ../common/apps/zsh
 

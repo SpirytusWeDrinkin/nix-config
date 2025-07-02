@@ -8,7 +8,7 @@
   services.displayManager.sddm = {
     enable = true;
     autoNumlock = true;
-    wayland.enable = false;
+    wayland.enable = true;
     theme = "sddm-theme-corners";
   };
 

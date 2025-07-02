@@ -79,6 +79,11 @@
   programs = {
     steam.gamescopeSession.enable = true;
     dconf.enable = true;
+    hyprland = {
+      withUWSM = true;
+      enable = true;
+      xwayland.enable = true;
+    };
     maomaowm = {
       enable = true;
     };
