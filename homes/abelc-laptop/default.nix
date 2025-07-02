@@ -23,6 +23,9 @@ in
     ../common/misc/gtk
     ../common/misc/tmux
 
+    ../common/graphical/i3
+    ../common/graphical/polybar
+
     ../common/graphical/maomaowm
     ../common/graphical/waybar
   ] ++ (builtins.attrValues outputs.homeManagerModules);
@@ -61,6 +64,16 @@ in
         };
       };
     };
+  };
+
+  graphical = {
+    i3 = {
+      enable = true;
+      wallpaper = "${rootPath}/assets/Wallpapers/gravityFalls.png";
+      lockscreen_2 = "${rootPath}/assets/Wallpapers/romain.png";
+      barCmd = "polybar-msg cmd quit; polybar main 2>&1 | tee -a /tmp/polybar.log & disown";
+    };
+    polybar.enable = true;
   };
 
   windowManager = {

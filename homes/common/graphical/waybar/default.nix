@@ -1,6 +1,4 @@
 {
-  config,
-  lib,
   pkgs,
   ...
 }:
@@ -39,27 +37,98 @@ in
   programs.waybar.settings = {
     mainBar = {
       layer = "top";
+      position = "top";
+      exclusive = true;
+      passthrough = false;
+      gtk-layer-shell = true;
+      reload_style_on_change = true;
+      height = 45;
 
       modules-left = [
         "custom/launcher"
+        "dwl/tags"
         "clock"
-        "network"
       ];
-      modules-center = [ "hyprland/workspaces" ];
+      modules-center = [ "dwl/window" ];
       modules-right = [
+        "tray"
+        "network"
         "pulseaudio"
         "backlight"
         "cpu"
         "memory"
         "battery"
+        "custom/notification"
         "custom/power"
       ];
+
+      "dwl/tags" = {
+        num-tags = 9;
+        hide-vacant = true;
+        tag-labels = [
+          "一"
+          "二"
+          "三"
+          "四"
+          "五"
+          "六"
+          "七"
+          "八"
+          "九"
+        ];
+      };
+
+      "wlr/taskbar" = {
+        format = "{icon}";
+        icon-size = 22;
+        all-outputs = false;
+        tooltip-format = "{title}";
+        markup = true;
+        on-click = "activate";
+        on-click-right = "close";
+        ignore-list = [
+          "Rofi"
+          "wofi"
+        ];
+      };
+
+      "dwl/window" = {
+        format = "{}";
+      };
+
+      # Notification module
+      "custom/notification" = {
+        tooltip = false;
+        format = "{icon}";
+        format-icons = {
+          notification = "󰂚 ";
+          none = " ";
+          dnd-notification = "󰂛 ";
+          dnd-none = " ";
+          inhibited-notification = "󰂚 ";
+          inhibited-none = " ";
+          dnd-inhibited-notification = "󰂚 ";
+          dnd-inhibited-none = " ";
+        };
+        return-type = "json";
+        exec-if = "which swaync-client";
+        exec = "swaync-client -swb";
+        on-click = "sleep 0.1s && swaync-client -t -sw";
+        on-click-right = "swaync-client -d -sw";
+        escape = true;
+      };
+
+      tray = {
+        interval = 1;
+        icon-size = 21;
+        spacing = 10;
+      };
 
       pulseaudio = {
         tooltip = false;
         scroll-step = 2;
         format = "{icon} {volume}%";
-        format-muted = "{icon} {volume}%";
+        format-muted = "  {volume}%";
         on-click = "pactl set-sink-mute @DEFAULT_SINK@ toggle";
         format-icons = {
           default = [
@@ -70,30 +139,42 @@ in
         };
       };
 
-      "hyprland/workspaces" = {
-        active-only = false;
-        all-output = true;
-        on-click = true;
-        format = "{icon}";
-        format-icons = {
-          urgent = "󰵚 ";
-          active = "󰝥 ";
-          default = " ";
-        };
-        persistent-workspaces = {
-          "*" = 5;
-        };
-      };
-
       network = {
         tooltip = false;
-        format-wifi = "  {essid}";
-        format-ethernet = "󰈀 ";
+        interval = 2;
+        format-wifi = "{icon} {essid}";
+        format-icons = [
+          "󰤯 "
+          "󰤟 "
+          "󰤢 "
+          "󰤥 "
+          "󰤨 "
+        ];
+        format-ethernet = "󰈀 {ifname}";
+        format-linked = " No IP ({ifname})";
+        format-disconnected = " Disconnected";
+        tooltip-format = "{ifname} {ipaddr}/{cidr} via {gwaddr}";
       };
 
       backlight = {
         device = "amdgpu_bl2";
-        format = "󰉄 {percent}%";
+        interval = 2;
+        format = "{icon} {percent}%";
+        format-icons = [
+          "󱩎 "
+          "󱩏 "
+          "󱩐 "
+          "󱩑 "
+          "󱩒 "
+          "󱩓 "
+          "󱩔 "
+          "󱩕 "
+          "󱩖 "
+          "󰛨 "
+        ];
+        on-scroll-up = "brightnessctl set +2%";
+        on-scroll-down = "brightnessctl set 2%-";
+        smooth-scrolling-threshold = 1;
       };
 
       battery = {
@@ -102,7 +183,7 @@ in
           warning = 30;
           critical = 20;
         };
-        format = "{icon} {capacity}%";
+        format = "{icon} {capacity}%";
         format-charging = " {capacity}%";
         format-plugged = " {capacity}%";
         format-alt = "{time} {icon}";
@@ -117,222 +198,62 @@ in
 
       clock = {
         format = "{:%H:%M    %d/%m/%Y}";
+        tooltip-format = "<tt><small>{calendar}</small></tt>";
+        calendar = {
+          mode = "year";
+          mode-mon-col = 3;
+          weeks-pos = "right";
+          on-scroll = 1;
+          format = {
+            months = "<span color='#${colors.pink}'><b>{}</b></span>";
+            days = "<span color='#${colors.lavender}'><b>{}</b></span>";
+            weeks = "<span color='#${colors.mauve}'><b>W{}</b></span>";
+            weekdays = "<span color='#${colors.mauve}'><b>{}</b></span>";
+            today = "<span color='#${colors.red}'><b>{}</b></span>";
+          };
+        };
+        actions = {
+          on-click-right = "mode";
+          on-scroll-up = [
+            "tz_up"
+            "shift_up"
+          ];
+          on-scroll-down = [
+            "tz_down"
+            "shift_down"
+          ];
+        };
       };
 
       cpu = {
-        interval = 15;
-        format = "󰍛  {}%";
+        interval = 2;
+        format = "󰍛 {usage}%";
         max-length = 10;
+      };
+
+      temperature = {
+        format = "{temperatureC}°C ";
       };
 
       memory = {
         interval = 30;
-        format = "  {}%";
+        format = " {}%";
         max-length = 10;
       };
 
       "custom/launcher" = {
         format = " ";
-        on-click = "rofi -show drun";
-        on-click-right = "killall rofi";
+        on-click = "${pkgs.bemenu}/bin/bemenu-run";
       };
+
       "custom/power" = {
-        format = " ";
-        on-click = "bash ~/.config/rofi/leave.sh";
+        format = "⏻ ";
+        tooltip = false;
+        on-click = "${pkgs.wlogout}/bin/wlogout -b 6 --protocol layer-shell";
       };
     };
   };
+
   # stylix.targets.waybar.enable = false;
-  programs.waybar.style = ''
-            * {
-    border: none;
-            border-radius: 10px;
-            font-family: "IosevkaTerm Nerd Font";
-            font-weight: bold;
-            font-size: 15px;
-            min-height: 10px;
-            }
-
-        window#waybar {
-    background: transparent;
-        }
-
-        window#waybar.hidden {
-    opacity: 0.2;
-        }
-
-    #window {
-        margin-top: 6px;
-        padding-left: 10px;
-        padding-right: 10px;
-        border-radius: 10px;
-    transition: none;
-    color: transparent;
-    background: transparent;
-    }
-
-    #workspaces {
-        margin-top: 6px;
-        margin-left: 12px;
-        font-size: 4px;
-        margin-bottom: 0px;
-        border-radius: 10px;
-    background: #${colors.base};
-    transition: none;
-    }
-
-    #workspaces button {
-    padding: 1px 9px;
-    margin: 3px 3px;
-            border-radius: 15px;
-    border:0px;
-    color: #${colors.overlay2};
-    background: #${colors.base};
-    transition: all 0.3s ease-in-out;
-    opacity:0.4;
-    }
-
-    #workspaces button.active {
-    color: #${colors.yellow};
-    background: transparent;
-                border-radius: 15px;
-                min-width: 30px;
-    transition: all 0.3s ease-in-out;
-    opacity:1.0;
-
-    }
-
-    #workspaces button:hover {
-    transition: none;
-                box-shadow: inherit;
-                text-shadow: inherit;
-    color: #${colors.yellow};
-    }
-
-    #network {
-        margin-top: 6px;
-        margin-left: 8px;
-        padding-left: 10px;
-        padding-right: 10px;
-        margin-bottom: 0px;
-        border-radius: 10px;
-    transition: none;
-    color: #${colors.lavender};
-    background: #${colors.base};
-    }
-
-    #pulseaudio {
-        margin-top: 6px;
-        margin-left: 8px;
-        padding-left: 10px;
-        padding-right: 10px;
-        margin-bottom: 0px;
-        border-radius: 10px;
-    transition: none;
-    color: #${colors.mauve};
-    background: #${colors.base};
-    }
-
-    #backlight {
-        margin-top: 6px;
-        margin-left: 8px;
-        padding-left: 10px;
-        padding-right: 10px;
-        margin-bottom: 0px;
-        border-radius: 10px;
-    transition: none;
-    color: #${colors.peach};
-    background: #${colors.base};
-    }
-
-    #battery {
-        margin-top: 6px;
-        margin-left: 8px;
-        padding-left: 10px;
-        padding-right: 10px;
-        margin-bottom: 0px;
-        border-radius: 10px;
-    transition: none;
-    color: #${colors.green};
-    background: #${colors.base};
-    }
-
-    #battery.charging, #battery.plugged {
-    color: #${colors.teal};
-    background: #${colors.base};
-    }
-
-    #battery.critical:not(.charging) {
-        animation-name: blink;
-        animation-duration: 0.5s;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-        animation-direction: alternate;
-    color: #${colors.text};
-    background: #${colors.red};
-    }
-
-
-    #clock {
-        margin-top: 6px;
-        margin-left: 8px;
-        padding-left: 10px;
-        padding-right: 10px;
-        margin-bottom: 0px;
-        border-radius: 10px;
-    transition: none;
-    color: #${colors.teal};
-    background: #${colors.base};
-    }
-
-    #memory {
-        margin-top: 6px;
-        margin-left: 8px;
-        padding-left: 10px;
-        margin-bottom: 0px;
-        padding-right: 10px;
-        border-radius: 10px;
-    transition: none;
-    color: #${colors.yellow};
-    background: #${colors.base};
-    }
-
-    #cpu {
-        margin-top: 6px;
-        margin-left: 8px;
-        padding-left: 10px;
-        margin-bottom: 0px;
-        padding-right: 10px;
-        border-radius: 10px;
-    transition: none;
-    color: #${colors.maroon};
-    background: #${colors.base};
-    }
-
-    #custom-launcher {
-        font-size: 24px;
-        margin-top: 6px;
-        margin-left: 8px;
-        padding-left: 5px;
-        padding-right: 5px;
-        border-radius: 10px;
-    transition: none;
-    background: #7EBAE4;
-    color: #5277C3;
-    }
-
-    #custom-power {
-        font-size: 20px;
-        margin-top: 6px;
-        margin-left: 8px;
-        margin-right: 5px;
-        padding-left: 7px;
-        padding-right: 5px;
-        margin-bottom: 0px;
-        border-radius: 10px;
-    transition: none;
-    color: #${colors.maroon};
-    background: #${colors.base};
-    }
-  '';
+  programs.waybar.style = builtins.readFile ./config/style.css;
 }

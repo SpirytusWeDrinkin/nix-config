@@ -1,0 +1,328 @@
+/* Waybar CSS Configuration */
+/* Catppuccin Macchiato Color Palette */
+
+@define-color rosewater #f4dbd6;
+@define-color flamingo #f0c6c6;
+@define-color pink #f5bde6;
+@define-color mauve #c6a0f6;
+@define-color red #ed8796;
+@define-color maroon #ee99a0;
+@define-color peach #f5a97f;
+@define-color yellow #eed49f;
+@define-color green #a6da95;
+@define-color teal #8bd5ca;
+@define-color sky #91d7e3;
+@define-color sapphire #7dc4e4;
+@define-color blue #8aadf4;
+@define-color lavender #b7bdf8;
+@define-color text #cad3f5;
+@define-color subtext1 #b8c0e0;
+@define-color subtext0 #a5adcb;
+@define-color overlay2 #939ab7;
+@define-color overlay1 #8087a2;
+@define-color overlay0 #6e738d;
+@define-color surface2 #5b6078;
+@define-color surface1 #494d64;
+@define-color surface0 #363a4f;
+@define-color base #24273a;
+@define-color mantle #1e2030;
+@define-color crust #181926;
+
+* {
+  border: none;
+  border-radius: 10px;
+  font-family: "IosevkaTerm Nerd Font", "Rounded Mgen+ 1p";
+  font-weight: bold;
+  font-size: 15px;
+  min-height: 10px;
+}
+
+window#waybar {
+  background: transparent;
+}
+
+window#waybar.hidden {
+  opacity: 0.2;
+}
+
+tooltip {
+  background: @base;
+  border-radius: 10px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: @mauve;
+  color: @text;
+}
+
+/* DWL Tags (replaces workspaces) */
+#tags {
+  margin-top: 6px;
+  margin-left: 12px;
+  font-size: 4px;
+  margin-bottom: 0px;
+  border-radius: 10px;
+  background: @base;
+  transition: none;
+}
+
+#tags button {
+  padding: 1px 5px;
+  margin: 3px 3px;
+  border: 0px;
+  color: @overlay2;
+  background: @base;
+  transition: all 0.3s ease-in-out;
+  opacity: 0.4;
+}
+
+#tags button:not(.occupied):not(.focused):not(.overview):not(.urgent) {
+  font-size: 0;
+  min-width: 0;
+  min-height: 0;
+  margin: -17px;
+  padding: 0;
+  color: transparent;
+  background-color: transparent;
+}
+
+#tags button.occupied {
+  color: @text;
+}
+
+#tags button.overview {
+  color: @subtext0;
+}
+
+#tags button:hover {
+  color: @yellow;
+}
+
+#tags button.focused {
+  color: @mauve;
+  background: transparent;
+  border-radius: 15px;
+  min-width: 30px;
+  transition: all 0.3s ease-in-out;
+  opacity: 1;
+}
+
+#tags button.urgent {
+  background-color: @red;
+  color: @text;
+}
+
+/* Taskbar */
+#taskbar {
+  margin-top: 6px;
+  margin-left: 8px;
+  padding: 0 5px;
+  margin-bottom: 0px;
+  border-radius: 10px;
+  background: @base;
+  transition: none;
+}
+
+#taskbar button {
+  margin: 3px;
+  padding: 5px 8px;
+  border-radius: 8px;
+  background: transparent;
+  color: @text;
+  border: none;
+  transition: all 0.3s ease-in-out;
+}
+
+#taskbar button:hover {
+  background: @surface0;
+  color: @yellow;
+}
+
+#taskbar button.active {
+  background: @surface1;
+  color: @peach;
+}
+
+/* Window title */
+#window {
+  margin-top: 6px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
+  transition: none;
+  color: @text;
+  background: @base;
+  font-weight: normal;
+}
+
+/* System tray */
+#tray {
+  margin-top: 6px;
+  margin-left: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 0px;
+  border-radius: 10px;
+  background: @base;
+}
+
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+  background-color: @red;
+}
+
+/* Network */
+#network {
+  color: @lavender;
+  background: @base;
+  margin-top: 6px;
+  margin-left: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 0px;
+  border-radius: 10px;
+  transition: none;
+}
+
+/* Audio */
+#pulseaudio {
+  color: @mauve;
+  background: @base;
+  margin-top: 6px;
+  margin-left: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 0px;
+  border-radius: 10px;
+  transition: none;
+}
+
+/* Backlight */
+#backlight {
+  color: @peach;
+  background: @base;
+  margin-top: 6px;
+  margin-left: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 0px;
+  border-radius: 10px;
+  transition: none;
+}
+
+/* Battery */
+#battery {
+  color: @green;
+  background: @base;
+  margin-top: 6px;
+  margin-left: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 0px;
+  border-radius: 10px;
+  transition: none;
+}
+
+#battery.charging,
+#battery.plugged {
+  color: @teal;
+  background: @base;
+}
+
+#battery.critical:not(.charging) {
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  color: @text;
+  background: @red;
+}
+
+/* Clock */
+#clock {
+  color: @teal;
+  background: @base;
+  margin-top: 6px;
+  margin-left: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 0px;
+  border-radius: 10px;
+  transition: none;
+}
+
+/* System resources */
+#memory {
+  color: @yellow;
+  background: @base;
+  margin-top: 6px;
+  margin-left: 8px;
+  padding-left: 10px;
+  margin-bottom: 0px;
+  padding-right: 10px;
+  border-radius: 10px;
+  transition: none;
+}
+
+#cpu {
+  color: @maroon;
+  background: @base;
+  margin-top: 6px;
+  margin-left: 8px;
+  padding-left: 10px;
+  margin-bottom: 0px;
+  padding-right: 10px;
+  border-radius: 10px;
+  transition: none;
+}
+
+/* Custom modules */
+#custom-launcher {
+  font-size: 24px;
+  margin-top: 6px;
+  margin-left: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 10px;
+  transition: none;
+  background: #7ebae4;
+  color: #5277c3;
+}
+
+#custom-notification {
+  color: @blue;
+  background: @base;
+  margin-top: 6px;
+  margin-left: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 0px;
+  border-radius: 10px;
+  transition: none;
+}
+
+#custom-power {
+  font-size: 20px;
+  margin-top: 6px;
+  margin-left: 8px;
+  margin-right: 5px;
+  padding-left: 7px;
+  padding-right: 5px;
+  margin-bottom: 0px;
+  border-radius: 10px;
+  transition: none;
+  color: @maroon;
+  background: @base;
+}
+
+/* Blink animation for critical battery */
+@keyframes blink {
+  to {
+    background-color: @base;
+    color: @red;
+  }
+}
