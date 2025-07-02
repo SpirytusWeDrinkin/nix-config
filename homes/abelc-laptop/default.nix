@@ -18,17 +18,13 @@ in
 
     ../common/misc/bemenu
     ../common/misc/cava
-    ../common/misc/dunst
     ../common/misc/fzf
+    ../common/misc/swaync
     ../common/misc/gtk
     ../common/misc/tmux
 
-    ../common/graphical/hyprland
     ../common/graphical/maomaowm
     ../common/graphical/waybar
-
-    ../common/graphical/i3
-    ../common/graphical/polybar
   ] ++ (builtins.attrValues outputs.homeManagerModules);
 
   home.username = username;
@@ -37,26 +33,39 @@ in
   manual.manpages.enable = false;
   fonts.fontconfig.enable = true;
 
-  graphical = {
-    hyprland = {
-      enable = true;
-      wallpaper = "${rootPath}/assets/Wallpapers/cisco.png";
-      terminal = "ghostty";
-    };
-    waybar.enable = true;
-  };
-
-  misc = {
+  programs = {
     git = {
       enable = true;
-      editor = "nvim";
-      username = "abel.chartier";
-      email = "abel.chartier@epita.fr";
+      userName = "abel.chartier";
+      userEmail = "abel.chartier@epita.fr";
+      extraConfig = {
+        init.defaultBranch = "master";
+        pull.rebase = true;
+        core.editor = "nvim";
+        push.autoSetupRemote = true;
+
+        color = {
+          ui = "auto";
+          branch = "auto";
+          diff = "auto";
+          interactive = "auto";
+          status = "auto";
+        };
+
+        commit.verbose = true;
+        branch.autosetuprebase = "always";
+        push.default = "simple";
+        rebase = {
+          autoSquash = true;
+          autoStash = true;
+        };
+      };
     };
   };
 
   windowManager = {
-    wallpaper = "${rootPath}/assets/Wallpaper/cisco.png";
+    wallpaper = "${rootPath}/assets/Wallpapers/493water.jpg";
+    lockscreen = "${rootPath}/assets/Wallpapers/cisco.png";
   };
 
   home = {

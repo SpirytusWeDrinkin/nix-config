@@ -1,0 +1,100 @@
+/*** Global ***/
+progress,
+progressbar,
+trough {
+  border-radius: 16px;
+}
+
+.app-icon,
+.image {
+  -gtk-icon-effect: none;
+}
+
+.notification-action {
+  border-radius: 5px;
+  margin: 0.5rem;
+}
+
+.close-button {
+  margin: 0.5rem;
+  padding: 0.25rem;
+  border-radius: 5px;
+}
+
+/*** Notifications ***/
+.notification-group.collapsed
+  .notification-row:not(:last-child)
+  .notification-action,
+.notification-group.collapsed
+  .notification-row:not(:last-child)
+  .notification-default-action {
+  opacity: 0;
+}
+
+/*** Control Center ***/
+.control-center {
+  border-radius: 8px;
+  padding: 2rem;
+}
+
+.control-center-list {
+  background: transparent;
+}
+
+/*** Widgets ***/
+/* Title widget */
+.widget-title {
+  margin: 0.5rem;
+}
+
+.widget-title > label {
+  font-weight: bold;
+}
+
+.widget-title > button {
+  border-radius: 8px;
+  padding: 0.5rem;
+}
+
+/* DND Widget */
+.widget-dnd {
+  margin: 0.5rem;
+}
+
+.widget-dnd > label {
+  font-weight: bold;
+}
+
+.widget-dnd > switch {
+  border-radius: 8px;
+}
+
+.widget-dnd > switch slider {
+  border-radius: 8px;
+  padding: 0.25rem;
+}
+
+/* Mpris widget */
+.widget-mpris .widget-mpris-player {
+  border-radius: 8px;
+  margin: 0.5rem;
+  padding: 0.5rem;
+}
+
+.widget-mpris .widget-mpris-player .widget-mpris-album-art {
+  border-radius: 16px;
+}
+
+.widget-mpris .widget-mpris-player .widget-mpris-title {
+  font-weight: bold;
+}
+
+.widget-mpris .widget-mpris-player .widget-mpris-subtitle {
+  font-weight: normal;
+}
+
+.widget-mpris .widget-mpris-player > box > button {
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 0.25rem;
+}
