@@ -29,6 +29,7 @@ in
 
     ../common/widgets/gtk
     ../common/widgets/waybar
+    ../common/widgets/wlogout
   ] ++ (builtins.attrValues outputs.homeManagerModules);
 
   home.username = username;
@@ -65,16 +66,6 @@ in
         };
       };
     };
-  };
-
-  graphical = {
-    i3 = {
-      enable = true;
-      wallpaper = "${rootPath}/assets/Wallpapers/gravityFalls.png";
-      lockscreen_2 = "${rootPath}/assets/Wallpapers/romain.png";
-      barCmd = "polybar-msg cmd quit; polybar main 2>&1 | tee -a /tmp/polybar.log & disown";
-    };
-    polybar.enable = true;
   };
 
   windowManager = {
