@@ -42,23 +42,24 @@ in
       passthrough = false;
       gtk-layer-shell = true;
       reload_style_on_change = true;
-      height = 45;
+      height = 38;
 
       modules-left = [
         "custom/launcher"
         "dwl/tags"
-        "clock"
+        "dwl/window"
       ];
-      modules-center = [ "dwl/window" ];
+      modules-center = [ "clock" ];
       modules-right = [
         "tray"
+        "custom/notification"
         "network"
         "pulseaudio"
         "backlight"
         "cpu"
+        "temperature"
         "memory"
         "battery"
-        "custom/notification"
         "custom/power"
       ];
 
@@ -94,6 +95,33 @@ in
 
       "dwl/window" = {
         format = "{}";
+        format-alt = "maomaowm";
+        max-length = 50;
+        tooltip = true;
+        tooltip-format = "{}";
+        rewrite = {
+          "^$" = "maomaowm";
+          # Clean up common window title patterns
+          "(.*) — Mozilla Firefox" = " $1";
+          "(.*) - Mozilla Firefox" = " $1";
+          "(.*) — Visual Studio Code" = " $1";
+          "(.*) - Visual Studio Code" = " $1";
+          "(.*) — Neovim" = " $1";
+          "(.*) - Neovim" = " $1";
+          "nvim (.*)" = " $1";
+          "vim (.*)" = " $1";
+          "nvim" = " ";
+          "(.*) — Terminal" = "󱙝 $1";
+          "(.*) - Terminal" = "󱙝 $1";
+          "^Terminal$" = "󱙝 Terminal";
+          "^Discord$" = " Discord";
+          "WebCord - (.*)" = " $1";
+          "^Spotify$" = " Spotify";
+          # Remove common suffixes that don't add value
+          " - zsh$" = "";
+          " - bash$" = "";
+          " \\[.*\\]$" = "";
+        };
       };
 
       # Notification module
@@ -120,15 +148,15 @@ in
 
       tray = {
         interval = 1;
-        icon-size = 21;
+        icon-size = 18;
         spacing = 10;
       };
 
       pulseaudio = {
         tooltip = false;
         scroll-step = 2;
-        format = "{icon} {volume}%";
-        format-muted = "  {volume}%";
+        format = "{icon} {volume:3}%";
+        format-muted = "  {volume:3}%";
         on-click = "pactl set-sink-mute @DEFAULT_SINK@ toggle";
         format-icons = {
           default = [
@@ -140,7 +168,7 @@ in
       };
 
       network = {
-        tooltip = false;
+        tooltip = true;
         interval = 2;
         format-wifi = "{icon} {essid}";
         format-icons = [
@@ -159,7 +187,7 @@ in
       backlight = {
         device = "amdgpu_bl2";
         interval = 2;
-        format = "{icon} {percent}%";
+        format = "{icon} {percent:3}%";
         format-icons = [
           "󱩎 "
           "󱩏 "
@@ -172,8 +200,8 @@ in
           "󱩖 "
           "󰛨 "
         ];
-        on-scroll-up = "brightnessctl set +2%";
-        on-scroll-down = "brightnessctl set 2%-";
+        on-scroll-up = "${pkgs.brightnessctl}/bin/brightnessctl set +2%";
+        on-scroll-down = "${pkgs.brightnessctl}/bin/brightnessctl set 2%-";
         smooth-scrolling-threshold = 1;
       };
 
@@ -227,17 +255,17 @@ in
 
       cpu = {
         interval = 2;
-        format = "󰍛 {usage}%";
+        format = "󰍛 {usage:3}%";
         max-length = 10;
       };
 
       temperature = {
-        format = "{temperatureC}°C ";
+        format = "{temperatureC:2}°C ";
       };
 
       memory = {
         interval = 30;
-        format = " {}%";
+        format = " {percentage:3}%";
         max-length = 10;
       };
 

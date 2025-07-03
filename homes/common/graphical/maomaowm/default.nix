@@ -26,6 +26,7 @@ in
       bind=SUPER,x,spawn,${pkgs.swaylock}/bin/swaylock -i ${config.windowManager.lockscreen} --indicator-radius 100
       bind=SUPER,s,spawn,${pkgs.my-scripts.screenshot}
       bind=SUPER,p,spawn,${pkgs.my-scripts.wlr-monitor-switch}
+      bind=SUPER,w,spawn,${pkgs.swww}/bin/swww img ${config.windowManager.wallpaper}
 
       ${builtins.readFile ./config/bind.conf}
       ${builtins.readFile ./config/config.conf}
