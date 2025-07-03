@@ -277,7 +277,7 @@ in
       "custom/power" = {
         format = "⏻ ";
         tooltip = false;
-        on-click = "${pkgs.wlogout}/bin/wlogout -b 6 --protocol layer-shell";
+        on-click = "${pkgs.wlogout}/bin/wlogout -b 3 --protocol layer-shell";
       };
     };
   };

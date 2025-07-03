@@ -10,28 +10,28 @@
         keybind = "l";
       }
       {
-        label = "logout";
-        action = "sleep 1; pkill dwl";
-        text = "Exit";
-        keybind = "e";
-      }
-      {
-        label = "suspend";
-        action = "sleep 1; systemctl suspend";
-        text = "Suspend";
-        keybind = "u";
-      }
-      {
         label = "hibernate";
         action = "sleep 1; systemctl hibernate";
         text = "Hibernate";
         keybind = "h";
       }
       {
+        label = "logout";
+        action = "sleep 1; pkill maomao";
+        text = "Exit";
+        keybind = "e";
+      }
+      {
         label = "shutdown";
         action = "sleep 1; systemctl poweroff";
         text = "Shutdown";
         keybind = "s";
+      }
+      {
+        label = "suspend";
+        action = "sleep 1; systemctl suspend";
+        text = "Suspend";
+        keybind = "u";
       }
       {
         label = "reboot";
