@@ -15,21 +15,20 @@ in
 
     ../common/scripts/default.nix
 
+    ../common/apps/cava
+    ../common/apps/fzf
     ../common/apps/ghostty
+    ../common/apps/tmux
     ../common/apps/zsh
 
-    ../common/misc/bemenu
-    ../common/misc/cava
-    ../common/misc/fzf
-    ../common/misc/swaync
-    ../common/misc/gtk
-    ../common/misc/tmux
+    ../common/launchers/bemenu
 
-    ../common/graphical/i3
-    ../common/graphical/polybar
+    ../common/notifications/swaync
 
-    ../common/graphical/maomaowm
-    ../common/graphical/waybar
+    ../common/windowManagers/maomaowm
+
+    ../common/widgets/gtk
+    ../common/widgets/waybar
   ] ++ (builtins.attrValues outputs.homeManagerModules);
 
   home.username = username;
