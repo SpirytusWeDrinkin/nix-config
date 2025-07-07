@@ -69,8 +69,13 @@ in
   };
 
   windowManager = {
-    wallpaper = "${rootPath}/assets/Wallpapers/493water.jpg";
+    wallpaper = "${rootPath}/assets/Wallpapers/quotidien.png";
     lockscreen = "${rootPath}/assets/Wallpapers/cisco.png";
+    mainScreen = {
+      port = "eDP-1";
+      scale = 1.5;
+    };
+
   };
 
   home = {
