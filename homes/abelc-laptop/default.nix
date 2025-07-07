@@ -71,6 +71,10 @@ in
   windowManager = {
     wallpaper = "${rootPath}/assets/Wallpapers/493water.jpg";
     lockscreen = "${rootPath}/assets/Wallpapers/cisco.png";
+    mainScreen = {
+      port = "eDP-1";
+      scale = 2;
+    };
   };
 
   home = {
