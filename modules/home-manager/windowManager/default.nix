@@ -47,7 +47,7 @@ in
         default = "eDP-1";
       };
       scale = mkOption {
-        type = types.int;
+        type = types.number;
         description = "Main screen scale";
         default = 1;
       };
@@ -59,7 +59,7 @@ in
         default = "HDMI-A-1";
       };
       scale = mkOption {
-        type = types.int;
+        type = types.number;
         description = "Secondary screen scale";
         default = 1;
       };
