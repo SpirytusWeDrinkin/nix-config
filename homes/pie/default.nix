@@ -1,6 +1,7 @@
 {
   pkgs,
   username,
+  email,
   rootPath,
   stateVersion,
   inputs,
@@ -38,8 +39,8 @@
   programs = {
     git = {
       enable = true;
-      userName = "abel.chartier";
-      userEmail = "abel.chartier@epita.fr";
+      userName = username;
+      userEmail = email;
       extraConfig = {
         init.defaultBranch = "master";
         pull.rebase = true;
