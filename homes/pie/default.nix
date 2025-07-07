@@ -11,18 +11,22 @@
   imports = [
     ./nixpkgs.nix
 
-    ../common/misc/bemenu
-    ../common/misc/cava
-    ../common/misc/dunst
-    ../common/misc/fzf
-    ../common/misc/gtk
-    ../common/misc/tmux
+    ../common/scripts/default.nix
 
+    ../common/apps/cava
+    ../common/apps/fzf
     ../common/apps/alacritty
+    ../common/apps/tmux
     ../common/apps/zsh
 
-    ../common/graphical/i3
-    ../common/graphical/polybar
+    ../common/launchers/bemenu
+
+    ../common/notifications/swaync
+
+    ../common/windowManagers/i3
+
+    ../common/widgets/gtk
+    ../common/widgets/polybar
   ] ++ (builtins.attrValues outputs.homeManagerModules);
 
   home.username = username;
@@ -31,23 +35,39 @@
   manual.manpages.enable = false;
   fonts.fontconfig.enable = true;
 
-  graphical = {
-    i3 = {
-      enable = true;
-      wallpaper = "${rootPath}/assets/Wallpapers/gravityFalls.png";
-      lockscreen_2 = "${rootPath}/assets/Wallpapers/romain.png";
-      barCmd = "polybar-msg cmd quit; polybar main 2>&1 | tee -a /tmp/polybar.log & disown";
-    };
-    polybar.enable = true;
-  };
-
-  misc = {
+  programs = {
     git = {
       enable = true;
-      editor = "nvim";
-      username = "abel.chartier";
-      email = "abel.chartier@epita.fr";
+      userName = "abel.chartier";
+      userEmail = "abel.chartier@epita.fr";
+      extraConfig = {
+        init.defaultBranch = "master";
+        pull.rebase = true;
+        core.editor = "nvim";
+        push.autoSetupRemote = true;
+
+        color = {
+          ui = "auto";
+          branch = "auto";
+          diff = "auto";
+          interactive = "auto";
+          status = "auto";
+        };
+
+        commit.verbose = true;
+        branch.autosetuprebase = "always";
+        push.default = "simple";
+        rebase = {
+          autoSquash = true;
+          autoStash = true;
+        };
+      };
     };
+  };
+
+  windowManager = {
+    wallpaper = "${rootPath}/assets/Wallpapers/gravityFalls.png";
+    terminal = pkgs.alacritty;
   };
 
   home = {

@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }:
 with lib;
@@ -34,9 +35,9 @@ in
     };
 
     terminal = mkOption {
-      type = type.nullOr types.package;
+      type = types.nullOr types.package;
       description = "terminal launched by the wm shortcut";
-      default = "";
+      default = pkgs.alacritty;
     };
   };
 }
