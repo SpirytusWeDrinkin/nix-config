@@ -52,7 +52,7 @@ in
         default = 1;
       };
     };
-    secondScreen = {
+    secondaryScreen = {
       port = mkOption {
         type = types.str;
         description = "Secondary screen port, see the command to get monitor";
