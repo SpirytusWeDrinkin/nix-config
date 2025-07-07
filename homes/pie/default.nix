@@ -21,7 +21,7 @@
 
     ../common/launchers/bemenu
 
-    ../common/notifications/swaync
+    ../common/notifications/dunst
 
     ../common/windowManagers/i3
 

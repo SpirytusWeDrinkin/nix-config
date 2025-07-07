@@ -104,7 +104,7 @@ in
         }
       ];
       keybindings = lib.mkOptionDefault {
-        "${modifier}+Return" = "${config.windowManager.terminal}";
+        "${modifier}+Return" = "exec ${config.windowManager.terminal}/bin/alacritty";
         "${modifier}+q" = "kill";
         "${modifier}+d" = "exec ${bemenu-command}";
         "${modifier}+x" = "exec i3lock -i ${config.windowManager.lockscreen}";
@@ -148,7 +148,7 @@ in
         urgent = {
           childBorder = "#${my_colors.peach}";
           background = "#${my_colors.base}";
-          text = "$#{my_colors.peach}";
+          text = "#${my_colors.peach}";
           indicator = "#${my_colors.overlay0}";
           border = "#${my_colors.peach}";
         };

@@ -17,32 +17,14 @@
         src = pkgs.zsh-you-should-use;
         file = "share/zsh/plugins/zsh-you-should-use/you-should-use.plugin.zsh";
       }
-      {
-        name = "you-should-use";
-        src = pkgs.fetchFromGitHub {
-          owner = "MichaelAquilina";
-          repo = "zsh-you-should-use";
-          rev = "030ac861f5f1536747407ac7baf208fd3990602a";
-          sha256 = "0gx7gs5ds35vw15ygp98m6v8ryzgd1b57fwwn60zf4svpka43xc8";
-        };
-      }
       /*
         {
-          name = "zsh-autosuggestions";
+          name = "you-should-use";
           src = pkgs.fetchFromGitHub {
-            owner = "zsh-users";
-            repo = "zsh-autosuggestions";
-            rev = "c3d4e576c9c86eac62884bd47c01f6faed043fc5";
-            sha256 = "1m8yawj7skbjw0c5ym59r1y88klhjl6abvbwzy6b1xyx3vfb7qh7";
-          };
-        }
-        {
-          name = "zsh-syntax-highlighting";
-          src = pkgs.fetchFromGitHub {
-            owner = "zsh-users";
-            repo = "zsh-syntax-highlighting";
-            rev = "e0165eaa730dd0fa321a6a6de74f092fe87630b0";
-            hash = "sha256-4rW2N+ankAH4sA6Sa5mr9IKsdAg7WTgrmyqJ2V1vygQ=";
+            owner = "MichaelAquilina";
+            repo = "zsh-you-should-use";
+            rev = "030ac861f5f1536747407ac7baf208fd3990602a";
+            sha256 = "0gx7gs5ds35vw15ygp98m6v8ryzgd1b57fwwn60zf4svpka43xc8";
           };
         }
       */
