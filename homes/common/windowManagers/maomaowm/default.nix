@@ -5,6 +5,7 @@
   ...
 }:
 let
+  cfg = config.windowManager;
 in
 {
   imports = [
@@ -20,6 +21,9 @@ in
     '';
     settings = ''
       # More option see https://github.com/DreamMaoMao/maomaowm/wiki/
+
+      monitorrule=${cfg.mainScreen.port},0.55,1,tile,0,${cfg.mainScreen.scale},0,0
+      monitorrule=${cfg.secondaryScreen.port},0.55,1,tile,${cfg.secondaryScreen.transfrom},${cfg.secondaryScreen.scale},${cfg.secondaryScreen.x},${cfg.secondaryScreen.y}
 
       bind=SUPER,d,spawn,${pkgs.bemenu}/bin/bemenu-run
       bind=SUPER,Return,spawn,${pkgs.ghostty}/bin/ghostty
