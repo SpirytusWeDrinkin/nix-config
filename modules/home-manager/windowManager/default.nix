@@ -40,7 +40,7 @@ in
       default = pkgs.alacritty;
     };
 
-    mainScreen = {
+    primaryDisplay = {
       port = mkOption {
         type = types.str;
         description = "Main screen port, see the command to get monitor";
@@ -51,8 +51,23 @@ in
         description = "Main screen scale";
         default = 1;
       };
+      x = mkOption {
+        type = types.int;
+        description = "x-pos for secondary screen";
+        default = 1920;
+      };
+      y = mkOption {
+        type = types.int;
+        description = "y-pos for secondary screen";
+        default = 0;
+      };
+      transform = mkOption {
+        type = types.int;
+        description = "Transform for secondary screen";
+        default = 0;
+      };
     };
-    secondaryScreen = {
+    secondaryDisplay = {
       port = mkOption {
         type = types.str;
         description = "Secondary screen port, see the command to get monitor";

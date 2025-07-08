@@ -71,16 +71,25 @@ in
   windowManager = {
     wallpaper = "${rootPath}/assets/Wallpapers/493water.jpg";
     lockscreen = "${rootPath}/assets/Wallpapers/cisco.png";
-    mainScreen = {
+    primaryDisplay = {
       port = "eDP-1";
       scale = 2;
+      x = 0;
+      y = 1080;
+      transform = 0;
+    };
+    secondaryDisplay = {
+      port = "HDMI-A-1";
+      scale = 1.5;
+      x = 0;
+      y = 0;
+      transform = 0;
     };
   };
 
   home = {
     inherit stateVersion;
     packages = with pkgs; [
-      vivaldi
       inputs.nixvim.packages.x86_64-linux.default
       nodejs_20
       yarn
