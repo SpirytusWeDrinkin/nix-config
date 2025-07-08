@@ -75,12 +75,18 @@ in
       port = "eDP-1";
       scale = 2;
     };
+    secondaryScreen = {
+      port = "HDMI-A-1";
+      scale = 1.5;
+      x = 0;
+      y = 1080;
+      transform = 0;
+    };
   };
 
   home = {
     inherit stateVersion;
     packages = with pkgs; [
-      vivaldi
       inputs.nixvim.packages.x86_64-linux.default
       nodejs_20
       yarn
