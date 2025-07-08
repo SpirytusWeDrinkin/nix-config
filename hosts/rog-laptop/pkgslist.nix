@@ -42,6 +42,9 @@
     ripgrep
     vim
 
+    bluez
+    bluez-tools
+
     # User apps
     pavucontrol
     slack
