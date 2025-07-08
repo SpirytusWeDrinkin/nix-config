@@ -15,8 +15,6 @@ in
     enable = true;
     autostart_sh = ''
       set -e
-      ${pkgs.swww}/bin/swww-daemon &
-      ${pkgs.swww}/bin/swww img ${config.windowManager.wallpaper} &
       ${pkgs.waybar}/bin/waybar &
     '';
     settings = ''
@@ -41,5 +39,13 @@ in
   programs.swaylock = {
     enable = true;
     package = pkgs.swaylock-fancy;
+  };
+  services.wpaperd = {
+    enable = true;
+    settings = {
+      any = {
+        path = cfg.wallpaper;
+      };
+    };
   };
 }

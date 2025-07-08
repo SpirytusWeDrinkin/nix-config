@@ -125,6 +125,21 @@ in
     };
   };
 
+  services.pipewire.wireplumber.extraConfig."11-bluetooth-policy" = {
+    "wireplumber.settings" = {
+      "bluetooth.autoswitch-to-headset-profile" = false;
+    };
+  };
+
+  services.pipewire.extraConfig.pipewire."20-bluetooth" = {
+    "context.modules" = [
+      {
+        "name" = "libpipewire-module-bluetooth";
+        "args" = { };
+      }
+    ];
+  };
+
   services.pipewire.wireplumber.extraConfig."10-bluez" = {
     "monitor.bluez.properties" = {
       "bluez5.enable-sbc-xq" = true;
@@ -141,8 +156,10 @@ in
 
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
-  hardware.bluetooth.enable = true; # enables support for Bluetooth
-  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
   services.blueman.enable = true;
   security.pam.services.swaylock = {
     text = ''
