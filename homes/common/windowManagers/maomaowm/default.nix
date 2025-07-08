@@ -15,7 +15,6 @@ in
     enable = true;
     autostart_sh = ''
       set -e
-      ${pkgs.waybar}/bin/waybar &
     '';
     settings = ''
       # More option see https://github.com/DreamMaoMao/maomaowm/wiki/
