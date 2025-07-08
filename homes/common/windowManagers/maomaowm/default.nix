@@ -22,8 +22,8 @@ in
     settings = ''
       # More option see https://github.com/DreamMaoMao/maomaowm/wiki/
 
-      monitorrule=${cfg.mainScreen.port},0.55,1,tile,${toString cfg.mainScreen.transform},${toString cfg.mainScreen.scale},${toString cfg.mainScreen.x},${toString cfg.mainScreen.y}
-      monitorrule=${cfg.secondaryScreen.port},0.55,1,tile,${toString cfg.secondaryScreen.transform},${toString cfg.secondaryScreen.scale},${toString cfg.secondaryScreen.x},${toString cfg.secondaryScreen.y}
+      monitorrule=${cfg.primaryDisplay.port},0.55,1,tile,${toString cfg.primaryDisplay.transform},${toString cfg.primaryDisplay.scale},${toString cfg.primaryDisplay.x},${toString cfg.primaryDisplay.y}
+      monitorrule=${cfg.secondaryDisplay.port},0.55,1,tile,${toString cfg.secondaryDisplay.transform},${toString cfg.secondaryDisplay.scale},${toString cfg.secondaryDisplay.x},${toString cfg.secondaryDisplay.y}
 
       bind=SUPER,d,spawn,${pkgs.bemenu}/bin/bemenu-run
       bind=SUPER,Return,spawn,${pkgs.ghostty}/bin/ghostty

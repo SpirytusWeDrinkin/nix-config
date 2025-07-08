@@ -71,15 +71,18 @@ in
   windowManager = {
     wallpaper = "${rootPath}/assets/Wallpapers/493water.jpg";
     lockscreen = "${rootPath}/assets/Wallpapers/cisco.png";
-    mainScreen = {
+    primaryDisplay = {
       port = "eDP-1";
       scale = 2;
+      x = 0;
+      y = 1080;
+      transform = 0;
     };
-    secondaryScreen = {
+    secondaryDisplay = {
       port = "HDMI-A-1";
       scale = 1.5;
       x = 0;
-      y = 1080;
+      y = 0;
       transform = 0;
     };
   };

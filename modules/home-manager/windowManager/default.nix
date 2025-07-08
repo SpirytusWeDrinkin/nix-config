@@ -40,7 +40,7 @@ in
       default = pkgs.alacritty;
     };
 
-    mainScreen = {
+    primaryDisplay = {
       port = mkOption {
         type = types.str;
         description = "Main screen port, see the command to get monitor";
@@ -67,7 +67,7 @@ in
         default = 0;
       };
     };
-    secondaryScreen = {
+    secondaryDisplay = {
       port = mkOption {
         type = types.str;
         description = "Secondary screen port, see the command to get monitor";
