@@ -70,7 +70,7 @@ in
 
   windowManager = {
     wallpaper = "${rootPath}/assets/Wallpapers/quotidien.png";
-    lockscreen = "${rootPath}/assets/Wallpapers/cisco.png";
+    lockscreen = "${rootPath}/assets/Wallpapers/guitarGirlOnAtower.png";
     primaryDisplay = {
       port = "eDP-1";
       scale = 1.5;
