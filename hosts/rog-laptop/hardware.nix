@@ -14,11 +14,9 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/2847c1b4-0269-4788-a29f-ea4d84310654";
+    { device = "/dev/disk/by-uuid/4c5fc079-8df1-4bf5-897f-32f814283e30";
       fsType = "ext4";
     };
-
-  boot.initrd.luks.devices."luks-96f7987a-0cba-40c2-88f4-10c0405c4586".device = "/dev/disk/by-uuid/96f7987a-0cba-40c2-88f4-10c0405c4586";
 
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/6439-74FB";
@@ -35,7 +33,6 @@
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.eno1.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp8s0f3u1u1.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlp4s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

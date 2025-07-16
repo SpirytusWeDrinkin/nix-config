@@ -73,15 +73,15 @@ in
     lockscreen = "${rootPath}/assets/Wallpapers/cisco.png";
     primaryDisplay = {
       port = "eDP-1";
-      scale = 2;
+      scale = 1;
       x = 0;
       y = 1080;
       transform = 0;
     };
     secondaryDisplay = {
       port = "HDMI-A-1";
-      scale = 1.5;
-      x = 0;
+      scale = 1;
+      x = 1920;
       y = 0;
       transform = 0;
     };
