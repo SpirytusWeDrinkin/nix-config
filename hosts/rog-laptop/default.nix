@@ -19,6 +19,7 @@ in
 
     ../common/system/grub
     ../common/system/sddm
+    ../common/system/plymouth
 
     ../common/games/steam
   ];
