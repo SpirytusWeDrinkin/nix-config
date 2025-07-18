@@ -15,8 +15,11 @@ in
 
     ../common/scripts/default.nix
 
+    ../common/apps/bat
+    ../common/apps/btop
     ../common/apps/cava
     ../common/apps/fzf
+    ../common/apps/imv
     ../common/apps/ghostty
     ../common/apps/tmux
     ../common/apps/zsh
@@ -73,9 +76,9 @@ in
     lockscreen = "${rootPath}/assets/Wallpapers/cisco.png";
     primaryDisplay = {
       port = "eDP-1";
-      scale = 1;
+      scale = 2;
       x = 0;
-      y = 1080;
+      y = 0;
       transform = 0;
     };
     secondaryDisplay = {

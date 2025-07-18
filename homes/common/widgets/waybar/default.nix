@@ -139,10 +139,10 @@ in
           dnd-inhibited-none = " ";
         };
         return-type = "json";
-        exec-if = "which swaync-client";
-        exec = "swaync-client -swb";
-        on-click = "sleep 0.1s && swaync-client -t -sw";
-        on-click-right = "swaync-client -d -sw";
+        exec-if = "which ${pkgs.swaynotificationcenter}/bin/swaync-client";
+        exec = "${pkgs.swaynotificationcenter}/bin/swaync-client -swb";
+        on-click = "sleep 0.1s && ${pkgs.swaynotificationcenter}/bin/swaync-client -t -sw";
+        on-click-right = "${pkgs.swaynotificationcenter}/bin/swaync-client -d -sw";
         escape = true;
       };
 
