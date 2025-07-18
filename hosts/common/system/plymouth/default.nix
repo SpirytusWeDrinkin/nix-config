@@ -20,6 +20,7 @@
     "loglevel=3"
     "systemd.show_status=false"
     "vt.global_cursor_default=0"
+    "plymouth.enable=0"
   ];
 
   console = {
