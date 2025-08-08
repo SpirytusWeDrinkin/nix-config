@@ -52,6 +52,7 @@ in
         "networkmanager"
         "wheel"
         "docker"
+        "dialout"
       ];
       uid = 1000;
       shell = pkgs.zsh;

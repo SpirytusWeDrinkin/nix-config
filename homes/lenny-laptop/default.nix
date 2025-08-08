@@ -81,7 +81,7 @@ in
   home = {
     inherit stateVersion;
     packages = with pkgs; [
-      vivaldi
+      arduino-ide
       inputs.nixvim.packages.x86_64-linux.default
       nodejs_20
       yarn
