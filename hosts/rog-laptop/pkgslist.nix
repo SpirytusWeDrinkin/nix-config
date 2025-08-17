@@ -49,6 +49,7 @@
     pavucontrol
     slack
     webcord
+    discord
     wayshot
     komikku
     gimp
