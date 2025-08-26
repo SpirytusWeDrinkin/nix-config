@@ -63,10 +63,6 @@
     opentracker
     mktorrent
 
-    # Infra
-    kubectl
-    terraform
-
     # Haskell
     ghc
 

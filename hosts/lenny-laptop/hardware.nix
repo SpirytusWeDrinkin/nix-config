@@ -14,18 +14,20 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/b25627d6-a19c-4cbd-af13-f1a708003dc6";
+    { device = "/dev/disk/by-uuid/5e230cbf-42b3-4ba1-9ec1-3b6d95f4b8de";
       fsType = "ext4";
     };
 
+  boot.initrd.luks.devices."luks-7d15f6ba-6177-46ed-8a3b-a1740d724849".device = "/dev/disk/by-uuid/7d15f6ba-6177-46ed-8a3b-a1740d724849";
+
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/0C4A-1A2A";
+    { device = "/dev/disk/by-uuid/6377-954A";
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/650d8f22-58ec-4ac5-8f63-907e33f7d965"; }
+    [ { device = "/dev/disk/by-uuid/9c3d2b3c-1236-4e01-bf78-e5df9a055cb9"; }
     ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
@@ -33,9 +35,6 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.br-aafa8cb1dba5.useDHCP = lib.mkDefault true;
-  # networking.interfaces.br-d377bede2a68.useDHCP = lib.mkDefault true;
-  # networking.interfaces.docker0.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp3s0.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp4s0.useDHCP = lib.mkDefault true;
 
