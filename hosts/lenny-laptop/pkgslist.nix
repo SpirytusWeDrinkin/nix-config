@@ -45,23 +45,12 @@
     # User apps
     pavucontrol
     slack
-    webcord
+    discord
     wayshot
     komikku
     gimp
     blueberry
     firefox
-
-    # Net2
-    gns3-gui
-    gns3-server
-    inetutils
-    pkgsi686Linux.dynamips
-    tigervnc
-    vpcs
-    aria2
-    opentracker
-    mktorrent
 
     # Haskell
     ghc
