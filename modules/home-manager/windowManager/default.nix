@@ -53,18 +53,33 @@ in
       };
       x = mkOption {
         type = types.int;
-        description = "x-pos for secondary screen";
+        description = "x-pos for primary screen";
         default = 1920;
       };
       y = mkOption {
         type = types.int;
-        description = "y-pos for secondary screen";
+        description = "y-pos for primary screen";
         default = 0;
       };
       transform = mkOption {
         type = types.int;
-        description = "Transform for secondary screen";
+        description = "Transform for primary screen";
         default = 0;
+      };
+      width = mkOption {
+        type = types.int;
+        description = "x-pos for primary screen";
+        default = 1920;
+      };
+      height = mkOption {
+        type = types.int;
+        description = "y-pos for primary screen";
+        default = 1080;
+      };
+      refreshRate = mkOption {
+        type = types.number;
+        description = "Refresh rate for primary screen";
+        default = 60;
       };
     };
     secondaryDisplay = {
@@ -92,6 +107,21 @@ in
         type = types.int;
         description = "Transform for secondary screen";
         default = 0;
+      };
+      width = mkOption {
+        type = types.int;
+        description = "x-pos for secondary screen";
+        default = 1920;
+      };
+      height = mkOption {
+        type = types.int;
+        description = "y-pos for secondary screen";
+        default = 1080;
+      };
+      refreshRate = mkOption {
+        type = types.number;
+        description = "Refresh rate for secondary screen";
+        default = 60;
       };
     };
   };

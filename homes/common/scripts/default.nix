@@ -22,6 +22,21 @@ in
           ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp -b '#41455955' -c '#ca9ee6')" -t ppm - | \
             ${pkgs.satty}/bin/satty -f -
         '';
+
+        shell = pkgs.writeScript "shell" ''
+          #!${pkgs.bash}/bin/bash
+          if [ "$#" -eq 0 ]; then
+            echo "Usage: $0 pkg1 pkg2 pkg3 ..."
+            exit 1
+          fi
+
+          pkgs=""
+          for pkg in "$@"; do
+            pkgs="$pkgs nixpkgs#$pkg"
+          done
+
+          exec nix shell $pkgs --command zsh
+        '';
       };
     })
   ];

@@ -84,7 +84,7 @@
     steam.gamescopeSession.enable = true;
     dconf.enable = true;
     xwayland.enable = true;
-    maomaowm = {
+    mango = {
       enable = true;
     };
   };

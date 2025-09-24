@@ -3,7 +3,8 @@
     enable = true;
     settings = {
       general.framerate = 60;
-      input.method = "pipewire";
+      input.method = "pulse";
+      input.source = "auto";
       smoothing.noise_reduction = 30;
       color = {
         gradient = 1;

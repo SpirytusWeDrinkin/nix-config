@@ -33,7 +33,8 @@ in
     ../common/widgets/gtk
     ../common/widgets/waybar
     ../common/widgets/wlogout
-  ] ++ (builtins.attrValues outputs.homeManagerModules);
+  ]
+  ++ (builtins.attrValues outputs.homeManagerModules);
 
   home.username = username;
   home.homeDirectory = "/home/${username}";

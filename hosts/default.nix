@@ -16,7 +16,7 @@
         username = username;
       };
       modules = [
-        inputs.maomaowm.nixosModules.maomaowm
+        inputs.mango.nixosModules.mango
         ./rog-laptop
         ./configuration.nix
       ];
@@ -33,7 +33,7 @@
         username = username;
       };
       modules = [
-        inputs.maomaowm.nixosModules.maomaowm
+        inputs.mango.nixosModules.mango
         ./lenny-laptop
         ./configuration.nix
       ];
