@@ -169,11 +169,11 @@
         "scenefx": "scenefx"
       },
       "locked": {
-        "lastModified": 1757070610,
-        "narHash": "sha256-s6+7PgbxXkNGfquKuc3IHZW2XV3Z0QF5jRTGeDZfcLQ=",
+        "lastModified": 1758702421,
+        "narHash": "sha256-lpvUIyEPn2uXLpPEGkFsQvdEhht6rE+0RqhS8s7ZOd8=",
         "owner": "DreamMaoMao",
         "repo": "mangowc",
-        "rev": "6b5d5b091993a687862bc39d0b377ad8cdcb2c43",
+        "rev": "eb0395a48d959326638eb64b098742c998efac09",
         "type": "github"
       },
       "original": {
@@ -353,11 +353,11 @@
         "tree-sitter-tiger": "tree-sitter-tiger"
       },
       "locked": {
-        "lastModified": 1757076127,
-        "narHash": "sha256-VIWv92eFk8xfn/MlirJW3V6/D8T8u7wfsf1vAeQR66w=",
+        "lastModified": 1758701307,
+        "narHash": "sha256-Bq5ZKpKYNTbk40igJBZ2Pq1Po0E5LcQ2yXpIzZJB9Ko=",
         "owner": "Orysse",
         "repo": "nixvim",
-        "rev": "45de2649d9642eb4d9efcc9b8733868ba4e575da",
+        "rev": "816ea339183fb979be5da8d5fa8dc8456e2d2d27",
         "type": "github"
       },
       "original": {
