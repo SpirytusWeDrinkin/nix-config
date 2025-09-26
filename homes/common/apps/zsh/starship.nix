@@ -13,6 +13,11 @@
       directory = {
         style = "bold lavender";
       };
+      shlvl = {
+        disabled = false;
+        format = "[$shlvl ](bold peach)";
+        threshold = 2;
+      };
       palettes.catppuccin_macchiato = {
         rosewater = "#f4dbd6";
         flamingo = "#f0c6c6";

@@ -75,6 +75,13 @@ in
       port = "eDP-1";
       scale = 1.5;
     };
+    secondaryDisplay = {
+      port = "HDMI-A-1";
+      scale = 1;
+      x = 1920;
+      y = 0;
+      transform = 0;
+    };
 
   };
 
@@ -86,6 +93,9 @@ in
       nodejs_20
       yarn
       zulip
+      obsidian
+      lunar-client
+      badlion-client
     ];
   };
 

@@ -2,7 +2,8 @@
   pkgs,
   outputs,
   ...
-}: {
+}:
+{
   nixpkgs = {
     config = {
       allowUnfree = true;
@@ -15,7 +16,10 @@
 
   networking.networkmanager.enable = true;
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   environment.systemPackages = with pkgs; [
     git
@@ -24,6 +28,7 @@
 
     python311
     poetry
+    docker-compose
 
     wget
     curl
@@ -44,7 +49,7 @@
     enable = true;
   };
 
-  environment.shells = with pkgs; [zsh];
+  environment.shells = with pkgs; [ zsh ];
 
   environment.variables = {
     TERMINAL = "alacritty";
