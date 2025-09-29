@@ -40,10 +40,16 @@
   manual.manpages.enable = false;
   fonts.fontconfig.enable = true;
 
+  home.language = {
+    base = "en_US.UTF-8";
+  };
+
+  warnings = [ "Etre aussi beau est un crime." ];
+
   programs = {
     git = {
       enable = true;
-      userName = username;
+      userName = "Abel Chartier";
       userEmail = email;
       extraConfig = {
         init.defaultBranch = "master";

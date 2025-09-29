@@ -28,7 +28,7 @@ in
     pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
     extraSpecialArgs = {
       username = "ac284667";
-      email = "abel.chartier@epita.fr";
+      email = "Abel.CHARTIER@cea.fr";
       rootPath = rootPath;
       stateVersion = "25.05";
       inherit inputs outputs;
