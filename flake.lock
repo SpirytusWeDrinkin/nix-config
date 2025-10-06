@@ -117,11 +117,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1757075491,
-        "narHash": "sha256-a+NMGl5tcvm+hyfSG2DlVPa8nZLpsumuRj1FfcKb2mQ=",
+        "lastModified": 1759337100,
+        "narHash": "sha256-CcT3QvZ74NGfM+lSOILcCEeU+SnqXRvl1XCRHenZ0Us=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "f56bf065f9abedc7bc15e1f2454aa5c8edabaacf",
+        "rev": "004753ae6b04c4b18aa07192c1106800aaacf6c3",
         "type": "github"
       },
       "original": {
@@ -169,11 +169,11 @@
         "scenefx": "scenefx"
       },
       "locked": {
-        "lastModified": 1758702421,
-        "narHash": "sha256-lpvUIyEPn2uXLpPEGkFsQvdEhht6rE+0RqhS8s7ZOd8=",
+        "lastModified": 1759396689,
+        "narHash": "sha256-53SaY01sqa+YT3QPTTC85nY1PiMYFaNve14TompworI=",
         "owner": "DreamMaoMao",
         "repo": "mangowc",
-        "rev": "eb0395a48d959326638eb64b098742c998efac09",
+        "rev": "38917d9f968ef5c4e5c78470db2c721f562c92fc",
         "type": "github"
       },
       "original": {
@@ -191,11 +191,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1753859411,
-        "narHash": "sha256-xiQGpk987dCmeF29mClveaGJNIvljmJJ9FRHVPp92HU=",
+        "lastModified": 1758702011,
+        "narHash": "sha256-bUDn7H0Kt0Z4pjgki8B6jP1HMAklN0Fh+7zwW3JTw4I=",
         "owner": "DreamMaoMao",
         "repo": "mmsg",
-        "rev": "6066d37d810bb16575c0b60e25852d1f6d50de60",
+        "rev": "55b64e3728c3a95673ff73ccd9c3865db86f4fec",
         "type": "github"
       },
       "original": {
@@ -283,11 +283,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1756911493,
-        "narHash": "sha256-6n/n1GZQ/vi+LhFXMSyoseKdNfc2QQaSBXJdgamrbkE=",
+        "lastModified": 1759322190,
+        "narHash": "sha256-s+0wBPx9FAphKv8BYRN7OLCiZkiK1Dc8ebbCzczI9S8=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "c6a788f552b7b7af703b1a29802a7233c0067908",
+        "rev": "ee4cd98afba682ca27242f2d7fdbd8583f6ef51a",
         "type": "github"
       },
       "original": {
@@ -353,11 +353,11 @@
         "tree-sitter-tiger": "tree-sitter-tiger"
       },
       "locked": {
-        "lastModified": 1758701307,
-        "narHash": "sha256-Bq5ZKpKYNTbk40igJBZ2Pq1Po0E5LcQ2yXpIzZJB9Ko=",
+        "lastModified": 1759404615,
+        "narHash": "sha256-GND6ksLU38BHjnFFqzsjiu5k5WHNMBVuPR4Amfp31eo=",
         "owner": "Orysse",
         "repo": "nixvim",
-        "rev": "816ea339183fb979be5da8d5fa8dc8456e2d2d27",
+        "rev": "30097fecbf208ebb84e6314b363c1438e1588160",
         "type": "github"
       },
       "original": {

@@ -104,6 +104,8 @@ in
           # Clean up common window title patterns
           "(.*) — Mozilla Firefox" = " $1";
           "(.*) - Mozilla Firefox" = " $1";
+          "(.*) — Qutebrowser" = "󰖟 $1";
+          "(.*) - Qutebrowser" = "󰖟 $1";
           "(.*) — Visual Studio Code" = " $1";
           "(.*) - Visual Studio Code" = " $1";
           "(.*) — Neovim" = " $1";

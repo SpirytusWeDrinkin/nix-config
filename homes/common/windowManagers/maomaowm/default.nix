@@ -15,9 +15,11 @@ in
     enable = true;
     autostart_sh = ''
       set -e
-      ${pkgs.dbus}/bin/dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=wlroots
+      ${pkgs.dbus}/bin/dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=wlroots &
+      ${pkgs.xdg-desktop-portal-wlr}/libexec/xdg-desktop-portal-wlr &
       ${pkgs.swaynotificationcenter}/bin/swaync &
       ${pkgs.wl-clip-persist}/bin/wl-clip-persist --clipboard regular --reconnect-tries 0 &
+      ${pkgs.lxqt.lxqt-policykit}/bin/lxqt-policykit-agent
     '';
     settings = ''
       # More option see https://github.com/DreamMaoMao/maomaowm/wiki/

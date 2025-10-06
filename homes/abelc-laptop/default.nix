@@ -75,19 +75,26 @@ in
   windowManager = {
     wallpaper = "${rootPath}/assets/Wallpapers/493water.jpg";
     lockscreen = "${rootPath}/assets/Wallpapers/cisco.png";
+    terminal = pkgs.ghostty;
     primaryDisplay = {
       port = "eDP-1";
       scale = 2;
       x = 0;
       y = 0;
       transform = 0;
+      width = 1920;
+      height = 1080;
+      refreshRate = 240;
     };
     secondaryDisplay = {
       port = "HDMI-A-1";
       scale = 1;
       x = 1920;
       y = 0;
+      width = 1920;
+      height = 1200;
       transform = 0;
+      refreshRate = 144;
     };
   };
 

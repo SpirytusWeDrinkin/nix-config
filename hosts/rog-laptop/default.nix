@@ -20,6 +20,14 @@
   networking.hostName = "rog-laptop";
   networking.networkmanager.enable = true;
 
+  displayManager = {
+    theme = {
+      package = pkgs.sddm-theme;
+      name = "sddm-theme-corners";
+    };
+    maomaowm.enable = true;
+  };
+
   virtualisation = {
     docker.enable = true;
     libvirtd.enable = true;

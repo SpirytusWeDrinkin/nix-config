@@ -18,8 +18,11 @@
     ../common/apps/btop
     ../common/apps/cava
     ../common/apps/fzf
-    ../common/apps/imv
     ../common/apps/ghostty
+    ../common/apps/imv
+    ../common/apps/lollypop
+    ../common/apps/mpv
+    ../common/apps/qutebrowser
     ../common/apps/tmux
     ../common/apps/zsh
 
@@ -30,7 +33,9 @@
     ../common/windowManagers/maomaowm
 
     ../common/widgets/gtk
+    ../common/widgets/qt
     ../common/widgets/waybar
+    ../common/widgets/wlogout
   ]
   ++ (builtins.attrValues outputs.homeManagerModules);
 
@@ -117,4 +122,13 @@
   systemd.user.startServices = "sd-switch";
 
   home.stateVersion = stateVersion;
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-wlr
+    ];
+    config.common.default = "*";
+  };
 }
