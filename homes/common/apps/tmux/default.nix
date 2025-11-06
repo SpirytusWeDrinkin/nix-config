@@ -14,14 +14,23 @@
       # Colors
       set -ag terminal-overrides ",$TERM:RGB"
 
+      setw -g mode-keys vi
+      bind-key h select-pane -L
+      bind-key j select-pane -D
+      bind-key k select-pane -U
+      bind-key l select-pane -R
+      bind -r H resize-pane -L 5
+      bind -r J resize-pane -D 5
+      bind -r K resize-pane -U 5
+      bind -r L resize-pane -R 5
+      bind -r C-h resize-pane -L 1
+      bind -r C-j resize-pane -D 1
+      bind -r C-k resize-pane -U 1
+      bind -r C-l resize-pane -R 1
+
       # Vi copy mode
       bind-key -T copy-mode-vi 'v' send -X begin-selection
       bind-key -T copy-mode-vi 'y' send -X copy-selection-and-cancel
-
-      # Better splits
-      bind c new-window -c "#{pane_current_path}"
-      bind '"' split-window -v -c "#{pane_current_path}"
-      bind % split-window -h -c "#{pane_current_path}"
 
       # Catppuccin Macchiato borders
       set -g pane-border-style "fg=#8087a2"

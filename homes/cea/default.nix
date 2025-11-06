@@ -17,6 +17,7 @@
     ../common/apps/bat
     ../common/apps/btop
     ../common/apps/cava
+    ../common/apps/direnv
     ../common/apps/fzf
     ../common/apps/ghostty
     ../common/apps/imv
@@ -54,9 +55,9 @@
   programs = {
     git = {
       enable = true;
-      userName = "Abel Chartier";
-      userEmail = email;
-      extraConfig = {
+      settings = {
+        user.name = "Abel Chartier";
+        user.email = email;
         init.defaultBranch = "master";
         pull.rebase = true;
         core.editor = "nvim";
@@ -82,7 +83,7 @@
   };
 
   windowManager = {
-    wallpaper = "${rootPath}/assets/Wallpapers/493water.jpg";
+    wallpaper = "${rootPath}/assets/Wallpapers/cisco.png";
     terminal = pkgs.ghostty;
     primaryDisplay = {
       port = "eDP-1";
@@ -95,7 +96,7 @@
       refreshRate = 60.049000;
     };
     secondaryDisplay = {
-      port = "DP-3";
+      port = "DP-2";
       scale = 1;
       x = 1920;
       y = 0;
@@ -117,7 +118,6 @@
     ];
   };
 
-  services.ssh-agent.enable = true;
   programs.home-manager.enable = true;
   systemd.user.startServices = "sd-switch";
 
