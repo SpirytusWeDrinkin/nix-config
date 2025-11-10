@@ -56,7 +56,7 @@
       la = "${ls} --all";
       k = "kubectl";
       c = "clear";
-      shell = "nix-shell --run \"zsh\"";
+      shell = "${pkgs.my-scripts.shell}";
       ":wq" = "exit";
       reload = "~/afs/setup.sh";
     };

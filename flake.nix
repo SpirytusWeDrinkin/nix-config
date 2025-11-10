@@ -17,8 +17,8 @@
       url = "github:Orysse/nixvim";
     };
 
-    maomaowm = {
-      url = "github:DreamMaoMao/maomaowm";
+    mango = {
+      url = "github:DreamMaoMao/mangowc";
     };
 
     /*
