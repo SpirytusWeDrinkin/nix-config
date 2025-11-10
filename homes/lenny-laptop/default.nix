@@ -30,7 +30,8 @@ in
     ../common/widgets/gtk
     ../common/widgets/waybar
     ../common/widgets/wlogout
-  ] ++ (builtins.attrValues outputs.homeManagerModules);
+  ]
+  ++ (builtins.attrValues outputs.homeManagerModules);
 
   home.username = username;
   home.homeDirectory = "/home/${username}";
@@ -88,7 +89,6 @@ in
   home = {
     inherit stateVersion;
     packages = with pkgs; [
-      arduino-ide
       inputs.nixvim.packages.x86_64-linux.default
       nodejs_20
       yarn
@@ -96,6 +96,8 @@ in
       obsidian
       lunar-client
       badlion-client
+      jetbrains.pycharm-professional
+      docker-compose
     ];
   };
 
