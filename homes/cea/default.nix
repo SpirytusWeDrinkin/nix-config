@@ -115,6 +115,7 @@
       rounded-mgenplus
       firefox
       jq
+      xdg-desktop-portal-wlr
     ];
   };
 

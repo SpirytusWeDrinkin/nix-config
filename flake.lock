@@ -322,11 +322,11 @@
         "tree-sitter-tiger": "tree-sitter-tiger"
       },
       "locked": {
-        "lastModified": 1762425230,
-        "narHash": "sha256-PLW+uEmbP/nPOU2OBedKS/SlJPurOhN9uuzQF8J28t8=",
+        "lastModified": 1762509006,
+        "narHash": "sha256-oD5jUCTlRfhSw/iDPhysnX4yLbCzcTH1G44ioYFqXYc=",
         "owner": "Orysse",
         "repo": "nixvim",
-        "rev": "abc9b6d24f093f0cf0fc9c56496f8764e3a9e990",
+        "rev": "e7f6d8e064951d9ac0a34b317e62f2024a2ad122",
         "type": "github"
       },
       "original": {
