@@ -3,6 +3,7 @@
   username,
   config,
   stateVersion,
+  outputs,
   ...
 }:
 {
@@ -15,7 +16,8 @@
     ../common/system/pipewire
     ../common/system/plymouth
     ../common/games/steam
-  ];
+  ]
+  ++ (builtins.attrValues outputs.nixosModules);
 
   networking.hostName = "lenny-laptop";
   networking.networkmanager.enable = true;
@@ -38,6 +40,14 @@
     nerd-fonts.iosevka-term
     rounded-mgenplus
   ];
+
+  displayManager = {
+    theme = {
+      package = pkgs.sddm-theme;
+      name = "sddm-theme-corners";
+    };
+    maomaowm.enable = true;
+  };
 
   users.users = {
     "${username}" = {

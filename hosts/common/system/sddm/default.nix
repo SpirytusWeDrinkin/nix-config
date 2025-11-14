@@ -4,7 +4,7 @@
   ...
 }:
 let
-  cfg = config.windowManager;
+  cfg = config.displayManager;
 in
 {
   services.displayManager.sddm = {

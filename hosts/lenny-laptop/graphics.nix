@@ -2,14 +2,12 @@
   pkgs,
   config,
   ...
-}: let
+}:
+let
   nvidia-bus-id = "PCI:1:0:0";
   amd-bus-id = "PCI:7:0:0";
-in {
-  hardware.graphics = {
-    extraPackages = [pkgs.amdvlk];
-    extraPackages32 = [pkgs.driversi686Linux.amdvlk];
-  };
+in
+{
   services.xserver.videoDrivers = [
     "nvidia"
     "amdgpu"

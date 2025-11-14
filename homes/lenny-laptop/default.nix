@@ -94,9 +94,6 @@ in
       yarn
       zulip
       obsidian
-      lunar-client
-      badlion-client
-      jetbrains.pycharm-professional
       docker-compose
     ];
   };

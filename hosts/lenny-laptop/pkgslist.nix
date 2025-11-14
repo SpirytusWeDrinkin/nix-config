@@ -45,7 +45,7 @@
     # User apps
     pavucontrol
     slack
-    discord
+    #discord
     wayshot
     komikku
     gimp

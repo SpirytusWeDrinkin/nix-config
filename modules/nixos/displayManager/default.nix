@@ -6,7 +6,7 @@
 }:
 with lib;
 let
-  cfg = config.windowManager;
+  cfg = config.displayManager;
 in
 {
   options.displayManager = {
