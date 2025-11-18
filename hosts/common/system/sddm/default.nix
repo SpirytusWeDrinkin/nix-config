@@ -11,7 +11,7 @@ in
     enable = true;
     autoNumlock = true;
     wayland.enable = cfg.maomaowm.enable;
-    theme = cfg.theme.name;
+    theme = cfg.theme;
   };
 
   services.xserver = lib.mkIf cfg.i3.enable {
@@ -20,5 +20,4 @@ in
   };
 
   services.libinput.enable = true;
-  environment.systemPackages = [ cfg.theme.package ];
 }
