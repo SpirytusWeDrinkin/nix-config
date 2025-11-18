@@ -42,10 +42,7 @@
   ];
 
   displayManager = {
-    theme = {
-      package = pkgs.sddm-theme;
-      name = "sddm-theme-corners";
-    };
+    theme = pkgs.sddm-theme;
     maomaowm.enable = true;
   };
 
