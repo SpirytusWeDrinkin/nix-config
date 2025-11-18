@@ -10,17 +10,10 @@ let
 in
 {
   options.displayManager = {
-    theme = {
-      package = mkOption {
+    theme = mkOption {
         type = types.nullOr types.package;
         description = "Display manager theme";
         default = null;
-      };
-      name = mkOption {
-        type = types.nullOr types.str;
-        description = "Display manager theme name";
-        default = "sddm-theme-corners";
-      };
     };
 
     i3.enable = mkOption {
