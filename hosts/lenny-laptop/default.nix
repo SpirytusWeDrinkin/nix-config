@@ -24,8 +24,8 @@
 
   virtualisation = {
     docker.enable = true;
-    libvirtd.enable = true;
-    virtualbox.host.enable = true;
+    # libvirtd.enable = true;
+    # virtualbox.host.enable = true;
   };
 
   security.wrappers.ubridge = {

@@ -45,7 +45,6 @@
 
           mkdir -p "$CONFIG_DIR"
 
-          # Get primary rule from existing config or environment variable
           if [ -n "$PRIMARY_RULE" ]; then
             PRIMARY_MONITOR_RULE="$PRIMARY_RULE"
           elif [ -f "$CONFIG_FILE" ]; then
@@ -55,7 +54,6 @@
             exit 1
           fi
 
-          # Check for --no-override flag (create minimal config and exit)
           if [ "$1" = "--no-override" ]; then
             if [ ! -f "$CONFIG_FILE" ]; then
               cat > "$CONFIG_FILE" << EOF
@@ -65,55 +63,44 @@
             exit 0
           fi
 
-          # Extract primary monitor name and dimensions from the rule
-          PRIMARY=$(echo "$PRIMARY_MONITOR_RULE" | ${pkgs.coreutils}/bin/cut -d',' -f1 | ${pkgs.coreutils}/bin/cut -d'=' -f2)
           PRIMARY_WIDTH=$(echo "$PRIMARY_MONITOR_RULE" | ${pkgs.coreutils}/bin/cut -d',' -f9)
           PRIMARY_HEIGHT=$(echo "$PRIMARY_MONITOR_RULE" | ${pkgs.coreutils}/bin/cut -d',' -f10)
 
-          # Get all monitors
           MONITORS_JSON=$(${pkgs.wlr-randr}/bin/wlr-randr --json)
 
-          # Check for secondary monitors
           SECONDARY_COUNT=$(echo "$MONITORS_JSON" | ${pkgs.jq}/bin/jq 'length')
 
           if [ "$SECONDARY_COUNT" -eq 1 ]; then
-            # Only primary monitor
             cat > "$CONFIG_FILE" << EOF
-          monitorrule=$PRIMARY,0.55,1,tile,0,1.0,0,0,$PRIMARY_WIDTH,$PRIMARY_HEIGHT,$PRIMARY_REFRESH
+            $PRIMARY_MONITOR_RULE
           EOF
-            echo monitorrule=$PRIMARY,0.55,1,tile,0,1.0,0,0,$PRIMARY_WIDTH,$PRIMARY_HEIGHT,$PRIMARY_REFRESH
+            $PRIMARY_MONITOR_RULE
             exit 0
           fi
 
-          # Get secondary monitors list (excluding primary)
           SECONDARY_LIST=$(echo "$MONITORS_JSON" | ${pkgs.jq}/bin/jq -r --arg primary "$PRIMARY" '.[] | select(.name != $primary) | .name')
 
-          # Add "Primary only" option
           MONITOR_OPTIONS="Primary only
           $SECONDARY_LIST"
 
-          # Select monitor with bemenu
           SELECTED=$(echo "$MONITOR_OPTIONS" | $BEMENU -p "Select monitor:")
 
           if [ -z "$SELECTED" ] || [ "$SELECTED" = "Primary only" ]; then
             cat > "$CONFIG_FILE" << EOF
-          $PRIMARY_MONITOR_RULE
+            $PRIMARY_MONITOR_RULE
           EOF
             exit 0
           fi
 
           SECONDARY="$SELECTED"
 
-          # Get selected monitor index
           SECONDARY_INDEX=$(echo "$MONITORS_JSON" | ${pkgs.jq}/bin/jq --arg name "$SECONDARY" 'to_entries[] | select(.value.name == $name) | .key')
 
-          # Get selected monitor info
           SECONDARY_MODE=$(echo "$MONITORS_JSON" | ${pkgs.jq}/bin/jq -r ".[$SECONDARY_INDEX].modes[] | select(.current == true)")
           SECONDARY_WIDTH=$(echo "$SECONDARY_MODE" | ${pkgs.jq}/bin/jq -r '.width')
           SECONDARY_HEIGHT=$(echo "$SECONDARY_MODE" | ${pkgs.jq}/bin/jq -r '.height')
-          SECONDARY_REFRESH=$(echo "$SECONDARY_MODE" | ${pkgs.jq}/bin/jq -r '.refresh / 1000')
+          SECONDARY_REFRESH=$(echo "$SECONDARY_MODE" | ${pkgs.jq}/bin/jq -r '.refresh')
 
-          # Select position with bemenu
           POSITION=$(echo -e "Duplicate\nLeft\nRight\nAbove\nBelow" | $BEMENU -p "Position:")
 
           if [ -z "$POSITION" ]; then
@@ -146,7 +133,6 @@
               ;;
           esac
 
-          # Write config
           cat > "$CONFIG_FILE" << EOF
           $PRIMARY_MONITOR_RULE
           monitorrule=$SECONDARY,0.55,1,tile,0,1.0,$SEC_X,$SEC_Y,$SECONDARY_WIDTH,$SECONDARY_HEIGHT,$SECONDARY_REFRESH

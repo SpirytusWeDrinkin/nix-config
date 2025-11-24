@@ -54,7 +54,7 @@ in
       x = mkOption {
         type = types.int;
         description = "x-pos for primary screen";
-        default = 1920;
+        default = 0;
       };
       y = mkOption {
         type = types.int;

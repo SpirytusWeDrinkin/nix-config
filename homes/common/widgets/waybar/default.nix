@@ -288,27 +288,29 @@ in
   programs.waybar.style = builtins.readFile ./config/style.css;
 
   # Configure waybar as a systemd user service
-  systemd.user.services.waybar = {
-    Unit = {
-      Description = "Highly customizable Wayland bar for Sway and Wlroots based compositors";
-      Documentation = "https://github.com/Alexays/Waybar/wiki";
-      PartOf = [ "graphical-session.target" ];
-      After = [ "graphical-session.target" ];
-      Requisite = [ "graphical-session.target" ];
-    };
+  /*
+    systemd.user.services.waybar = {
+      Unit = {
+        Description = "Highly customizable Wayland bar for Sway and Wlroots based compositors";
+        Documentation = "https://github.com/Alexays/Waybar/wiki";
+        PartOf = [ "graphical-session.target" ];
+        After = [ "graphical-session.target" ];
+        Requisite = [ "graphical-session.target" ];
+      };
 
-    Service = {
-      Type = "simple";
-      ExecStart = "${pkgs.waybar}/bin/waybar";
-      ExecReload = "${pkgs.coreutils}/bin/kill -SIGUSR2 $MAINPID";
-      Restart = "on-failure";
-      RestartSec = 1;
-      TimeoutStopSec = 10;
-    };
+      Service = {
+        Type = "simple";
+        ExecStart = "${pkgs.waybar}/bin/waybar";
+        ExecReload = "${pkgs.coreutils}/bin/kill -SIGUSR2 $MAINPID";
+        Restart = "on-failure";
+        RestartSec = 1;
+        TimeoutStopSec = 10;
+      };
 
-    Install = {
-      WantedBy = [ "graphical-session.target" ];
+      Install = {
+        WantedBy = [ "graphical-session.target" ];
+      };
     };
-  };
+  */
 
 }

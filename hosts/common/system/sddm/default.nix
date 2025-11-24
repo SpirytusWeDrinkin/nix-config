@@ -1,23 +1,13 @@
-{
-  config,
-  lib,
-  ...
-}:
-let
-  cfg = config.displayManager;
-in
+{ pkgs, ... }:
 {
   services.displayManager.sddm = {
     enable = true;
     autoNumlock = true;
-    wayland.enable = cfg.maomaowm.enable;
-    theme = cfg.theme;
-  };
 
-  services.xserver = lib.mkIf cfg.i3.enable {
-    enable = true;
-    windowManager.i3.enable = true;
+    wayland.enable = true;
+    theme = "sddm-theme-corners";
   };
 
   services.libinput.enable = true;
+  environment.systemPackages = with pkgs; [ sddm-theme ];
 }

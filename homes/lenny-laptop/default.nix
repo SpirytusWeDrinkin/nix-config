@@ -75,6 +75,8 @@ in
     primaryDisplay = {
       port = "eDP-1";
       scale = 1.5;
+      width = 2560;
+      height = 1600;
     };
     secondaryDisplay = {
       port = "HDMI-A-1";
