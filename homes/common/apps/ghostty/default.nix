@@ -16,6 +16,8 @@
       confirm-close-surface = false;
       background-opacity = 0.85;
       gtk-titlebar = false;
+      window-inherit-working-directory = "false";
+      working-directory = "home";
     };
     themes = {
       catppuccin-macchiato = {

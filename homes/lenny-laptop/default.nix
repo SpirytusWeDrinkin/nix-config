@@ -77,6 +77,7 @@ in
       scale = 1.5;
       width = 2560;
       height = 1600;
+      refreshRate = 120;
     };
     secondaryDisplay = {
       port = "HDMI-A-1";
@@ -97,6 +98,7 @@ in
       zulip
       obsidian
       docker-compose
+      discord
     ];
   };
 
