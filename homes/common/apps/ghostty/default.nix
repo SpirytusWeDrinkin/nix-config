@@ -18,6 +18,9 @@
       gtk-titlebar = false;
       window-inherit-working-directory = "false";
       working-directory = "home";
+      keybind = [
+        "ctrl+enter=unbind"
+      ];
     };
     themes = {
       catppuccin-macchiato = {
