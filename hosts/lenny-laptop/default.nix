@@ -101,7 +101,7 @@
     '';
   };
 
-  systemd.watchdog.rebootTime = "0";
+  systemd.settings.Manager.RebootWatchdogSec = "0";
 
   system.stateVersion = stateVersion;
 }
