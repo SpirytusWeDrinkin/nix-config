@@ -42,13 +42,15 @@ in
   programs = {
     git = {
       enable = true;
-      userName = "lenny.chiadmi-delage";
-      userEmail = "lenny.chiadmi-delage@epita.fr";
-      extraConfig = {
+      settings = {
         init.defaultBranch = "master";
         pull.rebase = true;
         core.editor = "nvim";
         push.autoSetupRemote = true;
+        user = {
+          name = "lenny.chiadmi-delage";
+          email = "lenny.chiadmi-delage@epita.fr";
+        };
 
         color = {
           ui = "auto";
