@@ -38,5 +38,22 @@
         ./configuration.nix
       ];
     };
+  lenny-home =
+    let
+      username = "lenny";
+      stateVersion = "25.05";
+    in
+    inputs.nixpkgs.lib.nixosSystem {
+      specialArgs = {
+        inherit inputs outputs;
+        stateVersion = stateVersion;
+        username = username;
+      };
+      modules = [
+        inputs.mango.nixosModules.mango
+        ./lenny-home
+        ./configuration.nix
+      ];
+    };
 
 }
