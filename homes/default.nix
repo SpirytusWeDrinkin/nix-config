@@ -81,6 +81,20 @@ in
       ./abelc-laptop
     ];
   };
+
+  "abel@lenovo-laptop" = home-manager.lib.homeManagerConfiguration {
+    pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
+    extraSpecialArgs = {
+      username = "abel";
+      rootPath = rootPath;
+      stateVersion = "25.05";
+      inherit inputs outputs;
+    };
+
+    modules = [
+      ./lenovo-laptop
+    ];
+  };
   "lenny@laptop" = home-manager.lib.homeManagerConfiguration {
     pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
     extraSpecialArgs = {

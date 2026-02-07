@@ -21,6 +21,23 @@
         ./configuration.nix
       ];
     };
+  lenovo-laptop =
+    let
+      username = "abel";
+      stateVersion = "25.05";
+    in
+    inputs.nixpkgs.lib.nixosSystem {
+      specialArgs = {
+        inherit inputs outputs;
+        stateVersion = stateVersion;
+        username = username;
+      };
+      modules = [
+        inputs.mango.nixosModules.mango
+        ./lenovo-laptop
+        ./configuration.nix
+      ];
+    };
   lenny-laptop =
     let
       username = "lenny";
